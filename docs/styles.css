@@ -213,6 +213,234 @@ p {
   color: #151515;
 }
 
+.final-actions {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.catalog-page {
+  background:
+    radial-gradient(circle at 78% 12%, rgba(206, 17, 38, 0.18), transparent 28rem),
+    linear-gradient(180deg, #111115 0, #17171c 18rem, #f1eee8 18rem, #faf8f4 100%);
+  color: #1d1d21;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+.catalog-hero {
+  display: grid;
+  grid-template-columns: minmax(12rem, 22rem) minmax(0, 1fr);
+  gap: clamp(1.4rem, 4vw, 4rem);
+  align-items: center;
+  width: min(1180px, calc(100% - 3rem));
+  margin: 0 auto;
+  padding: 3rem 0 2.2rem;
+  color: #fff;
+}
+
+.catalog-hero img {
+  width: 100%;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 1.2rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+
+.catalog-hero h1 {
+  margin: 0.2rem 0 1rem;
+  max-width: 13ch;
+  font-size: clamp(2.5rem, 6vw, 5.9rem);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.catalog-hero p {
+  max-width: 68ch;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(1rem, 1.45vw, 1.22rem);
+  line-height: 1.7;
+}
+
+.catalog-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.5rem;
+}
+
+.catalog-meta span {
+  padding: 0.65rem 0.9rem;
+  color: #fff;
+  font-weight: 800;
+  background: rgba(206, 17, 38, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+}
+
+.catalog-layout {
+  display: grid;
+  grid-template-columns: minmax(14rem, 18rem) minmax(0, 1fr);
+  gap: 1.4rem;
+  width: min(1180px, calc(100% - 3rem));
+  margin: 0 auto;
+  padding: 0 0 5rem;
+}
+
+.catalog-toc {
+  position: sticky;
+  top: 1rem;
+  align-self: start;
+  max-height: calc(100svh - 2rem);
+  overflow: auto;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 1rem;
+  box-shadow: 0 18px 42px rgba(22, 22, 28, 0.08);
+}
+
+.catalog-toc h2 {
+  margin: 1rem 0 0.7rem;
+  color: #111115;
+  font-size: 1.05rem;
+}
+
+.catalog-toc nav {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.catalog-toc a {
+  display: block;
+  padding: 0.6rem 0.7rem;
+  color: #3c3c42;
+  font-size: 0.9rem;
+  font-weight: 750;
+  line-height: 1.25;
+  border-radius: 0.7rem;
+}
+
+.catalog-toc a:hover {
+  color: #fff;
+  background: var(--accent);
+}
+
+.catalog-toc .back-link {
+  color: #fff;
+  background: #111115;
+}
+
+.catalog-content {
+  display: grid;
+  gap: 1rem;
+}
+
+.catalog-section {
+  padding: clamp(1.2rem, 3vw, 2.2rem);
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(18, 18, 24, 0.08);
+  border-radius: 1.2rem;
+  box-shadow: 0 18px 48px rgba(22, 22, 28, 0.08);
+}
+
+.catalog-section h2 {
+  margin: 0 0 1rem;
+  color: #121216;
+  font-size: clamp(1.45rem, 3vw, 2.6rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.catalog-section h2::after {
+  content: "";
+  display: block;
+  width: 4.4rem;
+  height: 0.28rem;
+  margin-top: 0.8rem;
+  background: var(--accent);
+  border-radius: 999px;
+}
+
+.catalog-section p {
+  margin: 0 0 0.82rem;
+  color: #34343a;
+  font-size: 1rem;
+  line-height: 1.72;
+}
+
+.table-scroll {
+  overflow: auto;
+  margin: 1.2rem 0;
+  border: 1px solid rgba(17, 17, 21, 0.14);
+  border-radius: 0.85rem;
+}
+
+.catalog-section table {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.catalog-section th,
+.catalog-section td {
+  padding: 0.65rem 0.75rem;
+  color: #242428;
+  font-size: 0.88rem;
+  line-height: 1.35;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(17, 17, 21, 0.1);
+}
+
+.catalog-section th {
+  color: #fff;
+  background: #19191e;
+  font-weight: 850;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.gallery-card {
+  margin: 0;
+  overflow: hidden;
+  background: #f4f1eb;
+  border: 1px solid rgba(17, 17, 21, 0.1);
+  border-radius: 1rem;
+}
+
+.gallery-card img {
+  display: block;
+  width: 100%;
+  max-height: 28rem;
+  object-fit: contain;
+  padding: 0.7rem;
+  background: #fff;
+}
+
+.gallery-card figcaption,
+.original-only {
+  padding: 0.75rem 0.9rem;
+  color: #55545b;
+  font-size: 0.86rem;
+  font-weight: 750;
+}
+
+.original-only {
+  background: #fff4f5;
+  border: 1px solid rgba(206, 17, 38, 0.18);
+  border-radius: 1rem;
+}
+
+.original-only h3 {
+  margin: 0 0 0.6rem;
+  color: #121216;
+}
+
 .hero-panel,
 .program-card,
 .feature-card,
@@ -574,6 +802,34 @@ p {
 }
 
 @media (max-width: 960px) {
+  .catalog-hero,
+  .catalog-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .catalog-hero {
+    width: min(760px, calc(100% - 2rem));
+    padding-top: 2rem;
+  }
+
+  .catalog-hero img {
+    max-width: 22rem;
+  }
+
+  .catalog-layout {
+    width: min(760px, calc(100% - 2rem));
+  }
+
+  .catalog-toc {
+    position: relative;
+    top: auto;
+    max-height: none;
+  }
+
+  .catalog-toc nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .hero-grid,
   .story-layout,
   .detail-section,
@@ -612,6 +868,43 @@ p {
 }
 
 @media (max-width: 720px) {
+  .catalog-page {
+    background:
+      radial-gradient(circle at 90% 8%, rgba(206, 17, 38, 0.18), transparent 16rem),
+      linear-gradient(180deg, #111115 0, #17171c 22rem, #f1eee8 22rem, #faf8f4 100%);
+  }
+
+  .catalog-hero,
+  .catalog-layout {
+    width: min(100% - 1rem, 42rem);
+  }
+
+  .catalog-hero {
+    gap: 1.2rem;
+  }
+
+  .catalog-hero h1 {
+    font-size: clamp(2.25rem, 13vw, 4.2rem);
+  }
+
+  .catalog-meta span,
+  .catalog-toc a {
+    font-size: 0.82rem;
+  }
+
+  .catalog-toc nav,
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .catalog-section {
+    border-radius: 0.95rem;
+  }
+
+  .catalog-section table {
+    min-width: 560px;
+  }
+
   .presentation-section {
     padding: 5rem 1rem;
   }
@@ -687,6 +980,122 @@ p {
   @page {
     size: 13.333in 7.5in;
     margin: 0;
+  }
+
+  @page catalog {
+    size: A4;
+    margin: 12mm;
+  }
+
+  .catalog-page {
+    page: catalog;
+    background: #fff;
+    color: #18181c;
+  }
+
+  .catalog-page .catalog-hero,
+  .catalog-page .catalog-layout {
+    width: 100%;
+    max-width: none;
+  }
+
+  .catalog-page .catalog-hero {
+    grid-template-columns: 1.7in 1fr;
+    gap: 0.35in;
+    padding: 0 0 0.25in;
+    color: #18181c;
+    break-after: avoid;
+  }
+
+  .catalog-page .catalog-hero img {
+    padding: 0.12in;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+
+  .catalog-page .catalog-hero h1 {
+    font-size: 30pt;
+    max-width: none;
+  }
+
+  .catalog-page .catalog-hero p,
+  .catalog-page .catalog-section p {
+    color: #333;
+    font-size: 9.2pt;
+    line-height: 1.42;
+  }
+
+  .catalog-page .catalog-meta span {
+    padding: 0.08in 0.12in;
+    font-size: 8.5pt;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .catalog-page .catalog-layout {
+    display: block;
+    padding: 0;
+  }
+
+  .catalog-page .catalog-toc {
+    display: none;
+  }
+
+  .catalog-page .catalog-content {
+    display: block;
+  }
+
+  .catalog-page .catalog-section {
+    margin: 0 0 0.12in;
+    padding: 0.14in;
+    box-shadow: none;
+    border: 1px solid #ddd;
+    border-radius: 0.08in;
+    break-inside: auto;
+  }
+
+  .catalog-page .catalog-section h2 {
+    font-size: 17pt;
+    max-width: none;
+    break-after: avoid;
+  }
+
+  .catalog-page .catalog-section h2::after {
+    height: 0.06in;
+    margin-top: 0.08in;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .catalog-page .catalog-section table {
+    min-width: 0;
+  }
+
+  .catalog-page .catalog-section th,
+  .catalog-page .catalog-section td {
+    padding: 0.06in;
+    font-size: 6.8pt;
+    line-height: 1.18;
+  }
+
+  .catalog-page .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.12in;
+  }
+
+  .catalog-page .gallery-card {
+    break-inside: avoid;
+  }
+
+  .catalog-page .gallery-card img {
+    max-height: 3.2in;
+    padding: 0.08in;
+  }
+
+  .catalog-page .gallery-card figcaption,
+  .catalog-page .original-only {
+    padding: 0.07in;
+    font-size: 7pt;
   }
 
   .topbar {
