@@ -1,0 +1,445 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Source+Sans+3:wght@400;600;700&display=swap");
+
+:root {
+  --background: #0a0a0d;
+  --foreground: #f3f2ef;
+  --muted: #c9c6c1;
+  --accent: #ce1126;
+  --accent-soft: #f44e5f;
+  --line: rgba(255, 255, 255, 0.12);
+  --shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Source Sans 3", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-shell {
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top, rgba(206, 17, 38, 0.2), transparent 28%),
+    linear-gradient(180deg, #0c0c0f 0%, #101014 40%, #ece8e1 40%, #f7f4ee 100%);
+}
+
+.presentation-section {
+  position: relative;
+  padding: 7rem clamp(1.5rem, 4vw, 4rem);
+}
+
+.hero-section {
+  min-height: 92svh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-backdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(125deg, rgba(10, 10, 13, 0.92) 0%, rgba(10, 10, 13, 0.79) 45%, rgba(10, 10, 13, 0.48) 100%),
+    url("assets/pozadina-blur-logo.png") center top / cover no-repeat;
+  transform: scale(1.05);
+}
+
+.hero-section::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 12rem;
+  background: linear-gradient(180deg, transparent, rgba(10, 10, 13, 0.86));
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 1;
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.8fr);
+  gap: 2rem;
+  align-items: end;
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffd1d6;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+  line-height: 0.98;
+  text-transform: uppercase;
+}
+
+h1 {
+  max-width: 11ch;
+  font-size: clamp(4rem, 10vw, 8.4rem);
+}
+
+h2 {
+  max-width: 14ch;
+  font-size: clamp(2.5rem, 5vw, 4.6rem);
+}
+
+h3 {
+  margin-bottom: 0.8rem;
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.lead {
+  max-width: 42rem;
+  color: var(--muted);
+  margin: 1.5rem 0 0;
+  font-size: clamp(1.1rem, 1.6vw, 1.25rem);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.25rem;
+  padding: 0 1.4rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-weight: 700;
+}
+
+.button-primary {
+  background: linear-gradient(135deg, var(--accent), #8f0817);
+  box-shadow: 0 12px 28px rgba(206, 17, 38, 0.25);
+}
+
+.button-secondary {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+.hero-panel,
+.program-card,
+.feature-card,
+.panel-card,
+.equipment-card,
+.final-panel,
+.bullet-panel {
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.hero-panel {
+  padding: 1.5rem;
+  border-radius: 1.4rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+}
+
+.stat-block {
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.stat-block:last-child {
+  border-bottom: 0;
+}
+
+.stat-value {
+  display: block;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
+}
+
+.stat-label {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.content-band,
+.program-section,
+.final-section {
+  color: #151515;
+}
+
+.section-heading,
+.story-layout,
+.program-grid,
+.two-column-panel,
+.equipment-grid,
+.detail-section {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+}
+
+.section-heading {
+  margin-bottom: 2.5rem;
+}
+
+.section-heading .eyebrow,
+.final-panel .eyebrow {
+  color: var(--accent);
+}
+
+.story-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.92fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.story-copy p {
+  margin: 0 0 1.2rem;
+}
+
+.feature-stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.feature-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.feature-index {
+  font-family: "Oswald", sans-serif;
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+.program-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.equipment-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.program-card,
+.equipment-card {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(242, 238, 231, 0.9));
+}
+
+.program-range {
+  margin: 0 0 0.9rem;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.detail-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.95fr);
+  gap: 2rem;
+  align-items: start;
+  color: #fff;
+}
+
+.detail-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(206, 17, 38, 0.06), transparent 48%),
+    linear-gradient(180deg, rgba(10, 10, 13, 0.96), rgba(14, 14, 18, 0.96)),
+    url("assets/pozadina.png") center center / cover no-repeat;
+  opacity: 0.94;
+}
+
+.detail-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.detail-copy p:last-child {
+  color: #d8d3cc;
+}
+
+.inverse::before {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 42%),
+    linear-gradient(180deg, rgba(10, 10, 13, 0.95), rgba(22, 22, 27, 0.95)),
+    url("assets/pozadina-blur-logo.png") center center / cover no-repeat;
+}
+
+.bullet-panel {
+  padding: 1.5rem;
+  border-radius: 1.2rem;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.bullet-item {
+  display: grid;
+  grid-template-columns: 0.9rem 1fr;
+  gap: 0.9rem;
+  align-items: start;
+}
+
+.bullet-item + .bullet-item {
+  margin-top: 1rem;
+}
+
+.bullet-item span {
+  width: 0.9rem;
+  height: 0.9rem;
+  margin-top: 0.45rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #fff, var(--accent-soft));
+  box-shadow: 0 0 0 5px rgba(206, 17, 38, 0.12);
+}
+
+.two-column-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 1.2rem;
+}
+
+.panel-card {
+  padding: 1.6rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.panel-card.emphasis {
+  background: linear-gradient(135deg, #18181d, #25252e);
+  color: #fff;
+}
+
+.compact + .compact {
+  margin-top: 0.75rem;
+}
+
+.final-section {
+  padding-bottom: 8rem;
+}
+
+.final-panel {
+  width: min(980px, 100%);
+  margin: 0 auto;
+  padding: clamp(1.6rem, 4vw, 3rem);
+  border-radius: 1.2rem;
+  background:
+    linear-gradient(135deg, rgba(206, 17, 38, 0.88), rgba(33, 6, 10, 0.96)),
+    url("assets/pozadina.png") right center / cover no-repeat;
+  color: #fff;
+}
+
+.final-panel .eyebrow {
+  color: #ffe0e5;
+}
+
+@media (max-width: 960px) {
+  .hero-grid,
+  .story-layout,
+  .detail-section,
+  .two-column-panel,
+  .program-grid,
+  .equipment-grid {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .presentation-section {
+    padding: 5rem 1.25rem;
+  }
+
+  .hero-section {
+    min-height: 92svh;
+    align-items: end;
+    padding-top: 6rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
+
+@media print {
+  body,
+  .site-shell {
+    background: #fff;
+  }
+
+  .presentation-section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    page-break-after: always;
+    min-height: auto;
+    padding: 16mm 14mm;
+  }
+
+  .button {
+    border: 1px solid #999;
+    color: #111;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .hero-panel,
+  .program-card,
+  .feature-card,
+  .panel-card,
+  .equipment-card,
+  .final-panel,
+  .bullet-panel {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+}
