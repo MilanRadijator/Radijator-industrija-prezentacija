@@ -18,7 +18,8 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCX = Path(r"D:\Prezentacija nikola\KATALOG INDUSTRIJSKIH KOTLOVA.docx")
 DOCS = ROOT / "docs"
 ASSET_DIR = DOCS / "assets" / "full-catalog"
-OUT_HTML = DOCS / "full-catalog.html"
+OUT_HTML = DOCS / "index.html"
+ALIAS_HTML = DOCS / "full-catalog.html"
 
 
 def iter_blocks(document: Document):
@@ -211,19 +212,22 @@ def render_page() -> None:
     <header class="catalog-hero">
       <img src="assets/logo.png" alt="Radijator Inzenjering" />
       <div>
-        <p class="eyebrow">Kompletan katalog iz Word dokumenta</p>
+        <p class="eyebrow">Glavni katalog iz Word dokumenta</p>
         <h1>Industrijski kotlovi na biomasu</h1>
-        <p>U ovu verziju je prenet kompletan tekstualni materijal iz dokumenta i galerija svih slika koje su izdvojene iz DOCX fajla.</p>
+        <p>Ovo je kompletna katalog verzija sa celim tekstom, svim tabelama i svim slikama izdvojenim iz DOCX fajla.</p>
         <div class="catalog-meta">
           <span>{paragraph_count} tekstualnih pasusa</span>
           <span>{table_count} tabela</span>
           <span>{len(images)} slika iz dokumenta</span>
         </div>
+        <div class="catalog-actions">
+          <a href="radijator-industrijski-kotlovi.pdf">Preuzmi kompletan PDF</a>
+        </div>
       </div>
     </header>
     <main class="catalog-layout">
       <aside class="catalog-toc">
-        <a class="back-link" href="index.html">Nazad na prezentaciju</a>
+        <a class="back-link" href="#top">Vrh kataloga</a>
         <h2>Sadrzaj</h2>
         <nav>{"".join(toc)}</nav>
       </aside>
@@ -239,6 +243,7 @@ def render_page() -> None:
 </html>
 """
     OUT_HTML.write_text(page, encoding="utf-8")
+    ALIAS_HTML.write_text(page, encoding="utf-8")
 
 
 if __name__ == "__main__":
