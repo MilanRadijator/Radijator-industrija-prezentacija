@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Source+Sans+3:wght@400;600;700&display=swap");
-
 :root {
   --background: #0a0a0d;
   --foreground: #f3f2ef;
@@ -23,7 +21,8 @@ body {
   min-width: 320px;
   background: var(--background);
   color: var(--foreground);
-  font-family: "Source Sans 3", sans-serif;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  overflow-x: hidden;
 }
 
 a {
@@ -41,7 +40,7 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.85rem clamp(1.25rem, 4vw, 3rem);
+  padding: 0.8rem 3rem;
   color: #fff;
   background: rgba(10, 10, 13, 0.72);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -51,25 +50,24 @@ a {
 .brand-mark {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
+  min-width: 15rem;
+  padding: 0.35rem 0.55rem;
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 0.55rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
 }
 
-.brand-icon {
-  display: grid;
-  place-items: center;
-  width: 2.1rem;
-  height: 2.1rem;
-  background: var(--accent);
-  font-family: "Oswald", sans-serif;
-  font-size: 1.2rem;
+.brand-mark img {
+  display: block;
+  width: 14rem;
+  max-width: 100%;
+  height: auto;
 }
 
 .topnav {
   display: flex;
   gap: clamp(0.75rem, 2vw, 1.4rem);
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   font-weight: 700;
 }
 
@@ -90,7 +88,7 @@ a {
 
 .presentation-section {
   position: relative;
-  padding: 7rem clamp(1.5rem, 4vw, 4rem);
+  padding: 7rem 4rem;
 }
 
 .hero-section {
@@ -127,9 +125,14 @@ a {
   align-items: end;
 }
 
+.hero-copy,
+.hero-panel {
+  min-width: 0;
+}
+
 .eyebrow {
   margin: 0 0 1rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: #ffd1d6;
   font-size: 0.8rem;
@@ -140,7 +143,7 @@ h1,
 h2,
 h3 {
   margin: 0;
-  font-family: "Oswald", sans-serif;
+  font-family: "Bahnschrift", "Arial Narrow", "Segoe UI", sans-serif;
   font-weight: 500;
   line-height: 0.98;
   text-transform: uppercase;
@@ -148,12 +151,13 @@ h3 {
 
 h1 {
   max-width: 11ch;
-  font-size: clamp(4rem, 10vw, 8.4rem);
+  font-size: 7.6rem;
+  overflow-wrap: normal;
 }
 
 h2 {
   max-width: 14ch;
-  font-size: clamp(2.5rem, 5vw, 4.6rem);
+  font-size: 4.3rem;
 }
 
 h3 {
@@ -164,13 +168,14 @@ h3 {
 p {
   font-size: 1.08rem;
   line-height: 1.7;
+  overflow-wrap: break-word;
 }
 
 .lead {
   max-width: 42rem;
   color: var(--muted);
   margin: 1.5rem 0 0;
-  font-size: clamp(1.1rem, 1.6vw, 1.25rem);
+  font-size: 1.25rem;
 }
 
 .hero-actions {
@@ -201,6 +206,13 @@ p {
   border-color: rgba(255, 255, 255, 0.24);
 }
 
+.button-light {
+  width: fit-content;
+  margin-top: 1.2rem;
+  background: #fff;
+  color: #151515;
+}
+
 .hero-panel,
 .program-card,
 .feature-card,
@@ -214,9 +226,22 @@ p {
 }
 
 .hero-panel {
+  width: 100%;
+  max-width: 100%;
   padding: 1.5rem;
   border-radius: 1.4rem;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+}
+
+.hero-logo {
+  display: block;
+  width: 100%;
+  max-width: 30rem;
+  margin: 0 0 1.3rem;
+  padding: 0.8rem 0.95rem;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 0.8rem;
+  object-fit: contain;
 }
 
 .stat-block {
@@ -230,9 +255,9 @@ p {
 
 .stat-value {
   display: block;
-  font-family: "Oswald", sans-serif;
+  font-family: "Bahnschrift", "Arial Narrow", "Segoe UI", sans-serif;
   text-transform: uppercase;
-  font-size: clamp(1.6rem, 3vw, 2.6rem);
+  font-size: 2.35rem;
 }
 
 .stat-label {
@@ -297,7 +322,7 @@ p {
 }
 
 .feature-index {
-  font-family: "Oswald", sans-serif;
+  font-family: "Bahnschrift", "Arial Narrow", "Segoe UI", sans-serif;
   font-size: 2rem;
   color: var(--accent);
 }
@@ -325,7 +350,7 @@ p {
   margin: 0 0 0.9rem;
   color: var(--accent);
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -480,7 +505,7 @@ p {
 .comparison-table th {
   background: #151519;
   color: #fff;
-  font-family: "Oswald", sans-serif;
+  font-family: "Bahnschrift", "Arial Narrow", "Segoe UI", sans-serif;
   font-size: 1.15rem;
   text-transform: uppercase;
 }
@@ -536,7 +561,7 @@ p {
 .final-panel {
   width: min(980px, 100%);
   margin: 0 auto;
-  padding: clamp(1.6rem, 4vw, 3rem);
+  padding: 3rem;
   border-radius: 1.2rem;
   background:
     linear-gradient(135deg, rgba(206, 17, 38, 0.88), rgba(33, 6, 10, 0.96)),
@@ -562,12 +587,51 @@ p {
 
   h1 {
     max-width: 100%;
+    font-size: 5.4rem;
+  }
+
+  h2 {
+    font-size: 3.25rem;
+  }
+
+  .presentation-section {
+    padding: 6rem 2rem;
+  }
+
+  .topbar {
+    padding: 0.75rem 1.5rem;
+  }
+
+  .brand-mark {
+    min-width: 12rem;
+  }
+
+  .brand-mark img {
+    width: 12rem;
   }
 }
 
 @media (max-width: 720px) {
   .presentation-section {
-    padding: 5rem 1.25rem;
+    padding: 5rem 1rem;
+  }
+
+  h1 {
+    font-size: 2.45rem;
+    line-height: 1.04;
+  }
+
+  h2 {
+    font-size: 2.45rem;
+  }
+
+  h3 {
+    font-size: 1.55rem;
+  }
+
+  p,
+  .lead {
+    font-size: 1rem;
   }
 
   .hero-section {
@@ -576,12 +640,18 @@ p {
     padding-top: 6rem;
   }
 
+  .hero-section .hero-grid {
+    width: min(100%, 280px);
+    max-width: 280px;
+  }
+
   .hero-actions {
     flex-direction: column;
   }
 
   .button {
     width: 100%;
+    max-width: 280px;
   }
 
   .topbar {
@@ -595,9 +665,30 @@ p {
     overflow-x: auto;
     padding-bottom: 0.15rem;
   }
+
+  .hero-logo {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+  }
+
+  .hero-panel {
+    width: 100%;
+    max-width: 280px;
+    overflow: hidden;
+  }
+
+  .comparison-table {
+    min-width: 680px;
+  }
 }
 
 @media print {
+  @page {
+    size: 13.333in 7.5in;
+    margin: 0;
+  }
+
   .topbar {
     display: none;
   }
@@ -611,15 +702,102 @@ p {
     break-inside: avoid;
     page-break-inside: avoid;
     page-break-after: always;
-    min-height: auto;
-    padding: 16mm 14mm;
+    min-height: 100vh;
+    padding: 0.42in 0.62in;
+  }
+
+  .hero-section {
+    min-height: 100vh;
+  }
+
+  h1 {
+    font-size: 56pt;
+  }
+
+  h2 {
+    font-size: 27pt;
+    max-width: 24ch;
+  }
+
+  h3 {
+    font-size: 18pt;
+  }
+
+  p,
+  .lead {
+    font-size: 10.2pt;
+    line-height: 1.38;
+  }
+
+  .section-heading {
+    margin-bottom: 0.28in;
+  }
+
+  .program-card,
+  .equipment-photo-card div,
+  .panel-card,
+  .bullet-panel {
+    padding: 0.28in;
+  }
+
+  .stat-value {
+    font-size: 25pt;
+  }
+
+  .stat-block {
+    padding: 0.15in 0;
+  }
+
+  .hero-grid,
+  .story-layout,
+  .detail-section,
+  .system-section,
+  .two-column-panel,
+  .program-grid,
+  .equipment-showcase {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .program-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .equipment-showcase {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .button {
-    border: 1px solid #999;
-    color: #111;
-    background: transparent;
-    box-shadow: none;
+    display: none;
+  }
+
+  .system-visual {
+    padding: 0.15in;
+  }
+
+  .system-visual img {
+    max-height: 4.8in;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.11in 0.14in;
+    font-size: 8.8pt;
+    line-height: 1.25;
+  }
+
+  .comparison-table th {
+    font-size: 10pt;
+  }
+
+  .equipment-photo-card img {
+    aspect-ratio: 16 / 9;
+    max-height: 2.55in;
+  }
+
+  .hero-logo,
+  .brand-mark {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 
   .hero-panel,
@@ -634,5 +812,48 @@ p {
   .bullet-panel {
     box-shadow: none;
     break-inside: avoid;
+  }
+
+  .comparison-table {
+    min-width: 0;
+  }
+
+  .comparison-section h2,
+  #oprema h2 {
+    font-size: 21pt;
+    max-width: 34ch;
+  }
+
+  .comparison-section .section-heading,
+  #oprema .section-heading {
+    margin-bottom: 0.14in;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.07in 0.1in;
+    font-size: 7.4pt;
+    line-height: 1.18;
+  }
+
+  .comparison-table th {
+    font-size: 8.4pt;
+  }
+
+  #oprema .equipment-photo-card div {
+    padding: 0.14in;
+  }
+
+  #oprema .equipment-photo-card img {
+    max-height: 1.95in;
+  }
+
+  #oprema .equipment-photo-card h3 {
+    font-size: 13pt;
+  }
+
+  #oprema .equipment-photo-card p {
+    font-size: 8.2pt;
+    line-height: 1.22;
   }
 }
