@@ -921,7 +921,7 @@ body.catalog-page {
     display: block !important;
     pointer-events: none;
     background:
-      linear-gradient(rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.72)),
+      linear-gradient(rgba(255, 255, 255, 0.52), rgba(255, 255, 255, 0.52)),
       url("assets/pozadina-blur-logo.png") center / cover no-repeat;
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
@@ -1017,8 +1017,10 @@ body.catalog-page {
   }
 
   .catalog-page .catalog-actions,
+  .catalog-page .catalog-meta,
   .catalog-page .scroll-cue,
-  .catalog-page .catalog-toc {
+  .catalog-page .catalog-toc,
+  .catalog-page .source-archive {
     display: none;
   }
 
@@ -1038,17 +1040,19 @@ body.catalog-page {
   .catalog-page .catalog-section {
     display: block;
     min-height: 0;
-    margin: 0 0 4mm;
-    padding: 5mm;
+    margin: 0 0 3mm;
+    padding: 5.5mm;
     overflow: visible;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.86);
     border: 0.25mm solid #d9d6d0;
     border-radius: 2mm;
     box-shadow: none;
     break-inside: auto;
   }
 
+  .catalog-page .catalog-section::before,
   .catalog-page .catalog-section::after {
+    content: none;
     display: none;
   }
 
@@ -1058,50 +1062,79 @@ body.catalog-page {
   }
 
   .catalog-page .section-heading > span {
-    width: 8mm;
-    height: 8mm;
-    font-size: 7pt;
+    width: 8.5mm;
+    height: 8.5mm;
+    font-size: 7.6pt;
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
   }
 
   .catalog-page .section-heading h2 {
     max-width: 155mm;
+    padding-bottom: 3mm;
     color: #17181b;
-    font-size: 18pt;
+    font-size: 19pt;
     line-height: 1;
+    background: linear-gradient(#d50d24, #d50d24) left bottom / 18mm 0.8mm no-repeat;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 
   .catalog-page .section-heading h2::after {
-    height: 0.8mm;
-    margin-top: 2mm;
+    display: none;
   }
 
   .catalog-page .catalog-section h3 {
     margin: 3mm 0 1.5mm;
-    font-size: 12pt;
+    font-size: 12.6pt;
   }
 
   .catalog-page .catalog-section p,
   .catalog-page .media-copy p,
   .catalog-page .feature-list li {
     color: #303136;
-    font-size: 8.4pt;
-    line-height: 1.42;
+    font-size: 9.1pt;
+    line-height: 1.46;
   }
 
   .catalog-page .feature-list {
     gap: 1mm;
     margin: 2mm 0 3mm;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .catalog-page .feature-list li {
+    display: block;
+    padding-left: 2.2mm;
+    border-left: 0.7mm solid #d50d24;
+    break-inside: avoid;
+  }
+
+  .catalog-page .feature-list li::before {
+    display: none;
   }
 
   .catalog-page .media-block {
     display: grid;
-    grid-template-columns: 68mm minmax(0, 1fr);
-    gap: 6mm;
+    grid-template-columns: 70mm minmax(0, 1fr);
+    gap: 5.5mm;
     align-items: start;
-    margin: 3mm 0 4mm;
+    margin: 2.5mm 0 3.5mm;
     break-inside: avoid;
+  }
+
+  .catalog-page .media-block .figure-row {
+    grid-template-columns: 1fr;
+    gap: 2mm;
+  }
+
+  .catalog-page .media-block .figure-row:has(.catalog-figure:nth-child(2)) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .catalog-page #section-12 > .media-block:first-of-type {
+    break-after: page;
   }
 
   .catalog-page .media-block--image-right .media-copy {
@@ -1131,17 +1164,17 @@ body.catalog-page {
   .catalog-page .catalog-figure img,
   .catalog-page .technical-visual .catalog-figure img {
     height: auto;
-    max-height: 70mm;
+    max-height: 74mm;
     padding: 2mm;
   }
 
   .catalog-page .catalog-figure figcaption {
     padding: 1.4mm 2mm;
-    font-size: 5.5pt;
+    font-size: 5.8pt;
   }
 
   .catalog-page .technical-visual {
-    width: 92mm;
+    width: 98mm;
     margin-bottom: 3mm;
   }
 
@@ -1150,6 +1183,18 @@ body.catalog-page {
     overflow: visible;
     border-radius: 1mm;
     box-shadow: none;
+    break-inside: auto;
+  }
+
+  .catalog-page .table-scroll table {
+    break-inside: auto;
+  }
+
+  .catalog-page .table-scroll thead {
+    display: table-header-group;
+  }
+
+  .catalog-page .table-scroll tr {
     break-inside: avoid;
   }
 
@@ -1159,9 +1204,9 @@ body.catalog-page {
 
   .catalog-page .catalog-section th,
   .catalog-page .catalog-section td {
-    padding: 1.2mm 1.35mm;
-    font-size: 6.2pt;
-    line-height: 1.18;
+    padding: 1.35mm 1.45mm;
+    font-size: 6.7pt;
+    line-height: 1.2;
   }
 
   .catalog-page .source-archive {

@@ -74,7 +74,13 @@ def table_to_html(table: Table) -> str:
         tag = "th" if row_index == 0 else "td"
         cell_html = "".join(f"<{tag}>{html.escape(cell)}</{tag}>" for cell in cells)
         rows_html.append(f"<tr>{cell_html}</tr>")
-    return f"<div class=\"table-scroll\"><table>{''.join(rows_html)}</table></div>"
+    header = rows_html[0] if rows_html else ""
+    body = "".join(rows_html[1:])
+    return (
+        "<div class=\"table-scroll\"><table>"
+        f"<thead>{header}</thead><tbody>{body}</tbody>"
+        "</table></div>"
+    )
 
 
 def extract_images() -> list[dict[str, str]]:
@@ -335,41 +341,7 @@ def build_content(images_by_key: dict[str, dict[str, str]]) -> tuple[str, list[s
 def render_page() -> None:
     images = extract_images()
     images_by_key = {item["key"]: item for item in images}
-    body_html, toc, paragraph_count, table_count, used_images = build_content(images_by_key)
-    original_only = [item for item in images if not item["display"]]
-    unused_visible = [item for item in images if item["display"] and item["key"] not in used_images]
-
-    gallery = []
-    for item in unused_visible:
-        gallery.append(
-            f"""
-            <figure class="gallery-card">
-              <img src="assets/full-catalog/{html.escape(item['display'])}" alt="{html.escape(item['label'])} iz Word kataloga" />
-              <figcaption>{html.escape(item['label'])} - {html.escape(item['original'])}</figcaption>
-            </figure>
-            """
-        )
-
-    if original_only:
-        gallery.append(
-            "<div class=\"original-only\"><h3>Originalni vektorski format</h3>"
-            + "".join(
-                f"<a href=\"assets/full-catalog/{html.escape(item['original'])}\">"
-                f"{html.escape(item['label'])}: preuzmi {html.escape(item['original'])}</a>"
-                for item in original_only
-            )
-            + "</div>"
-        )
-
-    supplemental_gallery = ""
-    if gallery or original_only:
-        supplemental_gallery = f"""
-        <aside class="source-archive" id="sve-slike">
-          <div><span>Arhiva izvora</span><h2>Originalni fajl iz Word dokumenta</h2></div>
-          <p>Sve web-kompatibilne slike prikazane su uz odgovarajući tekst. Ovde je sačuvan i originalni vektorski format koji pregledači ne prikazuju pouzdano.</p>
-          <div class="gallery-grid">{"".join(gallery)}</div>
-        </aside>
-        """
+    body_html, toc, _, _, _ = build_content(images_by_key)
 
     page = f"""<!doctype html>
 <html lang="sr">
@@ -393,11 +365,6 @@ def render_page() -> None:
         <p class="eyebrow">Kompletan proizvodni katalog / 2026</p>
         <h1>Industrijski kotlovi <em>na biomasu</em></h1>
         <p class="catalog-lead">Pouzdani sistemi visokih snaga, projektovani za efikasnost, dug radni vek i potpunu kontrolu procesa sagorevanja.</p>
-        <div class="catalog-meta" aria-label="Sadržaj kataloga">
-          <span><strong>Kompletan</strong> tekst</span>
-          <span><strong>{table_count}</strong> tabela</span>
-          <span><strong>{len(images)}</strong> slika</span>
-        </div>
         <div class="catalog-actions">
           <a class="action-primary" href="#section-01">Pregledaj katalog</a>
           <a class="action-secondary" href="radijator-industrijski-kotlovi.pdf">Preuzmi PDF</a>
@@ -413,7 +380,6 @@ def render_page() -> None:
       </details>
       <article class="catalog-content">
         {body_html}
-        {supplemental_gallery}
       </article>
     </main>
     <script>
