@@ -12,6 +12,19 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <header class="topbar">
+      <a class="brand-mark" href="#pocetak" aria-label="Radijator Inzenjering pocetak">
+        <span class="brand-icon">R</span>
+        <span>Radijator Inzenjering</span>
+      </a>
+      <nav class="topnav" aria-label="Glavna navigacija">
+        <a href="#program">Program</a>
+        <a href="#sistemsko-resenje">Sistem</a>
+        <a href="#poredjenje">Poredjenje</a>
+        <a href="#oprema">Oprema</a>
+      </nav>
+    </header>
+
     <main class="site-shell">
       <section class="hero-section presentation-section" id="pocetak">
         <div class="hero-backdrop" aria-hidden="true"></div>
@@ -119,6 +132,29 @@
         </div>
       </section>
 
+      <section class="system-section presentation-section" id="sistemsko-resenje">
+        <div class="system-copy">
+          <p class="eyebrow">Sistemsko resenje</p>
+          <h2>Kotlarnica kao kompletan projektovan sistem.</h2>
+          <p>
+            Kod vecih objekata snaga kotla je samo jedan deo resenja. Kaskadno
+            povezivanje, centralni silos, elevator, puzni transporteri i bafer
+            rezervoar rade zajedno da sistem dobije stabilnu isporuku energije i
+            uredno snabdevanje peletom.
+          </p>
+        </div>
+        <figure class="system-visual">
+          <img
+            src="assets/catalog/image21.png"
+            alt="3D prikaz kotlarnice sa vise kotlova, silosom, elevatorom i bafer rezervoarom"
+          />
+          <figcaption>
+            Primer kaskadne kotlarnice sa centralnim skladistenjem i transportom
+            peleta.
+          </figcaption>
+        </figure>
+      </section>
+
       <section class="detail-section presentation-section" id="tkan">
         <div class="detail-copy">
           <p class="eyebrow">Serija TKAN</p>
@@ -155,6 +191,51 @@
         </div>
       </section>
 
+      <section class="comparison-section presentation-section" id="poredjenje">
+        <div class="section-heading">
+          <p class="eyebrow">Poredjenje modela</p>
+          <h2>Brz pregled kada birati TKAN, a kada TKAN Integra.</h2>
+        </div>
+        <div class="comparison-table-wrap">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Karakteristika</th>
+                <th>TKAN</th>
+                <th>TKAN Integra</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Opseg snage</td>
+                <td>60 - 300 kW</td>
+                <td>80 - 500 kW</td>
+              </tr>
+              <tr>
+                <td>Primarna namena</td>
+                <td>Industrijsko grejanje na pelet uz mogucnost rucnog lozenja drveta.</td>
+                <td>Veci sistemi koji traze visi nivo automatizacije i opreme.</td>
+              </tr>
+              <tr>
+                <td>Loziste</td>
+                <td>Izviruce loziste sa puznim transportom goriva.</td>
+                <td>Zidano loziste za stabilnije sagorevanje i zastitu celicnih delova.</td>
+              </tr>
+              <tr>
+                <td>Ciscenje</td>
+                <td>Automatsko izbacivanje pepela iz prostora lozista u odredjenim konfiguracijama.</td>
+                <td>Automatsko ciscenje lozista i pneumatsko ciscenje cevnog izmenjivaca.</td>
+              </tr>
+              <tr>
+                <td>Emisije prasine</td>
+                <td>Mogucnost dodavanja ciklona kod sistema sa pneumatskim ciscenjem.</td>
+                <td>Multiciklon sa centrifugalnim ventilatorom kod jacih modela.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       <section class="content-band presentation-section" id="kaskada">
         <div class="section-heading">
           <p class="eyebrow">Kaskadni sistemi</p>
@@ -182,11 +263,39 @@
           <p class="eyebrow">Dodatna oprema</p>
           <h2>Kompletan ekosistem za skladistenje, transport i kontrolu peleta.</h2>
         </div>
-        <div class="equipment-grid">
-          <article class="equipment-card"><p>Veliki spoljni silosi i dnevni silosi kapaciteta 800 litara i vise.</p></article>
-          <article class="equipment-card"><p>Puzni transporteri, pogoni i automatsko dopunjavanje preko sondi.</p></article>
-          <article class="equipment-card"><p>Automatsko izbacivanje pepela iz lozista u kontejnere.</p></article>
-          <article class="equipment-card"><p>Pneumatsko ciscenje izmenjivaca, ciklon i multiciklon resenja.</p></article>
+        <div class="equipment-showcase">
+          <article class="equipment-photo-card">
+            <img src="assets/catalog/image14.jpeg" alt="Silos, elevator i kotao u sistemu transporta peleta" />
+            <div>
+              <h3>Centralni transport peleta</h3>
+              <p>
+                Veliki silos, elevator i puzni transporteri omogucavaju
+                automatsko dopunjavanje dnevnog silosa bez stalnog rucnog rada.
+              </p>
+            </div>
+          </article>
+          <article class="equipment-photo-card">
+            <img src="assets/catalog/image20.png" alt="Presek lozista kotla sa puznim transportom i sistemom pepela" />
+            <div>
+              <h3>Ciscenje i sagorevanje</h3>
+              <p>
+                Automatsko izbacivanje pepela i pneumatsko ciscenje izmenjivaca
+                smanjuju servisna opterecenja i pomazu da efikasnost ostane
+                stabilna tokom rada.
+              </p>
+            </div>
+          </article>
+          <article class="equipment-photo-card">
+            <img src="assets/catalog/image16.png" alt="3D prikaz spoljnog silosa za pelet" />
+            <div>
+              <h3>Silos po potrebi objekta</h3>
+              <p>
+                Za vece sisteme predvidjaju se spoljni silosi posebnih
+                dimenzija, uz sonde minimuma i maksimuma za automatsku dopremu
+                goriva.
+              </p>
+            </div>
+          </article>
         </div>
       </section>
 
