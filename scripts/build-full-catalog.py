@@ -108,6 +108,7 @@ def extract_images() -> list[dict[str, str]]:
                 {
                     "label": f"Slika {index}",
                     "original": original_name,
+                    "key": Path(original_name).name.lower(),
                     "display": display_path.name if display_path else "",
                     "status": status,
                 }
@@ -116,13 +117,43 @@ def extract_images() -> list[dict[str, str]]:
     return images
 
 
-def build_content() -> tuple[str, list[str], int, int]:
+def paragraph_image_keys(paragraph: Paragraph) -> list[str]:
+    keys: list[str] = []
+    for blip in paragraph._element.xpath('.//*[local-name()="blip"]'):
+        rel_id = blip.get("{http://schemas.openxmlformats.org/officeDocument/2006/relationships}embed")
+        if not rel_id:
+            continue
+        rel = paragraph.part.rels.get(rel_id)
+        if rel is not None:
+            keys.append(Path(rel.target_ref).name.lower())
+    return keys
+
+
+def image_figure(item: dict[str, str], index: int) -> str:
+    if not item.get("display"):
+        return (
+            "<div class=\"catalog-original-note\">"
+            f"<strong>{html.escape(item['label'])}</strong>: originalni fajl "
+            f"{html.escape(item['original'])} je sacuvan u assets/full-catalog."
+            "</div>"
+        )
+    return f"""
+    <figure class="catalog-figure">
+      <img src="assets/full-catalog/{html.escape(item['display'])}" alt="{html.escape(item['label'])} - {html.escape(item['original'])}" />
+      <figcaption>{index:02d}. {html.escape(item['original'])}</figcaption>
+    </figure>
+    """
+
+
+def build_content(images_by_key: dict[str, dict[str, str]]) -> tuple[str, list[str], int, int, set[str]]:
     document = Document(DOCX)
     sections: list[str] = []
     toc: list[str] = []
+    used_images: set[str] = set()
     section_open = False
     paragraph_count = 0
     table_count = 0
+    figure_count = 0
     paragraph_buffer: list[str] = []
 
     def flush_paragraph() -> None:
@@ -141,7 +172,8 @@ def build_content() -> tuple[str, list[str], int, int]:
     for block in iter_blocks(document):
         if isinstance(block, Paragraph):
             text = clean_text(block.text)
-            if not text:
+            image_keys = paragraph_image_keys(block)
+            if not text and not image_keys:
                 continue
             if is_heading(text):
                 close_section()
@@ -156,8 +188,21 @@ def build_content() -> tuple[str, list[str], int, int]:
                     sections.append("<section class=\"catalog-section\" id=\"section-01\">")
                     sections.append("<h2>Uvod</h2>")
                     section_open = True
-                paragraph_count += 1
-                paragraph_buffer.append(text)
+                if text:
+                    paragraph_count += 1
+                    paragraph_buffer.append(text)
+                if image_keys:
+                    flush_paragraph()
+                    figure_group: list[str] = []
+                    for key in image_keys:
+                        item = images_by_key.get(key)
+                        if not item:
+                            continue
+                        used_images.add(key)
+                        figure_count += 1
+                        figure_group.append(image_figure(item, figure_count))
+                    if figure_group:
+                        sections.append(f"<div class=\"figure-row\">{''.join(figure_group)}</div>")
         elif isinstance(block, Table):
             if not section_open:
                 toc.append("<a href=\"#section-01\">Uvod</a>")
@@ -169,17 +214,18 @@ def build_content() -> tuple[str, list[str], int, int]:
             sections.append(table_to_html(block))
 
     close_section()
-    return "\n".join(sections), toc, paragraph_count, table_count
+    return "\n".join(sections), toc, paragraph_count, table_count, used_images
 
 
 def render_page() -> None:
     images = extract_images()
-    body_html, toc, paragraph_count, table_count = build_content()
-    visible_images = [item for item in images if item["display"]]
+    images_by_key = {item["key"]: item for item in images}
+    body_html, toc, paragraph_count, table_count, used_images = build_content(images_by_key)
     original_only = [item for item in images if not item["display"]]
+    unused_visible = [item for item in images if item["display"] and item["key"] not in used_images]
 
     gallery = []
-    for item in visible_images:
+    for item in unused_visible:
         gallery.append(
             f"""
             <figure class="gallery-card">
@@ -199,6 +245,16 @@ def render_page() -> None:
             + "</div>"
         )
 
+    supplemental_gallery = ""
+    if gallery or original_only:
+        supplemental_gallery = f"""
+        <section class="catalog-section image-gallery" id="sve-slike">
+          <h2>Dodatni originalni fajlovi</h2>
+          <p>Slike koje imaju mesto u dokumentu prikazane su uz tekst. Ovaj deo cuva samo dodatne originalne fajlove i formate koji nisu web-native.</p>
+          <div class="gallery-grid">{"".join(gallery)}</div>
+        </section>
+        """
+
     page = f"""<!doctype html>
 <html lang="sr">
   <head>
@@ -208,13 +264,15 @@ def render_page() -> None:
     <link rel="icon" href="assets/favicon.svg" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body class="catalog-page">
+  <body class="catalog-page" id="top">
     <header class="catalog-hero">
-      <img src="assets/logo.png" alt="Radijator Inzenjering" />
-      <div>
+      <div class="catalog-logo-card">
+        <img src="assets/logo.png" alt="Radijator Inzenjering" />
+      </div>
+      <div class="catalog-hero-copy">
         <p class="eyebrow">Glavni katalog iz Word dokumenta</p>
         <h1>Industrijski kotlovi na biomasu</h1>
-        <p>Ovo je kompletna katalog verzija sa celim tekstom, svim tabelama i svim slikama izdvojenim iz DOCX fajla.</p>
+        <p>Kompletna katalog verzija sa celim tekstom, svim tabelama i slikama postavljenim uz sadržaj koji objašnjavaju.</p>
         <div class="catalog-meta">
           <span>{paragraph_count} tekstualnih pasusa</span>
           <span>{table_count} tabela</span>
@@ -233,10 +291,7 @@ def render_page() -> None:
       </aside>
       <article class="catalog-content">
         {body_html}
-        <section class="catalog-section image-gallery" id="sve-slike">
-          <h2>Sve slike iz dokumenta</h2>
-          <div class="gallery-grid">{"".join(gallery)}</div>
-        </section>
+        {supplemental_gallery}
       </article>
     </main>
   </body>
