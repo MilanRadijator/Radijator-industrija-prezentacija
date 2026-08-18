@@ -894,6 +894,14 @@ body.catalog-page {
 }
 
 @media print {
+  .catalog-page .catalog-progress,
+  .catalog-page .catalog-web-nav,
+  .catalog-page .hero-machine,
+  .catalog-page .catalog-footer,
+  .catalog-page .catalog-lightbox {
+    display: none !important;
+  }
+
   @page catalog {
     size: A4;
     margin: 12mm;

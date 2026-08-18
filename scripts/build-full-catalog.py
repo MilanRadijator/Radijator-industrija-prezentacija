@@ -152,7 +152,7 @@ def image_figure(item: dict[str, str], index: int) -> str:
     return f"""
     <figure class="catalog-figure">
       <img src="assets/full-catalog/{html.escape(item['display'])}" alt="{html.escape(item['label'])} - {html.escape(item['original'])}" />
-      <figcaption>{index:02d}. {html.escape(item['original'])}</figcaption>
+      <figcaption data-index="{index:02d}">{index:02d}. {html.escape(item['original'])}</figcaption>
     </figure>
     """
 
@@ -352,8 +352,23 @@ def render_page() -> None:
     <link rel="icon" href="assets/favicon.svg" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="catalog-premium.css" />
+    <link rel="stylesheet" href="catalog-web.css" />
   </head>
   <body class="catalog-page" id="top">
+    <div class="catalog-progress" aria-hidden="true"><span></span></div>
+    <nav class="catalog-web-nav" aria-label="Glavna navigacija">
+      <a class="web-nav-brand" href="#top" aria-label="Radijator Inženjering - vrh kataloga">
+        <img src="assets/logo.png" alt="" />
+        <span>Industrijski katalog</span>
+      </a>
+      <div class="web-nav-links">
+        <a href="#section-03">Kotlovi</a>
+        <a href="#section-11">Sistemi</a>
+        <a href="#section-12">Oprema</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+      <a class="web-nav-pdf" href="radijator-industrijski-kotlovi.pdf">PDF katalog</a>
+    </nav>
     <header class="catalog-hero">
       <div class="catalog-hero-topline">
         <div class="catalog-logo-card">
@@ -370,6 +385,18 @@ def render_page() -> None:
           <a class="action-secondary" href="radijator-industrijski-kotlovi.pdf">Preuzmi PDF</a>
         </div>
       </div>
+      <div class="hero-machine">
+        <span class="machine-orbit machine-orbit--outer"></span>
+        <span class="machine-orbit machine-orbit--inner"></span>
+        <div class="machine-card">
+          <span class="machine-series">Industrijska serija <strong>TKAN</strong></span>
+          <img src="assets/full-catalog/catalog-image-13.png" alt="Industrijski kotao TKAN na biomasu" />
+          <div class="machine-specs">
+            <span><strong>80–500</strong> kW</span>
+            <span><strong>EU</strong> standard</span>
+          </div>
+        </div>
+      </div>
       <a class="scroll-cue" href="#section-01" aria-label="Nastavi na sadržaj"><span></span>Skrolujte</a>
     </header>
     <main class="catalog-layout">
@@ -382,11 +409,29 @@ def render_page() -> None:
         {body_html}
       </article>
     </main>
-    <script>
-      if (window.matchMedia("(max-width: 960px)").matches) {{
-        document.querySelector(".catalog-toc").open = false;
-      }}
-    </script>
+    <footer class="catalog-footer" id="kontakt">
+      <div class="catalog-footer-main">
+        <p class="footer-kicker">Projektovanje / proizvodnja / podrška</p>
+        <h2>Partner za kompletna termoenergetska rešenja.</h2>
+        <a class="footer-mail" href="mailto:radijator@radijator.rs">radijator@radijator.rs</a>
+      </div>
+      <div class="catalog-footer-contact">
+        <p><strong>Radijator Inženjering d.o.o.</strong><br />Živojina Lazića Solunca 6<br />36000 Kraljevo, Srbija</p>
+        <p><a href="tel:+38136399140">+381 36 399 140</a><br /><a href="https://www.radijator.rs/">www.radijator.rs</a></p>
+      </div>
+      <div class="catalog-footer-bottom">
+        <span>Industrijski kotlovi na biomasu</span>
+        <a href="#top">Nazad na vrh</a>
+      </div>
+    </footer>
+    <dialog class="catalog-lightbox" aria-label="Uvećani tehnički prikaz">
+      <button class="lightbox-close" type="button" aria-label="Zatvori uvećani prikaz">Zatvori</button>
+      <div class="lightbox-stage">
+        <img alt="" />
+        <p></p>
+      </div>
+    </dialog>
+    <script src="catalog.js" defer></script>
   </body>
 </html>
 """
