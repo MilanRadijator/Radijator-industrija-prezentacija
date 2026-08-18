@@ -35,30 +35,36 @@ def clean_text(value: str) -> str:
     return re.sub(r"\s+", " ", value).strip()
 
 
-def is_heading(text: str) -> bool:
-    if not text or len(text) > 95:
+def uppercase_ratio(text: str) -> float:
+    letters = [character for character in text if character.isalpha()]
+    if not letters:
+        return 0
+    return sum(1 for character in letters if character.upper() == character) / len(letters)
+
+
+def is_heading(paragraph: Paragraph, text: str) -> bool:
+    if not text or len(text) > 110:
         return False
-    letters = [c for c in text if c.isalpha()]
-    if len(letters) < 4:
+    if paragraph.style and paragraph.style.name.startswith("List"):
         return False
-    upper_ratio = sum(1 for c in letters if c.upper() == c) / len(letters)
-    heading_words = (
-        "model",
-        "modeli",
-        "sistemi",
-        "oprema",
-        "kotao",
-        "kaskad",
-        "tabela",
-        "presek",
-        "polozaj",
-        "transport",
-        "osiguranje",
-        "ciklon",
-        "silos",
-        "automatsko",
+    return uppercase_ratio(text) > 0.78 or text.lower() == "o nama"
+
+
+def is_subheading(paragraph: Paragraph, text: str) -> bool:
+    if not text or len(text) > 90:
+        return False
+    if paragraph.style and paragraph.style.name.startswith("List"):
+        return uppercase_ratio(text) > 0.78
+    prefixes = (
+        "serija ",
+        "kaskadni ",
+        "dodatna ",
+        "primena ",
+        "specifičnosti ",
+        "hidrauličko ",
+        "pozicioniranje ",
     )
-    return upper_ratio > 0.78 or any(word in text.lower() for word in heading_words)
+    return text.lower().startswith(prefixes)
 
 
 def table_to_html(table: Table) -> str:
@@ -145,29 +151,133 @@ def image_figure(item: dict[str, str], index: int) -> str:
     """
 
 
+def render_copy(blocks: list[dict[str, object]]) -> str:
+    rendered: list[str] = []
+    for block in blocks:
+        block_type = block["type"]
+        if block_type == "paragraph":
+            rendered.append(f"<p>{html.escape(str(block['text']))}</p>")
+        elif block_type == "subheading":
+            rendered.append(f"<h3>{html.escape(str(block['text']))}</h3>")
+        elif block_type == "list":
+            items = "".join(f"<li>{html.escape(str(item))}</li>" for item in block["items"])
+            rendered.append(f"<ul class=\"feature-list\">{items}</ul>")
+    return "".join(rendered)
+
+
+def render_section(section: dict[str, object], section_number: int) -> str:
+    blocks = list(section["blocks"])
+    rendered: list[str] = []
+    media_index = 0
+    index = 0
+
+    while index < len(blocks):
+        block = blocks[index]
+        block_type = block["type"]
+
+        if block_type in {"paragraph", "subheading", "list"}:
+            copy_end = index
+            while copy_end < len(blocks) and blocks[copy_end]["type"] in {"paragraph", "subheading", "list"}:
+                copy_end += 1
+            if copy_end < len(blocks) and blocks[copy_end]["type"] == "figure":
+                media_index += 1
+                side = "media-block--image-right" if media_index % 2 else "media-block--image-left"
+                paired_copy = blocks[index:copy_end]
+                after_figure = copy_end + 1
+                copy_length = sum(len(str(item.get("text", ""))) for item in paired_copy)
+                if copy_length < 260:
+                    while (
+                        after_figure < len(blocks)
+                        and blocks[after_figure]["type"] in {"paragraph", "subheading", "list"}
+                        and len(paired_copy) < 3
+                    ):
+                        paired_copy.append(blocks[after_figure])
+                        after_figure += 1
+                rendered.append(
+                    f"<div class=\"media-block {side}\">"
+                    f"<div class=\"media-copy\">{render_copy(paired_copy)}</div>"
+                    f"{blocks[copy_end]['html']}"
+                    "</div>"
+                )
+                index = after_figure
+                continue
+            rendered.append(render_copy(blocks[index:copy_end]))
+            index = copy_end
+            continue
+
+        if block_type == "figure":
+            copy_end = index + 1
+            while copy_end < len(blocks) and blocks[copy_end]["type"] in {"paragraph", "subheading", "list"}:
+                copy_end += 1
+            if copy_end > index + 1:
+                media_index += 1
+                side = "media-block--image-left" if media_index % 2 else "media-block--image-right"
+                rendered.append(
+                    f"<div class=\"media-block {side}\">"
+                    f"{block['html']}"
+                    f"<div class=\"media-copy\">{render_copy(blocks[index + 1:copy_end])}</div>"
+                    "</div>"
+                )
+                index = copy_end
+                continue
+            rendered.append(f"<div class=\"technical-visual\">{block['html']}</div>")
+        elif block_type == "table":
+            rendered.append(str(block["html"]))
+        index += 1
+
+    media_class = " catalog-section--media" if any(block["type"] == "figure" for block in blocks) else ""
+    return (
+        f"<section class=\"catalog-section{media_class}\" id=\"{section['id']}\">"
+        f"<div class=\"section-heading\"><span>{section_number:02d}</span>"
+        f"<h2>{html.escape(str(section['title']))}</h2></div>"
+        f"{''.join(rendered)}"
+        "</section>"
+    )
+
+
 def build_content(images_by_key: dict[str, dict[str, str]]) -> tuple[str, list[str], int, int, set[str]]:
     document = Document(DOCX)
-    sections: list[str] = []
+    sections: list[dict[str, object]] = []
     toc: list[str] = []
     used_images: set[str] = set()
-    section_open = False
+    current_section: dict[str, object] | None = None
     paragraph_count = 0
     table_count = 0
     figure_count = 0
     paragraph_buffer: list[str] = []
+    list_buffer: list[str] = []
 
     def flush_paragraph() -> None:
         nonlocal paragraph_buffer
-        if paragraph_buffer:
-            sections.append(f"<p>{html.escape(' '.join(paragraph_buffer))}</p>")
+        if paragraph_buffer and current_section is not None:
+            current_section["blocks"].append(
+                {"type": "paragraph", "text": " ".join(paragraph_buffer)}
+            )
             paragraph_buffer = []
 
-    def close_section() -> None:
-        nonlocal section_open
-        if section_open:
-            flush_paragraph()
-            sections.append("</section>")
-            section_open = False
+    def flush_list() -> None:
+        nonlocal list_buffer
+        if list_buffer and current_section is not None:
+            current_section["blocks"].append({"type": "list", "items": list_buffer})
+            list_buffer = []
+
+    def ensure_section(title: str = "Uvod") -> dict[str, object]:
+        nonlocal current_section
+        if current_section is None:
+            section_id = f"section-{len(sections) + 1:02d}"
+            current_section = {"id": section_id, "title": title, "blocks": []}
+            sections.append(current_section)
+            toc.append(f"<a href=\"#{section_id}\">{html.escape(title)}</a>")
+        return current_section
+
+    def start_section(title: str) -> None:
+        nonlocal current_section
+        flush_paragraph()
+        flush_list()
+        section_id = f"section-{len(sections) + 1:02d}"
+        current_section = {"id": section_id, "title": title, "blocks": []}
+        sections.append(current_section)
+        toc.append(f"<a href=\"#{section_id}\">{html.escape(title)}</a>")
 
     for block in iter_blocks(document):
         if isinstance(block, Paragraph):
@@ -175,24 +285,28 @@ def build_content(images_by_key: dict[str, dict[str, str]]) -> tuple[str, list[s
             image_keys = paragraph_image_keys(block)
             if not text and not image_keys:
                 continue
-            if is_heading(text):
-                close_section()
-                section_id = f"section-{len(toc) + 1:02d}"
-                toc.append(f"<a href=\"#{section_id}\">{html.escape(text)}</a>")
-                sections.append(f"<section class=\"catalog-section\" id=\"{section_id}\">")
-                sections.append(f"<h2>{html.escape(text)}</h2>")
-                section_open = True
+            if is_heading(block, text):
+                start_section(text)
             else:
-                if not section_open:
-                    toc.append("<a href=\"#section-01\">Uvod</a>")
-                    sections.append("<section class=\"catalog-section\" id=\"section-01\">")
-                    sections.append("<h2>Uvod</h2>")
-                    section_open = True
+                section = ensure_section()
                 if text:
                     paragraph_count += 1
-                    paragraph_buffer.append(text)
+                    if is_subheading(block, text):
+                        flush_paragraph()
+                        flush_list()
+                        section["blocks"].append({"type": "subheading", "text": text})
+                    elif block.style and block.style.name.startswith("List"):
+                        flush_paragraph()
+                        list_buffer.append(text)
+                    else:
+                        flush_list()
+                        paragraph_buffer.append(text)
+                        ends_with_year = bool(re.search(r"\b(?:19|20)\d{2}\.\s*$", text))
+                        if (re.search(r"[.!?]\s*$", text) and not ends_with_year) or len(text) > 240:
+                            flush_paragraph()
                 if image_keys:
                     flush_paragraph()
+                    flush_list()
                     figure_group: list[str] = []
                     for key in image_keys:
                         item = images_by_key.get(key)
@@ -202,19 +316,20 @@ def build_content(images_by_key: dict[str, dict[str, str]]) -> tuple[str, list[s
                         figure_count += 1
                         figure_group.append(image_figure(item, figure_count))
                     if figure_group:
-                        sections.append(f"<div class=\"figure-row\">{''.join(figure_group)}</div>")
+                        section["blocks"].append(
+                            {"type": "figure", "html": f"<div class=\"figure-row\">{''.join(figure_group)}</div>"}
+                        )
         elif isinstance(block, Table):
-            if not section_open:
-                toc.append("<a href=\"#section-01\">Uvod</a>")
-                sections.append("<section class=\"catalog-section\" id=\"section-01\">")
-                sections.append("<h2>Uvod</h2>")
-                section_open = True
+            section = ensure_section()
             flush_paragraph()
+            flush_list()
             table_count += 1
-            sections.append(table_to_html(block))
+            section["blocks"].append({"type": "table", "html": table_to_html(block)})
 
-    close_section()
-    return "\n".join(sections), toc, paragraph_count, table_count, used_images
+    flush_paragraph()
+    flush_list()
+    rendered_sections = [render_section(section, index) for index, section in enumerate(sections, start=1)]
+    return "\n".join(rendered_sections), toc, paragraph_count, table_count, used_images
 
 
 def render_page() -> None:
@@ -237,9 +352,10 @@ def render_page() -> None:
 
     if original_only:
         gallery.append(
-            "<div class=\"original-only\"><h3>Originalni format u dokumentu</h3>"
+            "<div class=\"original-only\"><h3>Originalni vektorski format</h3>"
             + "".join(
-                f"<p>{html.escape(item['label'])}: {html.escape(item['original'])} je sacuvan u assets/full-catalog kao originalni fajl.</p>"
+                f"<a href=\"assets/full-catalog/{html.escape(item['original'])}\">"
+                f"{html.escape(item['label'])}: preuzmi {html.escape(item['original'])}</a>"
                 for item in original_only
             )
             + "</div>"
@@ -248,11 +364,11 @@ def render_page() -> None:
     supplemental_gallery = ""
     if gallery or original_only:
         supplemental_gallery = f"""
-        <section class="catalog-section image-gallery" id="sve-slike">
-          <h2>Dodatni originalni fajlovi</h2>
-          <p>Slike koje imaju mesto u dokumentu prikazane su uz tekst. Ovaj deo cuva samo dodatne originalne fajlove i formate koji nisu web-native.</p>
+        <aside class="source-archive" id="sve-slike">
+          <div><span>Arhiva izvora</span><h2>Originalni fajl iz Word dokumenta</h2></div>
+          <p>Sve web-kompatibilne slike prikazane su uz odgovarajući tekst. Ovde je sačuvan i originalni vektorski format koji pregledači ne prikazuju pouzdano.</p>
           <div class="gallery-grid">{"".join(gallery)}</div>
-        </section>
+        </aside>
         """
 
     page = f"""<!doctype html>
@@ -263,37 +379,48 @@ def render_page() -> None:
     <title>Kompletan katalog | Radijator Inzenjering</title>
     <link rel="icon" href="assets/favicon.svg" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="catalog-premium.css" />
   </head>
   <body class="catalog-page" id="top">
     <header class="catalog-hero">
-      <div class="catalog-logo-card">
-        <img src="assets/logo.png" alt="Radijator Inzenjering" />
+      <div class="catalog-hero-topline">
+        <div class="catalog-logo-card">
+          <img src="assets/logo.png" alt="Radijator Inzenjering" />
+        </div>
+        <span>Industrijska termoenergetska rešenja</span>
       </div>
       <div class="catalog-hero-copy">
-        <p class="eyebrow">Glavni katalog iz Word dokumenta</p>
-        <h1>Industrijski kotlovi na biomasu</h1>
-        <p>Kompletna katalog verzija sa celim tekstom, svim tabelama i slikama postavljenim uz sadržaj koji objašnjavaju.</p>
-        <div class="catalog-meta">
-          <span>{paragraph_count} tekstualnih pasusa</span>
-          <span>{table_count} tabela</span>
-          <span>{len(images)} slika iz dokumenta</span>
+        <p class="eyebrow">Kompletan proizvodni katalog / 2026</p>
+        <h1>Industrijski kotlovi <em>na biomasu</em></h1>
+        <p class="catalog-lead">Pouzdani sistemi visokih snaga, projektovani za efikasnost, dug radni vek i potpunu kontrolu procesa sagorevanja.</p>
+        <div class="catalog-meta" aria-label="Sadržaj kataloga">
+          <span><strong>Kompletan</strong> tekst</span>
+          <span><strong>{table_count}</strong> tabela</span>
+          <span><strong>{len(images)}</strong> slika</span>
         </div>
         <div class="catalog-actions">
-          <a href="radijator-industrijski-kotlovi.pdf">Preuzmi kompletan PDF</a>
+          <a class="action-primary" href="#section-01">Pregledaj katalog</a>
+          <a class="action-secondary" href="radijator-industrijski-kotlovi.pdf">Preuzmi PDF</a>
         </div>
       </div>
+      <a class="scroll-cue" href="#section-01" aria-label="Nastavi na sadržaj"><span></span>Skrolujte</a>
     </header>
     <main class="catalog-layout">
-      <aside class="catalog-toc">
+      <details class="catalog-toc" open>
+        <summary>Sadržaj kataloga</summary>
         <a class="back-link" href="#top">Vrh kataloga</a>
-        <h2>Sadrzaj</h2>
         <nav>{"".join(toc)}</nav>
-      </aside>
+      </details>
       <article class="catalog-content">
         {body_html}
         {supplemental_gallery}
       </article>
     </main>
+    <script>
+      if (window.matchMedia("(max-width: 960px)").matches) {{
+        document.querySelector(".catalog-toc").open = false;
+      }}
+    </script>
   </body>
 </html>
 """
