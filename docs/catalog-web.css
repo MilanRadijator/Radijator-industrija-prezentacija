@@ -408,6 +408,101 @@
     color: #fff;
   }
 
+  .catalog-page .hero-live-frame {
+    position: absolute;
+    inset: 0;
+    transform: rotateY(calc(var(--pointer-x) * 1.7deg)) rotateX(calc(var(--pointer-y) * -1.25deg));
+    transform-style: preserve-3d;
+    transition: transform 180ms linear;
+  }
+
+  .catalog-page .hero-live-card {
+    position: absolute;
+    margin: 0;
+    overflow: hidden;
+    background: #17181b;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 38px 90px rgba(0, 0, 0, 0.48);
+  }
+
+  .catalog-page .hero-live-card--primary {
+    inset: 7% 8% 18% -3%;
+    border-radius: 1.15rem;
+  }
+
+  .catalog-page .hero-live-card--primary::after {
+    content: "";
+    position: absolute;
+    inset: 45% 0 0;
+    background: linear-gradient(180deg, transparent, rgba(7, 8, 10, 0.88));
+    pointer-events: none;
+  }
+
+  .catalog-page .hero-live-card--secondary {
+    right: -1%;
+    bottom: 2%;
+    z-index: 3;
+    width: 33%;
+    height: 52%;
+    border: 0.42rem solid #f2efe9;
+    border-radius: 0.85rem;
+    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.5);
+    transform: rotate(2.5deg) translateZ(32px);
+  }
+
+  .catalog-page .hero-live-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .catalog-page .hero-live-card--primary img {
+    object-position: 53% 50%;
+    transform: scale(1.015);
+  }
+
+  .catalog-page .hero-live-card--secondary img {
+    object-position: 54% 50%;
+  }
+
+  .catalog-page .hero-live-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 2;
+    padding: 0.58rem 0.7rem;
+    color: #fff;
+    font-size: 0.62rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: rgba(9, 10, 13, 0.82);
+    border-left: 3px solid var(--web-red);
+    backdrop-filter: blur(12px);
+  }
+
+  .catalog-page .hero-live-specs {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    z-index: 2;
+    display: grid;
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .catalog-page .hero-live-specs strong {
+    color: #fff;
+    font-family: "Bahnschrift Condensed", "Arial Narrow", sans-serif;
+    font-size: clamp(2rem, 4vw, 3.7rem);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+  }
+
   .catalog-page .scroll-cue {
     z-index: 4;
     grid-column: 1 / -1;
@@ -916,6 +1011,10 @@
     min-width: 0;
   }
 
+  .catalog-page .web-nav-brand span {
+    display: none;
+  }
+
   .catalog-page .web-nav-brand img {
     width: 7.8rem;
     height: 2.5rem;
@@ -932,7 +1031,7 @@
   .catalog-page .catalog-hero {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: 1fr auto;
+    grid-template-rows: auto auto auto;
     width: 100%;
     max-width: 100%;
     min-width: 0;
@@ -972,7 +1071,7 @@
     width: 100%;
     min-width: 0;
     max-width: 100%;
-    padding: 1.5rem 0 8rem;
+    padding: 1.5rem 0 1.25rem;
   }
 
   .catalog-page .eyebrow {
@@ -1015,12 +1114,47 @@
   }
 
   .catalog-page .hero-machine {
-    display: none;
+    display: block;
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: center;
+    width: min(100%, 30rem);
+    aspect-ratio: 1.32;
+    margin: -0.5rem 0 0.8rem;
+  }
+
+  .catalog-page .hero-live-card--primary {
+    inset: 3% 10% 10% 0;
+  }
+
+  .catalog-page .hero-live-card--secondary {
+    right: 0;
+    bottom: 1%;
+    width: 28%;
+    height: 58%;
+    border-width: 0.3rem;
+  }
+
+  .catalog-page .hero-live-badge {
+    top: 0.65rem;
+    left: 0.65rem;
+    padding: 0.42rem 0.5rem;
+    font-size: 0.5rem;
+  }
+
+  .catalog-page .hero-live-specs {
+    bottom: 0.75rem;
+    left: 0.75rem;
+    font-size: 0.54rem;
+  }
+
+  .catalog-page .hero-live-specs strong {
+    font-size: 1.8rem;
   }
 
   .catalog-page .scroll-cue {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 3;
     justify-self: start;
   }
 

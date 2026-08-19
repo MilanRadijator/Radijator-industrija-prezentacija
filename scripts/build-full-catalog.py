@@ -230,12 +230,42 @@ def render_section(section: dict[str, object], section_number: int) -> str:
             rendered.append(str(block["html"]))
         index += 1
 
+    section_body = "".join(rendered)
+    if section_number == 1:
+        section_body = (
+            '<div class="about-layout">'
+            f'<div class="about-copy">{section_body}</div>'
+            '<aside class="about-gallery" aria-label="Radijator Inženjering proizvodnja">'
+            '<figure class="about-photo about-photo--company">'
+            '<img src="assets/editorial/about-factory-exterior.jpg" '
+            'alt="Proizvodni kompleks Radijator Inženjering u Kraljevu" />'
+            '</figure>'
+            '<figure class="about-photo">'
+            '<img src="assets/editorial/about-production-forming.jpg" '
+            'alt="Automatizovana obrada limova u proizvodnji" />'
+            '</figure>'
+            '<figure class="about-photo">'
+            '<img src="assets/editorial/about-production-laser.jpg" '
+            'alt="Lasersko sečenje kotlovskog lima" />'
+            '</figure>'
+            '<figure class="about-photo">'
+            '<img src="assets/editorial/about-production-control.jpg" '
+            'alt="Operater nadgleda savremeni proizvodni proces" />'
+            '</figure>'
+            '<figure class="about-photo">'
+            '<img src="assets/editorial/about-production-welding.jpg" '
+            'alt="Zavarivanje komponenti industrijskog kotla" />'
+            '</figure>'
+            '</aside>'
+            '</div>'
+        )
+
     media_class = " catalog-section--media" if any(block["type"] == "figure" for block in blocks) else ""
     return (
         f"<section class=\"catalog-section{media_class}\" id=\"{section['id']}\" data-section=\"{section_number:02d}\">"
         f"<div class=\"section-heading\"><span>{section_number:02d}</span>"
         f"<h2>{html.escape(str(section['title']))}</h2></div>"
-        f"{''.join(rendered)}"
+        f"{section_body}"
         "</section>"
     )
 
@@ -387,13 +417,15 @@ def render_page() -> None:
       <div class="hero-machine">
         <span class="machine-orbit machine-orbit--outer"></span>
         <span class="machine-orbit machine-orbit--inner"></span>
-        <div class="machine-card">
-          <span class="machine-series">Industrijska serija <strong>TKAN</strong></span>
-          <img src="assets/full-catalog/catalog-image-13.png" alt="Industrijski kotao TKAN na biomasu" />
-          <div class="machine-specs">
-            <span><strong>80–500</strong> kW</span>
-            <span><strong>EU</strong> standard</span>
-          </div>
+        <div class="hero-live-frame">
+          <figure class="hero-live-card hero-live-card--primary">
+            <img src="assets/editorial/hero-boiler-installation.jpg" alt="Instalirani industrijski kotao Radijator u kotlarnici" fetchpriority="high" />
+            <span class="hero-live-badge">Realizovano rešenje</span>
+            <div class="hero-live-specs"><strong>250–300</strong><span>kW / instalacije u radu</span></div>
+          </figure>
+          <figure class="hero-live-card hero-live-card--secondary">
+            <img src="assets/editorial/hero-boiler-room.jpg" alt="Kaskadno postrojenje sa industrijskim kotlovima Radijator" fetchpriority="high" />
+          </figure>
         </div>
       </div>
       <a class="scroll-cue" href="#section-01" aria-label="Nastavi na sadržaj"><span></span>Skrolujte</a>
