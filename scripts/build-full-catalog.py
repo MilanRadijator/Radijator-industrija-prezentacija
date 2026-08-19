@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import html
+import os
 import re
 import shutil
 import zipfile
@@ -15,7 +16,22 @@ from PIL import Image
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DOCX = Path(r"D:\Prezentacija nikola\KATALOG INDUSTRIJSKIH KOTLOVA.docx")
+
+
+def resolve_docx() -> Path:
+    override = os.environ.get("RADIJATOR_CATALOG_DOCX")
+    candidates = [
+        Path(override) if override else None,
+        Path(r"Z:\02_Konstrukcija\Tijana Vujičić\KATALOG ZA INDUSTRIJSKE KOTLOVE\KATALOG INDUSTRIJSKIH KOTLOVA.docx"),
+        Path(r"D:\Prezentacija nikola\KATALOG INDUSTRIJSKIH KOTLOVA.docx"),
+    ]
+    for candidate in candidates:
+        if candidate is not None and candidate.is_file():
+            return candidate
+    raise FileNotFoundError("KATALOG INDUSTRIJSKIH KOTLOVA.docx nije pronađen.")
+
+
+DOCX = resolve_docx()
 DOCS = ROOT / "docs"
 ASSET_DIR = DOCS / "assets" / "full-catalog"
 OUT_HTML = DOCS / "index.html"
@@ -76,8 +92,10 @@ def table_to_html(table: Table) -> str:
         rows_html.append(f"<tr>{cell_html}</tr>")
     header = rows_html[0] if rows_html else ""
     body = "".join(rows_html[1:])
+    row_count = len(rows_html)
     return (
-        "<div class=\"table-scroll\"><table>"
+        f"<div class=\"table-scroll table-scroll--keep table-scroll--rows-{row_count}\" "
+        f"data-table-rows=\"{row_count}\"><table>"
         f"<thead>{header}</thead><tbody>{body}</tbody>"
         "</table></div>"
     )
@@ -141,6 +159,15 @@ def paragraph_image_keys(paragraph: Paragraph) -> list[str]:
     return keys
 
 
+def has_word_page_break(paragraph: Paragraph) -> bool:
+    return bool(
+        paragraph._element.xpath('.//*[local-name()="lastRenderedPageBreak"]')
+        or paragraph._element.xpath(
+            './/*[local-name()="br" and @*[local-name()="type"]="page"]'
+        )
+    )
+
+
 def image_figure(item: dict[str, str], index: int) -> str:
     if not item.get("display"):
         return (
@@ -160,13 +187,15 @@ def render_copy(blocks: list[dict[str, object]]) -> str:
     rendered: list[str] = []
     for block in blocks:
         block_type = block["type"]
+        break_class = " class=\"word-page-break\"" if block.get("page_break_before") else ""
         if block_type == "paragraph":
-            rendered.append(f"<p>{html.escape(str(block['text']))}</p>")
+            rendered.append(f"<p{break_class}>{html.escape(str(block['text']))}</p>")
         elif block_type == "subheading":
-            rendered.append(f"<h3>{html.escape(str(block['text']))}</h3>")
+            rendered.append(f"<h3{break_class}>{html.escape(str(block['text']))}</h3>")
         elif block_type == "list":
             items = "".join(f"<li>{html.escape(str(item))}</li>" for item in block["items"])
-            rendered.append(f"<ul class=\"feature-list\">{items}</ul>")
+            classes = "feature-list word-page-break" if block.get("page_break_before") else "feature-list"
+            rendered.append(f"<ul class=\"{classes}\">{items}</ul>")
     return "".join(rendered)
 
 
@@ -188,6 +217,9 @@ def render_section(section: dict[str, object], section_number: int) -> str:
                 media_index += 1
                 side = "media-block--image-right" if media_index % 2 else "media-block--image-left"
                 paired_copy = blocks[index:copy_end]
+                page_break_class = (
+                    " word-page-break" if paired_copy and paired_copy[0].get("page_break_before") else ""
+                )
                 after_figure = copy_end + 1
                 copy_length = sum(len(str(item.get("text", ""))) for item in paired_copy)
                 if copy_length < 260:
@@ -199,7 +231,7 @@ def render_section(section: dict[str, object], section_number: int) -> str:
                         paired_copy.append(blocks[after_figure])
                         after_figure += 1
                 rendered.append(
-                    f"<div class=\"media-block {side}\">"
+                    f"<div class=\"media-block {side}{page_break_class}\">"
                     f"<div class=\"media-copy\">{render_copy(paired_copy)}</div>"
                     f"{blocks[copy_end]['html']}"
                     "</div>"
@@ -217,15 +249,19 @@ def render_section(section: dict[str, object], section_number: int) -> str:
             if copy_end > index + 1:
                 media_index += 1
                 side = "media-block--image-left" if media_index % 2 else "media-block--image-right"
+                page_break_class = " word-page-break" if block.get("page_break_before") else ""
                 rendered.append(
-                    f"<div class=\"media-block {side}\">"
+                    f"<div class=\"media-block {side}{page_break_class}\">"
                     f"{block['html']}"
                     f"<div class=\"media-copy\">{render_copy(blocks[index + 1:copy_end])}</div>"
                     "</div>"
                 )
                 index = copy_end
                 continue
-            rendered.append(f"<div class=\"technical-visual\">{block['html']}</div>")
+            page_break_class = " word-page-break" if block.get("page_break_before") else ""
+            rendered.append(
+                f"<div class=\"technical-visual{page_break_class}\">{block['html']}</div>"
+            )
         elif block_type == "table":
             rendered.append(str(block["html"]))
         index += 1
@@ -281,20 +317,34 @@ def build_content(images_by_key: dict[str, dict[str, str]]) -> tuple[str, list[s
     figure_count = 0
     paragraph_buffer: list[str] = []
     list_buffer: list[str] = []
+    paragraph_break_before = False
+    list_break_before = False
 
     def flush_paragraph() -> None:
-        nonlocal paragraph_buffer
+        nonlocal paragraph_buffer, paragraph_break_before
         if paragraph_buffer and current_section is not None:
             current_section["blocks"].append(
-                {"type": "paragraph", "text": " ".join(paragraph_buffer)}
+                {
+                    "type": "paragraph",
+                    "text": " ".join(paragraph_buffer),
+                    "page_break_before": paragraph_break_before,
+                }
             )
             paragraph_buffer = []
+            paragraph_break_before = False
 
     def flush_list() -> None:
-        nonlocal list_buffer
+        nonlocal list_buffer, list_break_before
         if list_buffer and current_section is not None:
-            current_section["blocks"].append({"type": "list", "items": list_buffer})
+            current_section["blocks"].append(
+                {
+                    "type": "list",
+                    "items": list_buffer,
+                    "page_break_before": list_break_before,
+                }
+            )
             list_buffer = []
+            list_break_before = False
 
     def ensure_section(title: str = "Uvod") -> dict[str, object]:
         nonlocal current_section
@@ -318,6 +368,7 @@ def build_content(images_by_key: dict[str, dict[str, str]]) -> tuple[str, list[s
         if isinstance(block, Paragraph):
             text = clean_text(block.text)
             image_keys = paragraph_image_keys(block)
+            page_break_before = has_word_page_break(block)
             if not text and not image_keys:
                 continue
             if is_heading(block, text):
@@ -329,12 +380,24 @@ def build_content(images_by_key: dict[str, dict[str, str]]) -> tuple[str, list[s
                     if is_subheading(block, text):
                         flush_paragraph()
                         flush_list()
-                        section["blocks"].append({"type": "subheading", "text": text})
+                        section["blocks"].append(
+                            {
+                                "type": "subheading",
+                                "text": text,
+                                "page_break_before": page_break_before,
+                            }
+                        )
                     elif block.style and block.style.name.startswith("List"):
                         flush_paragraph()
+                        if page_break_before:
+                            flush_list()
+                            list_break_before = True
                         list_buffer.append(text)
                     else:
                         flush_list()
+                        if page_break_before:
+                            flush_paragraph()
+                            paragraph_break_before = True
                         paragraph_buffer.append(text)
                         ends_with_year = bool(re.search(r"\b(?:19|20)\d{2}\.\s*$", text))
                         if (re.search(r"[.!?]\s*$", text) and not ends_with_year) or len(text) > 240:
@@ -354,6 +417,7 @@ def build_content(images_by_key: dict[str, dict[str, str]]) -> tuple[str, list[s
                         section["blocks"].append(
                             {"type": "figure", "html": f"<div class=\"figure-row\">{''.join(figure_group)}</div>"}
                         )
+                        section["blocks"][-1]["page_break_before"] = page_break_before
         elif isinstance(block, Table):
             section = ensure_section()
             flush_paragraph()
