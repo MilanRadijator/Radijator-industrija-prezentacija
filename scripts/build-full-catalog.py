@@ -36,6 +36,19 @@ DOCS = ROOT / "docs"
 ASSET_DIR = DOCS / "assets" / "full-catalog"
 OUT_HTML = DOCS / "index.html"
 ALIAS_HTML = DOCS / "full-catalog.html"
+PDF_DOWNLOAD_ENABLED = False
+
+
+def render_pdf_link(class_name: str, label: str) -> str:
+    if PDF_DOWNLOAD_ENABLED:
+        return (
+            f'<a class="{class_name}" href="radijator-industrijski-kotlovi.pdf">'
+            f"{html.escape(label)}</a>"
+        )
+    return (
+        f'<a class="{class_name} is-disabled" aria-disabled="true" tabindex="-1" '
+        f'title="PDF je privremeno nedostupan">{html.escape(label)}</a>'
+    )
 
 
 def iter_blocks(document: Document):
@@ -435,6 +448,8 @@ def render_page() -> None:
     images = extract_images()
     images_by_key = {item["key"]: item for item in images}
     body_html, toc, _, _, _ = build_content(images_by_key)
+    nav_pdf_link = render_pdf_link("web-nav-pdf", "PDF katalog")
+    hero_pdf_link = render_pdf_link("action-secondary", "Preuzmi PDF")
 
     page = f"""<!doctype html>
 <html lang="sr">
@@ -460,7 +475,7 @@ def render_page() -> None:
         <a href="#section-12">Oprema</a>
         <a href="#kontakt">Kontakt</a>
       </div>
-      <a class="web-nav-pdf" href="radijator-industrijski-kotlovi.pdf">PDF katalog</a>
+      {nav_pdf_link}
     </nav>
     <header class="catalog-hero">
       <div class="catalog-hero-topline">
@@ -475,7 +490,7 @@ def render_page() -> None:
         <p class="catalog-lead">Pouzdani sistemi visokih snaga, projektovani za efikasnost, dug radni vek i potpunu kontrolu procesa sagorevanja.</p>
         <div class="catalog-actions">
           <a class="action-primary" href="#section-01">Pregledaj katalog</a>
-          <a class="action-secondary" href="radijator-industrijski-kotlovi.pdf">Preuzmi PDF</a>
+          {hero_pdf_link}
         </div>
       </div>
       <div class="hero-machine">

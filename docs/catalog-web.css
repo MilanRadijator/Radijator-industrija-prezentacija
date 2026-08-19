@@ -167,6 +167,16 @@
     box-shadow: 0 18px 40px rgba(211, 15, 37, 0.34);
   }
 
+  .catalog-page .web-nav-pdf.is-disabled,
+  .catalog-page .catalog-actions a.is-disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.42;
+    filter: grayscale(0.72);
+    box-shadow: none;
+    transform: none;
+  }
+
   .catalog-page .catalog-hero {
     grid-template-columns: minmax(0, 1.08fr) minmax(24rem, 0.92fr);
     grid-template-rows: auto 1fr auto;
