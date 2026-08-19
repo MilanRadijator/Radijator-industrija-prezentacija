@@ -492,17 +492,6 @@ body.catalog-page {
   background: #fff;
 }
 
-.catalog-page .catalog-figure figcaption {
-  padding: 0.62rem 0.8rem;
-  color: #56575c;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  background: #ebe7df;
-  border-top: 1px solid rgba(20, 21, 24, 0.08);
-}
-
 .catalog-page .technical-visual {
   position: relative;
   z-index: 2;
@@ -1439,33 +1428,6 @@ body.catalog-page {
     background: linear-gradient(145deg, #fff, #efeeeb);
   }
 
-  .catalog-page .catalog-figure figcaption {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 6mm;
-    padding: 1.3mm 2mm;
-    color: #5c5d62;
-    font-size: 0;
-    font-weight: 900;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    background: #e9e5de;
-    border-top: 0.22mm solid rgba(76, 77, 81, 0.18);
-  }
-
-  .catalog-page .catalog-figure figcaption::before {
-    content: "TEHNIČKI PRIKAZ";
-    font-size: 5.4pt;
-  }
-
-  .catalog-page .catalog-figure figcaption::after {
-    content: attr(data-index);
-    color: #d50d24;
-    font-family: "Bahnschrift Condensed", "Arial Narrow", sans-serif;
-    font-size: 8pt;
-  }
-
   .catalog-page .technical-visual {
     position: relative;
     z-index: 2;
@@ -1637,12 +1599,6 @@ body.catalog-page {
   .catalog-page #section-14 .catalog-figure img {
     max-height: 86mm;
     padding: 2mm;
-  }
-
-  .catalog-page #section-14 .catalog-figure figcaption {
-    min-height: 5mm;
-    padding-top: 1mm;
-    padding-bottom: 1mm;
   }
 
   .catalog-page #section-15 .section-heading h2 {

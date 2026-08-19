@@ -151,8 +151,7 @@ def image_figure(item: dict[str, str], index: int) -> str:
         )
     return f"""
     <figure class="catalog-figure">
-      <img src="assets/full-catalog/{html.escape(item['display'])}" alt="{html.escape(item['label'])} - {html.escape(item['original'])}" />
-      <figcaption data-index="{index:02d}">{index:02d}. {html.escape(item['original'])}</figcaption>
+      <img src="assets/full-catalog/{html.escape(item['display'])}" alt="{html.escape(item['label'])}" />
     </figure>
     """
 
