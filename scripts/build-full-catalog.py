@@ -233,7 +233,7 @@ def render_section(section: dict[str, object], section_number: int) -> str:
 
     media_class = " catalog-section--media" if any(block["type"] == "figure" for block in blocks) else ""
     return (
-        f"<section class=\"catalog-section{media_class}\" id=\"{section['id']}\">"
+        f"<section class=\"catalog-section{media_class}\" id=\"{section['id']}\" data-section=\"{section_number:02d}\">"
         f"<div class=\"section-heading\"><span>{section_number:02d}</span>"
         f"<h2>{html.escape(str(section['title']))}</h2></div>"
         f"{''.join(rendered)}"
