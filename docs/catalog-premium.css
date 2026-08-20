@@ -1929,6 +1929,34 @@ body.catalog-page {
     max-height: 108mm;
   }
 
+  .catalog-page #section-12 > .technical-visual.word-page-break {
+    width: 100%;
+    margin-bottom: 3mm;
+  }
+
+  .catalog-page #section-12 > .technical-visual.word-page-break .figure-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3mm;
+  }
+
+  .catalog-page #section-12 > .technical-visual.word-page-break .catalog-figure img {
+    max-height: 88mm;
+  }
+
+  .catalog-page #section-12 > .technical-visual:not(.word-page-break) {
+    width: 82mm;
+    margin: 0 auto;
+  }
+
+  .catalog-page #section-12 > .technical-visual:not(.word-page-break) .catalog-figure img {
+    max-height: 92mm;
+  }
+
+  .catalog-page #section-13 .word-page-break {
+    break-before: auto;
+    page-break-before: auto;
+  }
+
   .catalog-page #section-14 .media-block {
     grid-template-columns: 62mm minmax(0, 1fr);
     gap: 5mm;

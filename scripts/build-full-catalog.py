@@ -22,6 +22,7 @@ def resolve_docx() -> Path:
     override = os.environ.get("RADIJATOR_CATALOG_DOCX")
     candidates = [
         Path(override) if override else None,
+        Path.home() / "Downloads" / "KATALOG INDUSTRIJSKIH KOTLOVA.docx",
         Path(r"Z:\02_Konstrukcija\Tijana Vujičić\KATALOG ZA INDUSTRIJSKE KOTLOVE\KATALOG INDUSTRIJSKIH KOTLOVA.docx"),
         Path(r"D:\Prezentacija nikola\KATALOG INDUSTRIJSKIH KOTLOVA.docx"),
     ]
@@ -115,6 +116,8 @@ def table_to_html(table: Table) -> str:
 
 
 def extract_images() -> list[dict[str, str]]:
+    if ASSET_DIR.exists():
+        shutil.rmtree(ASSET_DIR)
     ASSET_DIR.mkdir(parents=True, exist_ok=True)
     images: list[dict[str, str]] = []
 
@@ -359,7 +362,7 @@ def build_content(images_by_key: dict[str, dict[str, str]]) -> tuple[str, list[s
             list_buffer = []
             list_break_before = False
 
-    def ensure_section(title: str = "Uvod") -> dict[str, object]:
+    def ensure_section(title: str = "O nama") -> dict[str, object]:
         nonlocal current_section
         if current_section is None:
             section_id = f"section-{len(sections) + 1:02d}"

@@ -1010,11 +1010,15 @@
   .catalog-page .catalog-web-nav,
   .catalog-page .catalog-web-nav.is-scrolled {
     top: 0.5rem;
-    grid-template-columns: minmax(0, 1fr) auto;
+    right: 2.5rem;
+    left: 1.5rem;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.45rem;
+    width: auto;
     min-height: 3.75rem;
     padding: 0.42rem;
     border-radius: 0.72rem;
+    transform: none;
   }
 
   .catalog-page .web-nav-brand {
@@ -1031,11 +1035,7 @@
   }
 
   .catalog-page .web-nav-pdf {
-    min-width: 0;
-    min-height: 2.75rem;
-    padding: 0 0.78rem;
-    font-size: 0.62rem;
-    white-space: nowrap;
+    display: none;
   }
 
   .catalog-page .catalog-hero {
@@ -1078,9 +1078,10 @@
     align-self: center;
     grid-column: 1;
     grid-row: 1;
-    width: 100%;
+    justify-self: start;
+    width: calc(100% - 2rem);
     min-width: 0;
-    max-width: 100%;
+    max-width: calc(100% - 2rem);
     padding: 1.5rem 0 1.25rem;
   }
 
@@ -1092,24 +1093,27 @@
   .catalog-page .catalog-hero h1 {
     width: 100%;
     max-width: 100%;
-    font-size: clamp(3.2rem, 15.2vw, 5.1rem);
+    font-size: clamp(3rem, 13.4vw, 4.55rem);
     line-height: 0.86;
     overflow-wrap: normal;
     word-break: normal;
   }
 
   .catalog-page .catalog-lead {
-    max-width: 32rem;
+    width: 100%;
+    max-width: 20.5rem;
     margin-top: 1.25rem;
     font-size: 0.96rem;
     line-height: 1.55;
+    overflow-wrap: break-word;
   }
 
   .catalog-page .catalog-actions {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.55rem;
     width: 100%;
+    max-width: 22rem;
     min-width: 0;
     margin-top: 1.3rem;
   }
@@ -1117,8 +1121,8 @@
   .catalog-page .catalog-actions a {
     min-width: 0;
     min-height: 3.1rem;
-    padding: 0 0.55rem;
-    font-size: 0.67rem;
+    padding: 0 0.8rem;
+    font-size: 0.7rem;
     text-align: center;
     white-space: normal;
   }
@@ -1128,7 +1132,7 @@
     grid-column: 1;
     grid-row: 2;
     justify-self: center;
-    width: min(100%, 30rem);
+    width: min(calc(100% - 5rem), 30rem);
     aspect-ratio: 1.32;
     margin: -0.5rem 0 0.8rem;
   }
@@ -1138,7 +1142,7 @@
   }
 
   .catalog-page .hero-live-card--secondary {
-    right: 0;
+    right: 0.55rem;
     bottom: 1%;
     width: 28%;
     height: 58%;
