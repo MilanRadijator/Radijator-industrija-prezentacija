@@ -664,6 +664,11 @@
     gap: clamp(1.7rem, 4vw, 4.5rem);
   }
 
+  .catalog-page .figure-row {
+    justify-items: center;
+    align-items: center;
+  }
+
   .catalog-page .catalog-figure {
     --tilt-x: 0deg;
     --tilt-y: 0deg;
@@ -673,9 +678,9 @@
     border-color: transparent;
     border-radius: 1rem;
     box-shadow: none;
-    transform: perspective(1000px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
-    transform-style: preserve-3d;
-    transition: transform 160ms ease, box-shadow 220ms ease;
+    transform: none;
+    transform-style: flat;
+    transition: box-shadow 220ms ease;
   }
 
   .catalog-page .catalog-figure::before {
@@ -692,12 +697,16 @@
   }
 
   .catalog-page .catalog-figure img {
-    height: clamp(17rem, 31vw, 29rem);
-    padding: clamp(0.9rem, 1.7vw, 1.5rem);
+    width: auto;
+    max-width: min(100%, 34rem);
+    height: auto;
+    max-height: clamp(14rem, 26vw, 24rem);
+    padding: clamp(0.45rem, 1vw, 0.8rem);
     cursor: zoom-in;
-    background: radial-gradient(ellipse at 50% 87%, rgba(16, 17, 20, 0.08), transparent 42%);
+    background: transparent;
     border-radius: 1rem 1rem 0 0;
-    transform: translateZ(10px) scale(1.001);
+    image-rendering: auto;
+    transform: none;
   }
 
   .catalog-page .catalog-figure figcaption {
@@ -710,7 +719,7 @@
     font-size: 0;
     background: rgba(235, 231, 223, 0.94);
     border-radius: 0 0 1rem 1rem;
-    transform: translateZ(6px);
+    transform: none;
   }
 
   .catalog-page .catalog-figure figcaption::before {
@@ -1343,7 +1352,8 @@
 
   .catalog-page .catalog-figure img,
   .catalog-page .technical-visual .catalog-figure img {
-    height: min(72vw, 24rem);
+    height: auto;
+    max-height: min(68vw, 22rem);
     padding: 0.65rem;
     border-radius: 0.75rem 0.75rem 0 0;
     transform: none;

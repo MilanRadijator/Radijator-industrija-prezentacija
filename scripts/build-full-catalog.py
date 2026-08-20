@@ -155,8 +155,7 @@ def remove_light_background(image: Image.Image) -> Image.Image:
         if y < height - 1:
             enqueue(x, y + 1)
 
-    fade_alpha = ((246 - brightness[connected]) * 18).clip(0, 255).astype(np.uint8)
-    data[connected, 3] = np.minimum(data[connected, 3], fade_alpha)
+    data[connected, 3] = 0
     rgba = Image.fromarray(data, "RGBA")
 
     bbox = rgba.getbbox()
