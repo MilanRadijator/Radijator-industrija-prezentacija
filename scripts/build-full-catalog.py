@@ -38,7 +38,7 @@ DOCS = ROOT / "docs"
 ASSET_DIR = DOCS / "assets" / "full-catalog"
 OUT_HTML = DOCS / "index.html"
 ALIAS_HTML = DOCS / "full-catalog.html"
-PDF_DOWNLOAD_ENABLED = False
+PDF_DOWNLOAD_ENABLED = True
 
 
 def render_pdf_link(class_name: str, label: str) -> str:
