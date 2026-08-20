@@ -7,6 +7,7 @@ import shutil
 import zipfile
 from pathlib import Path
 
+import numpy as np
 from docx import Document
 from docx.oxml.table import CT_Tbl
 from docx.oxml.text.paragraph import CT_P
@@ -115,6 +116,43 @@ def table_to_html(table: Table) -> str:
     )
 
 
+def remove_light_background(image: Image.Image) -> Image.Image:
+    rgba = image.convert("RGBA")
+    width, height = rgba.size
+    data = np.array(rgba)
+    rgb = data[:, :, :3].astype(np.int16)
+    alpha = data[:, :, 3]
+    brightness = rgb.mean(axis=2)
+    neutral = rgb.max(axis=2) - rgb.min(axis=2) <= 28
+    light_background = (brightness >= 236) & neutral & (alpha > 0)
+    soft_edge = (brightness >= 222) & neutral & (alpha > 0)
+    data[light_background, 3] = 0
+    data[soft_edge & ~light_background, 3] = np.minimum(
+        data[soft_edge & ~light_background, 3],
+        ((236 - brightness[soft_edge & ~light_background]) * 10).clip(0, 255).astype(np.uint8),
+    )
+    rgba = Image.fromarray(data, "RGBA")
+
+    bbox = rgba.getbbox()
+    if not bbox:
+        return rgba
+    left, top, right, bottom = bbox
+    padding = max(18, int(min(width, height) * 0.025))
+    crop_box = (
+        max(0, left - padding),
+        max(0, top - padding),
+        min(width, right + padding),
+        min(height, bottom + padding),
+    )
+    return rgba.crop(crop_box)
+
+
+def save_display_image(raw_path: Path, display_path: Path) -> None:
+    with Image.open(raw_path) as image:
+        image.seek(0)
+        remove_light_background(image).save(display_path)
+
+
 def extract_images() -> list[dict[str, str]]:
     if ASSET_DIR.exists():
         shutil.rmtree(ASSET_DIR)
@@ -136,13 +174,11 @@ def extract_images() -> list[dict[str, str]]:
             status = "included"
 
             if suffix in {".png", ".jpg", ".jpeg"}:
-                display_path = ASSET_DIR / f"{target_name}{suffix}"
-                shutil.copyfile(raw_path, display_path)
+                display_path = ASSET_DIR / f"{target_name}.png"
+                save_display_image(raw_path, display_path)
             elif suffix in {".tif", ".tiff"}:
                 display_path = ASSET_DIR / f"{target_name}.png"
-                with Image.open(raw_path) as image:
-                    image.seek(0)
-                    image.convert("RGBA").save(display_path)
+                save_display_image(raw_path, display_path)
             elif suffix == ".wmf":
                 # Browser support for WMF is not reliable; keep the original asset visible as a download item.
                 status = "original-wmf"

@@ -561,11 +561,10 @@ p {
   z-index: 1;
   margin: 0;
   overflow: hidden;
-  background:
-    linear-gradient(180deg, #fff, #f7f3eb);
-  border: 1px solid rgba(17, 17, 21, 0.12);
+  background: transparent;
+  border: 0;
   border-radius: 1.15rem;
-  box-shadow: 0 20px 55px rgba(20, 20, 26, 0.12);
+  box-shadow: none;
 }
 
 .catalog-figure img {
@@ -574,7 +573,7 @@ p {
   height: clamp(18rem, 38vw, 34rem);
   object-fit: contain;
   padding: clamp(0.8rem, 2vw, 1.3rem);
-  background: #fff;
+  background: transparent;
 }
 
 .catalog-figure figcaption {

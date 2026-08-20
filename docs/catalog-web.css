@@ -645,10 +645,10 @@
     --tilt-y: 0deg;
     position: relative;
     overflow: visible;
-    background: linear-gradient(145deg, #fff, #e9e8e5);
-    border-color: rgba(17, 18, 21, 0.1);
+    background: transparent;
+    border-color: transparent;
     border-radius: 1rem;
-    box-shadow: 0 24px 65px rgba(17, 18, 21, 0.16);
+    box-shadow: none;
     transform: perspective(1000px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
     transform-style: preserve-3d;
     transition: transform 160ms ease, box-shadow 220ms ease;
@@ -659,21 +659,19 @@
     position: absolute;
     inset: -1px;
     z-index: -1;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(223, 16, 40, 0.16), transparent 58%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(223, 16, 40, 0.08), transparent 58%);
     border-radius: inherit;
   }
 
   .catalog-page .catalog-figure:hover {
-    box-shadow: 0 32px 80px rgba(17, 18, 21, 0.22);
+    box-shadow: none;
   }
 
   .catalog-page .catalog-figure img {
     height: clamp(17rem, 31vw, 29rem);
     padding: clamp(0.9rem, 1.7vw, 1.5rem);
     cursor: zoom-in;
-    background:
-      radial-gradient(ellipse at 50% 87%, rgba(16, 17, 20, 0.1), transparent 42%),
-      linear-gradient(145deg, #fff, #efeeeb);
+    background: radial-gradient(ellipse at 50% 87%, rgba(16, 17, 20, 0.08), transparent 42%);
     border-radius: 1rem 1rem 0 0;
     transform: translateZ(10px) scale(1.001);
   }
@@ -915,7 +913,7 @@
     min-height: 0;
     padding: clamp(1rem, 4vw, 3rem);
     object-fit: contain;
-    background: radial-gradient(circle at center, #fff, #deddd9);
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), rgba(222, 221, 217, 0.05));
   }
 
   .catalog-page .lightbox-stage p {
