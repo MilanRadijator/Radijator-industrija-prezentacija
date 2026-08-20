@@ -566,11 +566,6 @@ def render_page() -> None:
       <section class="catalog-footer-gallery" aria-label="Radijator Inženjering u praksi">
         <figure class="footer-photo footer-photo--wide"><img src="assets/editorial/hero-boiler-installation.jpg" alt="Instalirani industrijski kotao Radijator u kotlarnici" /></figure>
         <figure class="footer-photo footer-photo--tall"><img src="assets/editorial/hero-boiler-room.jpg" alt="Kaskadno postrojenje sa industrijskim kotlovima Radijator" /></figure>
-        <figure class="footer-photo"><img src="assets/editorial/about-factory-exterior.jpg" alt="Proizvodni kompleks Radijator Inženjering u Kraljevu" /></figure>
-        <figure class="footer-photo"><img src="assets/editorial/about-production-forming.jpg" alt="Automatizovana obrada limova u proizvodnji" /></figure>
-        <figure class="footer-photo"><img src="assets/editorial/about-production-laser.jpg" alt="Lasersko sečenje kotlovskog lima" /></figure>
-        <figure class="footer-photo"><img src="assets/editorial/about-production-control.jpg" alt="Operater nadgleda savremeni proizvodni proces" /></figure>
-        <figure class="footer-photo"><img src="assets/editorial/about-production-welding.jpg" alt="Zavarivanje komponenti industrijskog kotla" /></figure>
       </section>
       <div class="catalog-footer-bottom">
         <span>Industrijski kotlovi na biomasu</span>

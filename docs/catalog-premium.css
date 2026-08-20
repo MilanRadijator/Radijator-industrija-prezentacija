@@ -2255,9 +2255,9 @@ body.catalog-page {
     grid-row: 2;
     align-self: center;
     display: grid;
-    grid-template-columns: 1.2fr 0.82fr repeat(3, 0.72fr);
-    grid-auto-rows: 35mm;
-    gap: 2.3mm;
+    grid-template-columns: minmax(0, 1.16fr) minmax(0, 0.84fr);
+    grid-auto-rows: 96mm;
+    gap: 4mm;
   }
 
   .catalog-page .footer-photo {
@@ -2273,16 +2273,12 @@ body.catalog-page {
   }
 
   .catalog-page .footer-photo--wide {
-    grid-column: span 2;
-    grid-row: span 2;
+    grid-column: auto;
+    grid-row: auto;
   }
 
   .catalog-page .footer-photo--tall {
-    grid-row: span 2;
-  }
-
-  .catalog-page .footer-photo:last-child {
-    grid-column: span 2;
+    grid-row: auto;
   }
 
   .catalog-page .footer-photo img {
