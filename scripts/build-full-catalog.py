@@ -321,30 +321,8 @@ def render_section(section: dict[str, object], section_number: int) -> str:
     section_body = "".join(rendered)
     if section_number == 1:
         section_body = (
-            '<div class="about-layout">'
+            '<div class="about-layout about-layout--text-only">'
             f'<div class="about-copy">{section_body}</div>'
-            '<aside class="about-gallery" aria-label="Radijator Inženjering proizvodnja">'
-            '<figure class="about-photo about-photo--company">'
-            '<img src="assets/editorial/about-factory-exterior.jpg" '
-            'alt="Proizvodni kompleks Radijator Inženjering u Kraljevu" />'
-            '</figure>'
-            '<figure class="about-photo">'
-            '<img src="assets/editorial/about-production-forming.jpg" '
-            'alt="Automatizovana obrada limova u proizvodnji" />'
-            '</figure>'
-            '<figure class="about-photo">'
-            '<img src="assets/editorial/about-production-laser.jpg" '
-            'alt="Lasersko sečenje kotlovskog lima" />'
-            '</figure>'
-            '<figure class="about-photo">'
-            '<img src="assets/editorial/about-production-control.jpg" '
-            'alt="Operater nadgleda savremeni proizvodni proces" />'
-            '</figure>'
-            '<figure class="about-photo">'
-            '<img src="assets/editorial/about-production-welding.jpg" '
-            'alt="Zavarivanje komponenti industrijskog kotla" />'
-            '</figure>'
-            '</aside>'
             '</div>'
         )
 
@@ -536,13 +514,8 @@ def render_page() -> None:
         <span class="machine-orbit machine-orbit--outer"></span>
         <span class="machine-orbit machine-orbit--inner"></span>
         <div class="hero-live-frame">
-          <figure class="hero-live-card hero-live-card--primary">
-            <img src="assets/editorial/hero-boiler-installation.jpg" alt="Instalirani industrijski kotao Radijator u kotlarnici" fetchpriority="high" />
-            <span class="hero-live-badge">Realizovano rešenje</span>
-            <div class="hero-live-specs"><strong>250–300</strong><span>kW / instalacije u radu</span></div>
-          </figure>
-          <figure class="hero-live-card hero-live-card--secondary">
-            <img src="assets/editorial/hero-boiler-room.jpg" alt="Kaskadno postrojenje sa industrijskim kotlovima Radijator" fetchpriority="high" />
+          <figure class="hero-anniversary-card">
+            <img src="assets/editorial/anniversary-badge.png" alt="35 godina iskustva - kvalitet bez kompromisa" fetchpriority="high" />
           </figure>
         </div>
       </div>
@@ -568,6 +541,15 @@ def render_page() -> None:
         <p><strong>Radijator Inženjering d.o.o.</strong><br />Živojina Lazića Solunca 6<br />36000 Kraljevo, Srbija</p>
         <p><a href="tel:+38136399140">+381 36 399 140</a><br /><a href="https://www.radijator.rs/">www.radijator.rs</a></p>
       </div>
+      <section class="catalog-footer-gallery" aria-label="Radijator Inženjering u praksi">
+        <figure class="footer-photo footer-photo--wide"><img src="assets/editorial/hero-boiler-installation.jpg" alt="Instalirani industrijski kotao Radijator u kotlarnici" /></figure>
+        <figure class="footer-photo footer-photo--tall"><img src="assets/editorial/hero-boiler-room.jpg" alt="Kaskadno postrojenje sa industrijskim kotlovima Radijator" /></figure>
+        <figure class="footer-photo"><img src="assets/editorial/about-factory-exterior.jpg" alt="Proizvodni kompleks Radijator Inženjering u Kraljevu" /></figure>
+        <figure class="footer-photo"><img src="assets/editorial/about-production-forming.jpg" alt="Automatizovana obrada limova u proizvodnji" /></figure>
+        <figure class="footer-photo"><img src="assets/editorial/about-production-laser.jpg" alt="Lasersko sečenje kotlovskog lima" /></figure>
+        <figure class="footer-photo"><img src="assets/editorial/about-production-control.jpg" alt="Operater nadgleda savremeni proizvodni proces" /></figure>
+        <figure class="footer-photo"><img src="assets/editorial/about-production-welding.jpg" alt="Zavarivanje komponenti industrijskog kotla" /></figure>
+      </section>
       <div class="catalog-footer-bottom">
         <span>Industrijski kotlovi na biomasu</span>
         <a href="#top">Nazad na vrh</a>
