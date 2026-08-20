@@ -491,7 +491,12 @@
     display: block;
     width: min(100%, 34rem);
     max-height: 100%;
+    padding: 0;
     object-fit: contain;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
     filter: drop-shadow(0 38px 55px rgba(0, 0, 0, 0.42));
   }
 

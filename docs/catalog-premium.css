@@ -1339,7 +1339,12 @@ body.catalog-page {
   display: block;
   width: min(100%, 36rem);
   max-height: 100%;
+  padding: 0;
   object-fit: contain;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
   filter: drop-shadow(0 28px 42px rgba(0, 0, 0, 0.4));
 }
 
