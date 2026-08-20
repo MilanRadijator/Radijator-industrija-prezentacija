@@ -321,8 +321,30 @@ def render_section(section: dict[str, object], section_number: int) -> str:
     section_body = "".join(rendered)
     if section_number == 1:
         section_body = (
-            '<div class="about-layout about-layout--text-only">'
+            '<div class="about-layout">'
             f'<div class="about-copy">{section_body}</div>'
+            '<aside class="about-gallery" aria-label="Radijator Inženjering proizvodnja">'
+            '<figure class="about-photo about-photo--company">'
+            '<img src="assets/editorial/about-factory-exterior.jpg" '
+            'alt="Proizvodni kompleks Radijator Inženjering u Kraljevu" />'
+            '</figure>'
+            '<figure class="about-photo">'
+            '<img src="assets/editorial/about-production-forming.jpg" '
+            'alt="Automatizovana obrada limova u proizvodnji" />'
+            '</figure>'
+            '<figure class="about-photo">'
+            '<img src="assets/editorial/about-production-laser.jpg" '
+            'alt="Lasersko sečenje kotlovskog lima" />'
+            '</figure>'
+            '<figure class="about-photo">'
+            '<img src="assets/editorial/about-production-control.jpg" '
+            'alt="Operater nadgleda savremeni proizvodni proces" />'
+            '</figure>'
+            '<figure class="about-photo">'
+            '<img src="assets/editorial/about-production-welding.jpg" '
+            'alt="Zavarivanje komponenti industrijskog kotla" />'
+            '</figure>'
+            '</aside>'
             '</div>'
         )
 
