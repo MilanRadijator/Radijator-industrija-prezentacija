@@ -1571,8 +1571,8 @@ body.catalog-page {
     position: relative;
     z-index: 2;
     color: #303136;
-    font-size: 10.05pt;
-    line-height: 1.47;
+    font-size: 10.75pt;
+    line-height: 1.5;
     orphans: 3;
     widows: 3;
   }
@@ -1613,8 +1613,8 @@ body.catalog-page {
   .catalog-page #section-01 .about-copy p {
     max-width: none;
     margin-bottom: 1.8mm;
-    font-size: 8.15pt;
-    line-height: 1.34;
+    font-size: 8.75pt;
+    line-height: 1.38;
   }
 
   .catalog-page #section-01 .about-gallery {
@@ -1683,13 +1683,13 @@ body.catalog-page {
 
   .catalog-page #section-02 h3 {
     margin: 0 0 1mm;
-    font-size: 10.9pt;
+    font-size: 11.55pt;
   }
 
   .catalog-page #section-02 p {
     margin: 0;
-    font-size: 8.05pt;
-    line-height: 1.33;
+    font-size: 8.55pt;
+    line-height: 1.36;
   }
 
   .catalog-page #section-01 .about-photo img {
@@ -1828,7 +1828,7 @@ body.catalog-page {
   .catalog-page .catalog-section th,
   .catalog-page .catalog-section td {
     padding: 1.5mm 1.5mm;
-    font-size: 7.15pt;
+    font-size: 7.35pt;
     line-height: 1.24;
   }
 
@@ -1867,21 +1867,21 @@ body.catalog-page {
   .catalog-page .table-scroll--rows-9 td {
     padding-top: 2.5mm;
     padding-bottom: 2.5mm;
-    font-size: 8.45pt;
+    font-size: 8.65pt;
   }
 
   .catalog-page .table-scroll--rows-13 th,
   .catalog-page .table-scroll--rows-13 td {
     padding-top: 2.35mm;
     padding-bottom: 2.35mm;
-    font-size: 8.15pt;
+    font-size: 8.35pt;
   }
 
   .catalog-page .table-scroll--rows-15 th,
   .catalog-page .table-scroll--rows-15 td {
     padding-top: 1.85mm;
     padding-bottom: 1.85mm;
-    font-size: 7.65pt;
+    font-size: 7.85pt;
   }
 
   .catalog-page #section-03 .table-scroll,
@@ -1959,8 +1959,8 @@ body.catalog-page {
 
   .catalog-page #section-11 p,
   .catalog-page #section-11 .feature-list li {
-    font-size: 9.3pt;
-    line-height: 1.43;
+    font-size: 9.95pt;
+    line-height: 1.46;
   }
 
   .catalog-page #section-11 h3 {
@@ -2035,8 +2035,8 @@ body.catalog-page {
   .catalog-page #section-14 p {
     margin: 0 0 3mm;
     color: #fff;
-    font-size: 9.8pt;
-    line-height: 1.44;
+    font-size: 10.45pt;
+    line-height: 1.47;
   }
 
   .catalog-page #section-14 p:last-child {
@@ -2062,8 +2062,8 @@ body.catalog-page {
 
   .catalog-page #section-15 p {
     margin-bottom: 2mm;
-    font-size: 9.05pt;
-    line-height: 1.42;
+    font-size: 9.65pt;
+    line-height: 1.45;
   }
 
   .catalog-page #section-15 h3 {

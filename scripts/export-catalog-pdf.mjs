@@ -1,5 +1,6 @@
-import { createReadStream, existsSync, statSync } from "node:fs";
+import { copyFileSync, createReadStream, existsSync, mkdtempSync, rmSync, statSync, unlinkSync } from "node:fs";
 import { createServer } from "node:http";
+import { tmpdir } from "node:os";
 import { extname, join, normalize, resolve } from "node:path";
 import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
@@ -7,8 +8,13 @@ import { fileURLToPath } from "node:url";
 const root = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const docs = join(root, "docs");
 const output = join(docs, "radijator-industrijski-kotlovi.pdf");
+const printOutput = join(tmpdir(), `radijator-industrijski-kotlovi-${process.pid}.pdf`);
+const userDataDir = mkdtempSync(join(tmpdir(), "radijator-edge-"));
 
 const edgeCandidates = [
+  process.env.CHROME_PATH,
+  "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+  "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
   process.env.MSEDGE_PATH,
   "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
   "C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe",
@@ -53,12 +59,18 @@ const url = `http://127.0.0.1:${address.port}/index.html`;
 const args = [
   "--headless=new",
   "--disable-gpu",
+  "--disable-crash-reporter",
   "--hide-scrollbars",
   "--no-pdf-header-footer",
   "--run-all-compositor-stages-before-draw",
-  `--print-to-pdf=${output}`,
+  `--user-data-dir=${userDataDir}`,
+  `--print-to-pdf=${printOutput}`,
   url,
 ];
+
+if (existsSync(printOutput)) {
+  unlinkSync(printOutput);
+}
 
 const exitCode = await new Promise((resolveExit, reject) => {
   const child = spawn(edge, args, { stdio: ["ignore", "inherit", "inherit"] });
@@ -68,8 +80,13 @@ const exitCode = await new Promise((resolveExit, reject) => {
 
 await new Promise((resolveClose) => server.close(resolveClose));
 
-if (exitCode !== 0 || !existsSync(output) || statSync(output).size === 0) {
+if (exitCode !== 0 || !existsSync(printOutput) || statSync(printOutput).size === 0) {
+  rmSync(userDataDir, { recursive: true, force: true });
   throw new Error(`PDF izvoz nije uspeo. Edge exit code: ${exitCode}`);
 }
+
+copyFileSync(printOutput, output);
+unlinkSync(printOutput);
+rmSync(userDataDir, { recursive: true, force: true });
 
 console.log(`PDF exported: ${output}`);
