@@ -5,6 +5,7 @@ import os
 import re
 import shutil
 import zipfile
+from collections import deque
 from pathlib import Path
 
 import numpy as np
@@ -13,7 +14,7 @@ from docx.oxml.table import CT_Tbl
 from docx.oxml.text.paragraph import CT_P
 from docx.table import Table
 from docx.text.paragraph import Paragraph
-from PIL import Image
+from PIL import Image, ImageFilter
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -123,14 +124,39 @@ def remove_light_background(image: Image.Image) -> Image.Image:
     rgb = data[:, :, :3].astype(np.int16)
     alpha = data[:, :, 3]
     brightness = rgb.mean(axis=2)
-    neutral = rgb.max(axis=2) - rgb.min(axis=2) <= 28
-    light_background = (brightness >= 236) & neutral & (alpha > 0)
-    soft_edge = (brightness >= 222) & neutral & (alpha > 0)
-    data[light_background, 3] = 0
-    data[soft_edge & ~light_background, 3] = np.minimum(
-        data[soft_edge & ~light_background, 3],
-        ((236 - brightness[soft_edge & ~light_background]) * 10).clip(0, 255).astype(np.uint8),
-    )
+    neutral = rgb.max(axis=2) - rgb.min(axis=2) <= 42
+    light_candidate = (brightness >= 238) & neutral & (alpha > 0)
+
+    # Remove only the light background connected to the outside of the image.
+    # This preserves highlights, labels and bright details inside the boiler drawings.
+    connected = np.zeros((height, width), dtype=bool)
+    queue: deque[tuple[int, int]] = deque()
+
+    def enqueue(x: int, y: int) -> None:
+        if light_candidate[y, x] and not connected[y, x]:
+            connected[y, x] = True
+            queue.append((x, y))
+
+    for x in range(width):
+        enqueue(x, 0)
+        enqueue(x, height - 1)
+    for y in range(height):
+        enqueue(0, y)
+        enqueue(width - 1, y)
+
+    while queue:
+        x, y = queue.popleft()
+        if x > 0:
+            enqueue(x - 1, y)
+        if x < width - 1:
+            enqueue(x + 1, y)
+        if y > 0:
+            enqueue(x, y - 1)
+        if y < height - 1:
+            enqueue(x, y + 1)
+
+    fade_alpha = ((246 - brightness[connected]) * 18).clip(0, 255).astype(np.uint8)
+    data[connected, 3] = np.minimum(data[connected, 3], fade_alpha)
     rgba = Image.fromarray(data, "RGBA")
 
     bbox = rgba.getbbox()
@@ -150,7 +176,15 @@ def remove_light_background(image: Image.Image) -> Image.Image:
 def save_display_image(raw_path: Path, display_path: Path) -> None:
     with Image.open(raw_path) as image:
         image.seek(0)
-        remove_light_background(image).save(display_path)
+        cleaned = remove_light_background(image)
+        max_side = max(cleaned.size)
+        if max_side < 1400:
+            scale = min(2.0, 1400 / max_side)
+            cleaned = cleaned.resize(
+                (round(cleaned.width * scale), round(cleaned.height * scale)),
+                Image.Resampling.LANCZOS,
+            ).filter(ImageFilter.UnsharpMask(radius=1.1, percent=115, threshold=3))
+        cleaned.save(display_path, optimize=False, compress_level=4)
 
 
 def extract_images() -> list[dict[str, str]]:
