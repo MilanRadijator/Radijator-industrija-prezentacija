@@ -999,15 +999,10 @@ body.catalog-page {
     margin: 15mm 11mm 18mm;
 
     @top-left {
-      content: "RADIJATOR INŽENJERING";
+      content: "";
       padding: 0 3mm;
-      color: #fff;
-      font-family: "Trebuchet MS", Arial, sans-serif;
-      font-size: 6.4pt;
-      font-weight: 800;
-      letter-spacing: 0.08em;
       vertical-align: middle;
-      background: #15161a;
+      background: #15161a url("assets/logo.png") 3mm center / 36mm auto no-repeat;
     }
 
     @top-center {
@@ -2497,6 +2492,10 @@ body.catalog-page {
   .catalog-page #section-13 .media-block .figure-row {
     grid-column: 1 / -1;
     grid-row: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.12fr);
+    gap: 3mm;
+    align-items: center;
   }
 
   .catalog-page #section-13 .media-block .media-copy {
@@ -2507,21 +2506,30 @@ body.catalog-page {
   }
 
   .catalog-page #section-13 .catalog-figure {
-    min-height: 134mm;
+    min-height: 124mm;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   .catalog-page #section-13 .catalog-figure img {
-    width: 188mm;
-    max-height: 130mm;
+    width: auto;
+    max-width: 100%;
+    max-height: 120mm;
+  }
+
+  .catalog-page #section-13 .catalog-figure:nth-child(1) img {
+    max-height: 122mm;
+  }
+
+  .catalog-page #section-13 .catalog-figure:nth-child(2) img {
+    max-height: 86mm;
   }
 
   .catalog-page #section-13 .media-copy p {
-    margin-bottom: 2.6mm;
-    font-size: 10.1pt;
-    line-height: 1.42;
+    margin-bottom: 2.2mm;
+    font-size: 9.65pt;
+    line-height: 1.35;
     break-inside: avoid;
   }
 
