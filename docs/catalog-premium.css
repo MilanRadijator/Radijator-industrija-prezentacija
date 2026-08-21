@@ -470,6 +470,146 @@ body.catalog-page {
   transform: scale(1.045);
 }
 
+.catalog-page .production-spread {
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.86fr) minmax(26rem, 1.14fr);
+  grid-template-areas:
+    "copy brand"
+    "copy media"
+    "stats stats"
+    "footer footer";
+  gap: clamp(1.2rem, 2.4vw, 2.4rem) clamp(1.8rem, 4vw, 4.5rem);
+  align-items: start;
+  justify-content: center;
+  min-height: calc(100svh - 2.4rem);
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(120, 112, 98, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 112, 98, 0.055) 1px, transparent 1px),
+    radial-gradient(circle at 95% 92%, rgba(211, 15, 37, 0.11), transparent 24rem),
+    linear-gradient(145deg, #f5f0e7, #eee8dd);
+  background-size: 3.75rem 3.75rem, 3.75rem 3.75rem, auto, auto;
+}
+
+.catalog-page .production-spread__brand {
+  grid-area: brand;
+  justify-self: end;
+  color: var(--catalog-red);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+
+.catalog-page .production-spread__brand img {
+  display: none;
+}
+
+.catalog-page .production-spread__copy {
+  grid-area: copy;
+  align-self: center;
+  min-width: 0;
+}
+
+.catalog-page .production-spread__kicker,
+.catalog-page .production-spread__footer {
+  color: #303137;
+  font-size: clamp(0.72rem, 1vw, 0.95rem);
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.catalog-page .production-spread__copy h2 {
+  max-width: 8.7ch;
+  margin: 0.8rem 0 1.2rem;
+  color: #111;
+  font-family: "Bahnschrift Condensed", "Arial Narrow", sans-serif;
+  font-size: clamp(4rem, 6.2vw, 7rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+}
+
+.catalog-page .production-spread__copy h2::after {
+  content: "";
+  display: block;
+  width: 5rem;
+  height: 0.28rem;
+  margin-top: 1.1rem;
+  background: var(--catalog-red);
+  border-radius: 999px;
+}
+
+.catalog-page .production-spread__copy p:not(.production-spread__kicker) {
+  max-width: 36ch;
+  color: #6a625b;
+  font-size: clamp(0.98rem, 1.15vw, 1.15rem);
+  line-height: 1.72;
+}
+
+.catalog-page .production-spread__media {
+  grid-area: media;
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.6rem);
+  min-width: 0;
+}
+
+.catalog-page .production-spread__media figure {
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 16 / 5.15;
+  border-radius: clamp(0.9rem, 1.4vw, 1.35rem);
+  box-shadow: 0 18px 55px rgba(18, 19, 23, 0.14);
+}
+
+.catalog-page .production-spread__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.catalog-page .production-spread__stats {
+  grid-area: stats;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.8rem, 1.8vw, 1.4rem);
+}
+
+.catalog-page .production-spread__stats div {
+  padding: clamp(1rem, 2vw, 1.55rem);
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: clamp(0.9rem, 1.8vw, 1.35rem);
+  box-shadow: 0 16px 48px rgba(18, 19, 23, 0.08);
+}
+
+.catalog-page .production-spread__stats strong {
+  display: block;
+  color: #e21a2f;
+  font-family: "Bahnschrift Condensed", "Arial Narrow", sans-serif;
+  font-size: clamp(2.8rem, 5vw, 4.6rem);
+  line-height: 0.9;
+}
+
+.catalog-page .production-spread__stats span {
+  display: block;
+  margin-top: 0.55rem;
+  color: #1f2024;
+  font-size: clamp(0.82rem, 1vw, 1rem);
+  font-weight: 800;
+}
+
+.catalog-page .production-spread__footer {
+  grid-area: footer;
+  align-self: end;
+  margin: 0;
+  color: #817a73;
+}
+
 .catalog-page .catalog-section h3 {
   position: relative;
   z-index: 2;
@@ -704,6 +844,33 @@ body.catalog-page {
   .catalog-page .media-block {
     gap: 1.5rem;
   }
+
+  .catalog-page .production-spread {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "brand"
+      "copy"
+      "media"
+      "stats"
+      "footer";
+  }
+
+  .catalog-page .production-spread__brand {
+    justify-self: start;
+  }
+
+  .catalog-page .production-spread__copy h2 {
+    max-width: 12ch;
+    font-size: clamp(3.5rem, 10vw, 6rem);
+  }
+
+  .catalog-page .production-spread__copy p:not(.production-spread__kicker) {
+    max-width: 58ch;
+  }
+
+  .catalog-page .production-spread__media figure {
+    aspect-ratio: 16 / 6;
+  }
 }
 
 @media (max-width: 960px) {
@@ -734,6 +901,10 @@ body.catalog-page {
 
   .catalog-page .catalog-section {
     min-height: min(86svh, 48rem);
+  }
+
+  .catalog-page .production-spread {
+    min-height: 0;
   }
 
   .catalog-page .source-archive {
@@ -921,6 +1092,28 @@ body.catalog-page {
   .catalog-page .catalog-figure img,
   .catalog-page .technical-visual .catalog-figure img {
     height: clamp(13rem, 76vw, 22rem);
+  }
+
+  .catalog-page .production-spread {
+    gap: 1rem;
+  }
+
+  .catalog-page .production-spread__copy h2 {
+    max-width: 100%;
+    font-size: clamp(2.85rem, 15vw, 4.7rem);
+  }
+
+  .catalog-page .production-spread__media {
+    gap: 0.8rem;
+  }
+
+  .catalog-page .production-spread__media figure {
+    aspect-ratio: 4 / 2.55;
+    border-radius: 0.85rem;
+  }
+
+  .catalog-page .production-spread__stats {
+    grid-template-columns: 1fr;
   }
 
   .catalog-page .catalog-section p,
