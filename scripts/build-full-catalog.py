@@ -430,8 +430,50 @@ def render_boiler_room_figure() -> str:
     )
 
 
+def render_supplemental_visuals(items: list[tuple[str, str]], modifier: str) -> str:
+    figures = "".join(
+        '<figure class="catalog-figure">'
+        f'<img src="assets/editorial/{html.escape(filename)}" alt="{html.escape(alt)}" />'
+        '</figure>'
+        for filename, alt in items
+    )
+    return (
+        f'<div class="supplemental-visuals supplemental-visuals--{modifier}">'
+        f'<div class="figure-row">{figures}</div>'
+        '</div>'
+    )
+
+
+def append_after_first_table(section_html: str, insert_html: str, marker: str) -> str:
+    if marker in section_html:
+        return section_html
+    table_end = section_html.find("</table></div>")
+    if table_end == -1:
+        return section_html
+    table_end += len("</table></div>")
+    return section_html[:table_end] + insert_html + section_html[table_end:]
+
+
 def tune_catalog_layout(body_html: str) -> str:
     """Apply editorial moves that keep generated content aligned with the catalog story."""
+    section_start = body_html.find('id="section-06"')
+    section_end = body_html.find("</section>", section_start)
+    if section_start != -1 and section_end != -1:
+        section_html = body_html[section_start:section_end]
+        visuals = render_supplemental_visuals(
+            [
+                ("valvola-tkan-150-presek.png", "Valvola TKAN 150 - presek"),
+                ("valvola-tkan-150.png", "Valvola TKAN 150"),
+            ],
+            "two valvola-tkan-150-visuals",
+        )
+        updated_section = append_after_first_table(
+            section_html,
+            visuals,
+            "valvola-tkan-150-visuals",
+        )
+        body_html = body_html[:section_start] + updated_section + body_html[section_end:]
+
     section_start = body_html.find('id="section-07"')
     section_end = body_html.find("</section>", section_start)
     if section_start != -1 and section_end != -1:
@@ -455,6 +497,25 @@ def tune_catalog_layout(body_html: str) -> str:
                 + reordered_section
                 + body_html[section_end:]
             )
+
+    section_start = body_html.find('id="section-08"')
+    section_end = body_html.find("</section>", section_start)
+    if section_start != -1 and section_end != -1:
+        section_html = body_html[section_start:section_end]
+        visuals = render_supplemental_visuals(
+            [
+                ("valvola-tkan-300-integra-presek.png", "Valvola TKAN 300 Integra - presek"),
+                ("valvola-tkan-300-integra.png", "Valvola TKAN 300 Integra"),
+                ("multiciklon-tkan-300.png", "Multiciklon TKAN 300"),
+            ],
+            "three valvola-tkan-300-visuals",
+        )
+        updated_section = append_after_first_table(
+            section_html,
+            visuals,
+            "valvola-tkan-300-visuals",
+        )
+        body_html = body_html[:section_start] + updated_section + body_html[section_end:]
 
     section_start = body_html.find('id="section-10"')
     section_end = body_html.find("</section>", section_start)

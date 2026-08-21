@@ -2322,6 +2322,72 @@ body.catalog-page {
     font-size: 7.85pt;
   }
 
+  .catalog-page .supplemental-visuals {
+    margin: 2.2mm 0 0;
+    padding: 1.5mm 2.5mm;
+    background: rgba(255, 255, 255, 0.42);
+    border: 0.25mm solid rgba(88, 89, 95, 0.12);
+    border-radius: 2mm;
+    break-before: avoid;
+    page-break-before: avoid;
+    break-inside: auto;
+    page-break-inside: auto;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .catalog-page .supplemental-visuals .figure-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3mm;
+    align-items: center;
+  }
+
+  .catalog-page .supplemental-visuals--three .figure-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .catalog-page .supplemental-visuals .catalog-figure {
+    display: flex;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  .catalog-page .supplemental-visuals .catalog-figure::before,
+  .catalog-page .supplemental-visuals .catalog-figure figcaption {
+    display: none;
+  }
+
+  .catalog-page .supplemental-visuals img {
+    width: 100%;
+    max-height: 48mm;
+    object-fit: contain;
+  }
+
+  .catalog-page #section-06 .supplemental-visuals img {
+    max-height: 54mm;
+  }
+
+  .catalog-page .supplemental-visuals--three img {
+    max-height: 58mm;
+  }
+
+  .catalog-page .supplemental-visuals--three .catalog-figure:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+
+  .catalog-page .supplemental-visuals--three .catalog-figure:nth-child(3) img {
+    width: 62mm;
+  }
+
   .catalog-page #section-03 .table-scroll,
   .catalog-page #section-07 .table-scroll,
   .catalog-page #section-08 .table-scroll {
