@@ -418,6 +418,19 @@ def render_production_spread() -> str:
 """
 
 
+def render_boiler_room_figure() -> str:
+    return (
+        '<div class="technical-visual boiler-room-visual">'
+        '<div class="figure-row">'
+        '<figure class="catalog-figure">'
+        '<img src="assets/editorial/boiler-room-position.png" '
+        'alt="Pozicioniranje TKAN kotla u kotlarnici" />'
+        '</figure>'
+        '</div>'
+        '</div>'
+    )
+
+
 def tune_catalog_layout(body_html: str) -> str:
     """Apply editorial moves that keep generated content aligned with the catalog story."""
     section_start = body_html.find('id="section-07"')
@@ -443,6 +456,45 @@ def tune_catalog_layout(body_html: str) -> str:
                 + reordered_section
                 + body_html[section_end:]
             )
+
+    section_start = body_html.find('id="section-10"')
+    section_end = body_html.find("</section>", section_start)
+    if section_start != -1 and section_end != -1:
+        section_html = body_html[section_start:section_end]
+        heading_end = section_html.find("</div>")
+        first_p_start = section_html.find("<p>", heading_end)
+        first_p_end = section_html.find("</p>", first_p_start)
+        table_start = section_html.find('<div class="table-scroll', first_p_end)
+        if heading_end != -1 and first_p_start != -1 and first_p_end != -1 and table_start != -1:
+            intro_html = section_html[first_p_start:first_p_end + 4]
+            section_without_intro = (
+                section_html[:first_p_start]
+                + section_html[first_p_end + 4:]
+            )
+            table_end = section_without_intro.find("</table></div>", table_start - len(intro_html))
+            if table_end != -1 and "boiler-room-visual" not in section_without_intro:
+                table_end += len("</table></div>")
+                figure_html = render_boiler_room_figure()
+                section_without_intro = (
+                    section_without_intro[:heading_end + 6]
+                    + figure_html
+                    + section_without_intro[heading_end + 6:table_end]
+                    + intro_html
+                    + section_without_intro[table_end:]
+                )
+                body_html = (
+                    body_html[:section_start]
+                    + section_without_intro
+                    + body_html[section_end:]
+                )
+
+    body_html = re.sub(
+        r'\s*<figure class="catalog-figure">\s*'
+        r'<img src="assets/full-catalog/catalog-image-14\.png" alt="Slika 14" />\s*'
+        r'</figure>',
+        "",
+        body_html,
+    )
     return body_html
 
 
