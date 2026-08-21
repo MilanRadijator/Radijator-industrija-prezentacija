@@ -475,6 +475,7 @@ body.catalog-page {
   grid-template-columns: minmax(0, 1fr);
   grid-template-areas:
     "brand"
+    "headline"
     "media"
     "copy"
     "stats"
@@ -506,12 +507,17 @@ body.catalog-page {
   display: none;
 }
 
+.catalog-page .production-spread__headline {
+  grid-area: headline;
+  min-width: 0;
+}
+
 .catalog-page .production-spread__copy {
   grid-area: copy;
   display: grid;
-  grid-template-columns: minmax(18rem, 0.9fr) minmax(22rem, 1.1fr);
-  gap: clamp(1.2rem, 3vw, 3rem);
-  align-items: end;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2.4vw, 2.4rem);
+  align-items: start;
   min-width: 0;
 }
 
@@ -525,8 +531,8 @@ body.catalog-page {
   text-transform: uppercase;
 }
 
-.catalog-page .production-spread__copy h2 {
-  max-width: 12ch;
+.catalog-page .production-spread__headline h2 {
+  max-width: 100%;
   margin: 0.8rem 0 1.2rem;
   color: #111;
   font-family: "Bahnschrift Condensed", "Arial Narrow", sans-serif;
@@ -537,7 +543,7 @@ body.catalog-page {
   text-transform: uppercase;
 }
 
-.catalog-page .production-spread__copy h2::after {
+.catalog-page .production-spread__headline h2::after {
   content: "";
   display: block;
   width: 5rem;
@@ -894,6 +900,7 @@ body.catalog-page {
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
       "brand"
+      "headline"
       "media"
       "copy"
       "stats"
@@ -904,8 +911,8 @@ body.catalog-page {
     justify-self: start;
   }
 
-  .catalog-page .production-spread__copy h2 {
-    max-width: 12ch;
+  .catalog-page .production-spread__headline h2 {
+    max-width: 100%;
     font-size: clamp(3.5rem, 10vw, 6rem);
   }
 
@@ -1148,7 +1155,7 @@ body.catalog-page {
     gap: 0.9rem;
   }
 
-  .catalog-page .production-spread__copy h2 {
+  .catalog-page .production-spread__headline h2 {
     max-width: 100%;
     font-size: clamp(2.85rem, 15vw, 4.7rem);
   }
@@ -1913,10 +1920,7 @@ body.catalog-page {
   }
 
   .catalog-page .production-spread {
-    display: grid;
-    grid-template-columns: minmax(0, 72mm) minmax(0, 1fr);
-    grid-template-rows: auto minmax(0, 1fr) auto;
-    gap: 8mm 10mm;
+    display: block;
     min-height: 252mm;
     padding: 9mm;
     overflow: hidden;
@@ -1936,11 +1940,11 @@ body.catalog-page {
   }
 
   .catalog-page .production-spread__brand {
-    grid-column: 1 / -1;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 8mm;
+    margin: 0 0 12mm;
   }
 
   .catalog-page .production-spread__brand img {
@@ -1962,32 +1966,48 @@ body.catalog-page {
   }
 
   .catalog-page .production-spread__copy {
-    align-self: center;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6mm;
+    align-self: start;
+    margin: 5mm 0 0;
   }
 
-  .catalog-page .production-spread__copy h2 {
-    margin: 5mm 0 7mm;
+  .catalog-page .production-spread__headline {
+    margin: 0 0 8mm;
+  }
+
+  .catalog-page .production-spread__headline h2 {
+    max-width: 172mm;
+    margin: 3mm 0 0;
     color: #141414;
     font-family: "Bahnschrift Condensed", "Arial Narrow", sans-serif;
-    font-size: 39pt;
+    font-size: 43pt;
     font-weight: 800;
-    line-height: 0.9;
+    line-height: 0.88;
     letter-spacing: -0.045em;
     text-transform: uppercase;
   }
 
+  .catalog-page .production-spread__headline h2::after {
+    width: 18mm;
+    height: 0.9mm;
+    margin-top: 3mm;
+  }
+
   .catalog-page .production-spread__copy p:not(.production-spread__kicker) {
-    margin: 0 0 4mm;
+    margin: 0;
     color: #706a60;
-    font-size: 10.4pt;
-    line-height: 1.55;
+    font-size: 9.8pt;
+    line-height: 1.42;
   }
 
   .catalog-page .production-spread__media {
     display: grid;
-    grid-template-rows: repeat(2, minmax(0, 1fr));
-    gap: 6mm;
-    align-self: center;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5mm;
+    align-self: stretch;
+    margin: 0 0 5mm;
   }
 
   .catalog-page .production-spread__media figure {
@@ -2000,20 +2020,20 @@ body.catalog-page {
   .catalog-page .production-spread__media img {
     display: block;
     width: 100%;
-    height: 62mm;
+    height: 70mm;
     object-fit: cover;
   }
 
   .catalog-page .production-spread__stats {
-    grid-column: 1 / -1;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 4mm;
+    margin: 8mm 0 0;
   }
 
   .catalog-page .production-spread__stats div {
-    min-height: 26mm;
-    padding: 5mm;
+    min-height: 24mm;
+    padding: 4.5mm 5mm;
     background: rgba(255, 255, 255, 0.72);
     border: 0.25mm solid rgba(70, 58, 45, 0.08);
     border-radius: 5mm;
@@ -2024,21 +2044,20 @@ body.catalog-page {
     display: block;
     color: #df182f;
     font-family: "Bahnschrift Condensed", "Arial Narrow", sans-serif;
-    font-size: 31pt;
+    font-size: 30pt;
     line-height: 0.88;
   }
 
   .catalog-page .production-spread__stats span {
     display: block;
-    margin-top: 3mm;
+    margin-top: 2.5mm;
     color: #1f1f22;
     font-size: 8.5pt;
     font-weight: 800;
   }
 
   .catalog-page .production-spread__footer {
-    grid-column: 1 / -1;
-    margin: 0;
+    margin: 10mm 0 0;
     align-self: end;
     color: #8b8175;
     font-size: 6.2pt;
@@ -2421,7 +2440,7 @@ body.catalog-page {
     align-items: center;
     justify-content: center;
     min-width: 0;
-    height: 46mm;
+    height: 58mm;
     margin: 0;
     padding: 1mm;
     overflow: hidden;
@@ -2437,7 +2456,7 @@ body.catalog-page {
     display: block;
     width: auto;
     max-width: 100%;
-    max-height: 44mm;
+    max-height: 56mm;
     height: auto;
     object-fit: contain;
   }

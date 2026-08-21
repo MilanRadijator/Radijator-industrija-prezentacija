@@ -417,15 +417,17 @@ def render_production_spread() -> str:
   <div class="production-spread__brand">
     <span>Proizvodnja</span>
   </div>
-  <div class="production-spread__copy">
+  <div class="production-spread__headline">
     <p class="production-spread__kicker">Tehnologija i kvalitet</p>
     <h2>Proizvodnja po savremenim evropskim standardima</h2>
-    <p>Kako se proizvodnja sirila i usavrsavala, kotlovi su poceli da se izradjuju najsavremenijim tehnologijama: lasersko secenje, CNC plazma postupak, CNC probijanje, robotsko zavarivanje i zavarivanje automatima.</p>
-    <p>Danas Radijator Inzenjering zaposljava preko 350 radnika, medju kojima je 40 diplomiranih masinskih inzenjera koji svakodnevno rade na unapredjenju kvaliteta proizvoda.</p>
   </div>
   <div class="production-spread__media">
     <figure><img src="assets/editorial/company-aerial-complex-wide.jpg" alt="Proizvodni kompleks Radijator Inzenjering iz vazduha" /></figure>
     <figure><img src="assets/editorial/company-aerial-complex-top.jpg" alt="Pogon Radijator Inzenjering sa savremenom proizvodnjom" /></figure>
+  </div>
+  <div class="production-spread__copy">
+    <p>Kako se proizvodnja sirila i usavrsavala, kotlovi su poceli da se izradjuju najsavremenijim tehnologijama: lasersko secenje, CNC plazma postupak, CNC probijanje, robotsko zavarivanje i zavarivanje automatima.</p>
+    <p>Danas Radijator Inzenjering zaposljava preko 350 radnika, medju kojima je 40 diplomiranih masinskih inzenjera koji svakodnevno rade na unapredjenju kvaliteta proizvoda.</p>
   </div>
   <div class="production-spread__stats">
     <div><strong>350+</strong><span>zaposlenih</span></div>
