@@ -488,13 +488,20 @@ def tune_catalog_layout(body_html: str) -> str:
                     + body_html[section_end:]
                 )
 
-    body_html = re.sub(
-        r'\s*<figure class="catalog-figure">\s*'
-        r'<img src="assets/full-catalog/catalog-image-14\.png" alt="Slika 14" />\s*'
-        r'</figure>',
-        "",
-        body_html,
+    body_html = body_html.replace(
+        '    </figure>\n'
+        '    </div></div><div class="technical-visual"><div class="figure-row">\n'
+        '    <figure class="catalog-figure">\n'
+        '      <img src="assets/full-catalog/catalog-image-14.png" alt="Slika 14" />\n'
+        '    </figure>\n'
+        '    </div></div></section>',
+        '    </figure>\n'
+        '    <figure class="catalog-figure">\n'
+        '      <img src="assets/full-catalog/catalog-image-14.png" alt="Slika 14" />\n'
+        '    </figure>\n'
+        '    </div></div></section>',
     )
+
     return body_html
 
 
