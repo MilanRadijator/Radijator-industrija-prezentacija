@@ -418,6 +418,34 @@ def render_production_spread() -> str:
 """
 
 
+def tune_catalog_layout(body_html: str) -> str:
+    """Apply editorial moves that keep generated content aligned with the catalog story."""
+    section_start = body_html.find('id="section-07"')
+    section_end = body_html.find("</section>", section_start)
+    if section_start != -1 and section_end != -1:
+        section_html = body_html[section_start:section_end]
+        table_start = section_html.find('<div class="table-scroll table-scroll--keep table-scroll--rows-13"')
+        trailing_media_start = section_html.find(
+            '<div class="media-block media-block--image-left">',
+            table_start,
+        )
+        if table_start != -1 and trailing_media_start != -1:
+            table_html = section_html[table_start:trailing_media_start]
+            trailing_media_html = section_html[trailing_media_start:]
+            trailing_media_html = trailing_media_html.replace("<p>.</p>", "")
+            reordered_section = (
+                section_html[:table_start]
+                + trailing_media_html
+                + table_html
+            )
+            body_html = (
+                body_html[:section_start]
+                + reordered_section
+                + body_html[section_end:]
+            )
+    return body_html
+
+
 def build_content(images_by_key: dict[str, dict[str, str]]) -> tuple[str, list[str], int, int, set[str]]:
     document = Document(DOCX)
     sections: list[dict[str, object]] = []
@@ -547,6 +575,7 @@ def render_page() -> None:
     images = extract_images()
     images_by_key = {item["key"]: item for item in images}
     body_html, toc, _, _, _ = build_content(images_by_key)
+    body_html = tune_catalog_layout(body_html)
     production_spread = render_production_spread()
     body_html = body_html.replace("</section>", f"</section>\n{production_spread}", 1)
     toc.insert(1, '<a href="#production-standards">Proizvodnja i standardi</a>')

@@ -897,6 +897,30 @@
     border-radius: 50%;
   }
 
+  .catalog-page #section-08 .feature-list {
+    counter-reset: integra-feature;
+  }
+
+  .catalog-page #section-08 .feature-list li {
+    counter-increment: integra-feature;
+    padding-left: 3.25rem;
+  }
+
+  .catalog-page #section-08 .feature-list li::before {
+    content: counter(integra-feature, decimal-leading-zero);
+    top: 0.55rem;
+    width: 2rem;
+    height: 2rem;
+    color: #fff;
+    font-family: "Bahnschrift Condensed", "Arial Narrow", sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 2rem;
+    text-align: center;
+    background: #d50d24;
+    border-radius: 50%;
+  }
+
   .catalog-page .table-scroll {
     overflow: auto;
     background: #fff;

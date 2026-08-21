@@ -2042,6 +2042,19 @@ body.catalog-page {
     width: 128mm;
   }
 
+  .catalog-page #section-05 .technical-visual {
+    width: 138mm;
+    min-height: 92mm;
+    margin: 0 auto 5mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .catalog-page #section-05 .catalog-figure img {
+    max-height: 94mm;
+  }
+
   .catalog-page #section-06 .catalog-figure img,
   .catalog-page #section-09 .catalog-figure img {
     max-height: 92mm;
@@ -2142,6 +2155,55 @@ body.catalog-page {
     break-before: page;
   }
 
+  .catalog-page #section-07 > .media-block:nth-of-type(2) {
+    grid-template-columns: minmax(0, 74mm) 82mm;
+    gap: 5mm;
+    margin-bottom: 4mm;
+  }
+
+  .catalog-page #section-07 > .media-block:nth-of-type(2) .catalog-figure img {
+    max-height: 78mm;
+  }
+
+  .catalog-page #section-07 p {
+    margin-bottom: 2.25mm;
+    font-size: 8.65pt;
+    line-height: 1.32;
+  }
+
+  .catalog-page #section-07 > .media-block:nth-of-type(3) {
+    grid-template-columns: 72mm minmax(0, 1fr);
+    gap: 7mm;
+    margin: 4mm 0 0;
+    padding: 3.5mm 4mm;
+    background: rgba(255, 255, 255, 0.68);
+    border-left: 1mm solid #d70e25;
+    border-radius: 1.5mm;
+  }
+
+  .catalog-page #section-07 > .media-block:nth-of-type(3) .catalog-figure {
+    align-self: center;
+  }
+
+  .catalog-page #section-07 > .media-block:nth-of-type(3) .catalog-figure img {
+    max-height: 48mm;
+  }
+
+  .catalog-page #section-07 > .media-block:nth-of-type(3) p {
+    margin: 0;
+    font-size: 9.15pt;
+    line-height: 1.38;
+  }
+
+  .catalog-page #section-07 .table-scroll {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .catalog-page #section-07 .table-scroll + * {
+    display: none;
+  }
+
   .catalog-page #section-11 .media-block {
     grid-template-columns: 68mm minmax(0, 1fr);
     gap: 4mm;
@@ -2162,6 +2224,98 @@ body.catalog-page {
 
   .catalog-page #section-11 .catalog-figure img {
     max-height: 70mm;
+  }
+
+  .catalog-page #section-08 > .media-block {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4mm;
+  }
+
+  .catalog-page #section-08 > .media-block .figure-row {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    width: 100%;
+  }
+
+  .catalog-page #section-08 > .media-block .media-copy {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .catalog-page #section-08 > .media-block .catalog-figure {
+    width: 100%;
+    min-height: 110mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .catalog-page #section-08 > .media-block .catalog-figure img {
+    width: 150mm;
+    max-width: 100%;
+    max-height: 108mm;
+  }
+
+  .catalog-page #section-08 .feature-list {
+    counter-reset: integra-feature;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 9mm;
+    row-gap: 1.3mm;
+    margin-top: 0;
+  }
+
+  .catalog-page #section-08 .feature-list li {
+    counter-increment: integra-feature;
+    padding: 1.3mm 0 1.3mm 9.5mm;
+    font-size: 8.6pt;
+    line-height: 1.24;
+    border-left: 0;
+  }
+
+  .catalog-page #section-08 .feature-list li::before {
+    content: counter(integra-feature, decimal-leading-zero);
+    display: block;
+    top: 1.05mm;
+    left: 0;
+    width: 6.6mm;
+    height: 6.6mm;
+    color: #fff;
+    font-family: "Bahnschrift Condensed", "Arial Narrow", sans-serif;
+    font-size: 7.7pt;
+    font-weight: 800;
+    line-height: 6.6mm;
+    text-align: center;
+    background: #d50d24;
+    border-radius: 50%;
+    transform: none;
+  }
+
+  .catalog-page #section-08 > .technical-visual {
+    break-before: page;
+    page-break-before: always;
+    width: 100%;
+    min-height: 94mm;
+    margin: 0 0 4mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .catalog-page #section-08 > .technical-visual .catalog-figure img {
+    max-height: 94mm;
+  }
+
+  .catalog-page #section-08 .table-scroll {
+    padding: 4mm;
+  }
+
+  .catalog-page #section-08 th,
+  .catalog-page #section-08 td {
+    padding: 1.2mm 1.15mm;
+    font-size: 6.85pt;
+    line-height: 1.18;
   }
 
   .catalog-page #section-12 .media-block {
