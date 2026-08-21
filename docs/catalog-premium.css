@@ -773,6 +773,46 @@ body.catalog-page {
   background: #f6f3ee;
 }
 
+.catalog-page .supplemental-visuals {
+  display: grid;
+  gap: clamp(0.8rem, 1.5vw, 1.15rem);
+  width: 100%;
+  max-width: 100%;
+  margin: clamp(1rem, 1.8vw, 1.45rem) 0 0;
+  box-sizing: border-box;
+}
+
+.catalog-page .supplemental-visuals--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.catalog-page .supplemental-visuals--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.catalog-page .supplemental-visuals__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  margin: 0;
+  padding: clamp(0.45rem, 1vw, 0.9rem);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.34);
+  border: 1px solid rgba(20, 21, 24, 0.06);
+  border-radius: 0.9rem;
+  box-shadow: 0 16px 35px rgba(20, 21, 24, 0.07);
+}
+
+.catalog-page .supplemental-visuals__item img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: clamp(12rem, 22vw, 18rem);
+  max-height: 100%;
+  object-fit: contain;
+}
+
 .catalog-page .source-archive {
   display: grid;
   grid-template-columns: minmax(12rem, 0.7fr) minmax(15rem, 1.15fr) minmax(15rem, 0.9fr);
@@ -2322,72 +2362,6 @@ body.catalog-page {
     font-size: 7.85pt;
   }
 
-  .catalog-page .supplemental-visuals {
-    margin: 2.2mm 0 0;
-    padding: 1.5mm 2.5mm;
-    background: rgba(255, 255, 255, 0.42);
-    border: 0.25mm solid rgba(88, 89, 95, 0.12);
-    border-radius: 2mm;
-    break-before: avoid;
-    page-break-before: avoid;
-    break-inside: auto;
-    page-break-inside: auto;
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
-
-  .catalog-page .supplemental-visuals .figure-row {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 3mm;
-    align-items: center;
-  }
-
-  .catalog-page .supplemental-visuals--three .figure-row {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .catalog-page .supplemental-visuals .catalog-figure {
-    display: flex;
-    min-height: 0;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: 0;
-    box-shadow: none;
-    break-inside: auto;
-    page-break-inside: auto;
-  }
-
-  .catalog-page .supplemental-visuals .catalog-figure::before,
-  .catalog-page .supplemental-visuals .catalog-figure figcaption {
-    display: none;
-  }
-
-  .catalog-page .supplemental-visuals img {
-    width: 100%;
-    max-height: 48mm;
-    object-fit: contain;
-  }
-
-  .catalog-page #section-06 .supplemental-visuals img {
-    max-height: 54mm;
-  }
-
-  .catalog-page .supplemental-visuals--three img {
-    max-height: 58mm;
-  }
-
-  .catalog-page .supplemental-visuals--three .catalog-figure:nth-child(3) {
-    grid-column: 1 / -1;
-  }
-
-  .catalog-page .supplemental-visuals--three .catalog-figure:nth-child(3) img {
-    width: 62mm;
-  }
-
   .catalog-page #section-03 .table-scroll,
   .catalog-page #section-07 .table-scroll,
   .catalog-page #section-08 .table-scroll {
@@ -2420,6 +2394,52 @@ body.catalog-page {
 
   .catalog-page #section-08 .table-scroll::before {
     content: "TKAN INTEGRA / DIMENZIJE KOTLA";
+  }
+
+  .catalog-page .supplemental-visuals {
+    display: grid;
+    gap: 3mm;
+    width: 100%;
+    max-width: 100%;
+    margin: 3mm 0 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .catalog-page .supplemental-visuals--two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .catalog-page .supplemental-visuals--three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .catalog-page .supplemental-visuals__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    height: 46mm;
+    margin: 0;
+    padding: 1mm;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.18);
+    border: 0;
+    border-radius: 1mm;
+    box-shadow: none;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .catalog-page .supplemental-visuals__item img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: 44mm;
+    height: auto;
+    object-fit: contain;
   }
 
   .catalog-page #section-10 .table-scroll {
@@ -2525,6 +2545,10 @@ body.catalog-page {
 
   .catalog-page #section-07 .table-scroll + * {
     display: none;
+  }
+
+  .catalog-page #section-07 .table-scroll + .supplemental-visuals {
+    display: grid;
   }
 
   .catalog-page #section-11 .media-block {

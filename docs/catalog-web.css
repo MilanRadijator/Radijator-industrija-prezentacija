@@ -946,49 +946,6 @@
     outline-offset: 3px;
   }
 
-  .catalog-page .supplemental-visuals {
-    margin-top: clamp(1.25rem, 2.6vw, 2.4rem);
-    padding: clamp(1rem, 2.2vw, 1.6rem);
-    background: rgba(255, 255, 255, 0.58);
-    border: 1px solid rgba(16, 17, 20, 0.08);
-    border-radius: clamp(1rem, 2vw, 1.6rem);
-    box-shadow: 0 20px 55px rgba(17, 18, 21, 0.08);
-  }
-
-  .catalog-page .supplemental-visuals .figure-row {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(1rem, 2vw, 1.5rem);
-    align-items: center;
-  }
-
-  .catalog-page .supplemental-visuals--three .figure-row {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .catalog-page .supplemental-visuals .catalog-figure {
-    margin: 0;
-    padding: clamp(0.6rem, 1.4vw, 1rem);
-    background: transparent;
-    border: 0;
-    box-shadow: none;
-  }
-
-  .catalog-page .supplemental-visuals .catalog-figure::before,
-  .catalog-page .supplemental-visuals .catalog-figure figcaption {
-    display: none;
-  }
-
-  .catalog-page .supplemental-visuals img {
-    width: 100%;
-    height: clamp(13rem, 25vw, 22rem);
-    object-fit: contain;
-  }
-
-  .catalog-page .supplemental-visuals--three img {
-    height: clamp(11rem, 19vw, 18rem);
-  }
-
   .catalog-page .catalog-section thead th {
     position: sticky;
     top: 0;
@@ -1617,16 +1574,6 @@
 
   .catalog-page .production-spread__stats {
     grid-template-columns: 1fr;
-  }
-
-  .catalog-page .supplemental-visuals .figure-row,
-  .catalog-page .supplemental-visuals--three .figure-row {
-    grid-template-columns: 1fr;
-  }
-
-  .catalog-page .supplemental-visuals img,
-  .catalog-page .supplemental-visuals--three img {
-    height: clamp(15rem, 64vw, 24rem);
   }
 
   .catalog-page .media-block .media-copy,

@@ -40,6 +40,18 @@ ASSET_DIR = DOCS / "assets" / "full-catalog"
 OUT_HTML = DOCS / "index.html"
 ALIAS_HTML = DOCS / "full-catalog.html"
 PDF_DOWNLOAD_ENABLED = True
+EDITORIAL_ASSET_DIR = DOCS / "assets" / "editorial"
+SUPPLEMENTAL_IMAGE_SOURCES = {
+    "valvola-tkan-150-presek.png": Path.home() / "Downloads" / "Valvola TKAN 150 - PRESEK.PNG",
+    "valvola-tkan-150.png": Path.home() / "Downloads" / "Valvola TKAN 150.PNG",
+    "valvola-tkan-300-integra-presek.png": Path.home()
+    / "Downloads"
+    / "Valvola - TKAN 300 Integra - presek.PNG",
+    "valvola-tkan-300-integra.png": Path.home()
+    / "Downloads"
+    / "Valvola - TKAN 300 Integra.PNG",
+    "multiciklon-tkan-300.png": Path.home() / "Downloads" / "Multiciklon TKAN 300.PNG",
+}
 
 
 def render_pdf_link(class_name: str, label: str) -> str:
@@ -184,6 +196,14 @@ def save_display_image(raw_path: Path, display_path: Path) -> None:
                 Image.Resampling.LANCZOS,
             ).filter(ImageFilter.UnsharpMask(radius=1.1, percent=115, threshold=3))
         cleaned.save(display_path, optimize=False, compress_level=4)
+
+
+def prepare_supplemental_images() -> None:
+    EDITORIAL_ASSET_DIR.mkdir(parents=True, exist_ok=True)
+    for target_name, source_path in SUPPLEMENTAL_IMAGE_SOURCES.items():
+        if not source_path.is_file():
+            raise FileNotFoundError(f"Nedostaje slika za katalog: {source_path}")
+        save_display_image(source_path, EDITORIAL_ASSET_DIR / target_name)
 
 
 def extract_images() -> list[dict[str, str]]:
@@ -431,49 +451,37 @@ def render_boiler_room_figure() -> str:
 
 
 def render_supplemental_visuals(items: list[tuple[str, str]], modifier: str) -> str:
-    figures = "".join(
-        '<figure class="catalog-figure">'
-        f'<img src="assets/editorial/{html.escape(filename)}" alt="{html.escape(alt)}" />'
-        '</figure>'
+    figures = "\n".join(
+        (
+            '<figure class="supplemental-visuals__item">'
+            f'<img src="assets/editorial/{html.escape(filename)}" alt="{html.escape(alt)}" />'
+            "</figure>"
+        )
         for filename, alt in items
     )
     return (
         f'<div class="supplemental-visuals supplemental-visuals--{modifier}">'
-        f'<div class="figure-row">{figures}</div>'
-        '</div>'
+        f"{figures}"
+        "</div>"
     )
 
 
-def append_after_first_table(section_html: str, insert_html: str, marker: str) -> str:
-    if marker in section_html:
-        return section_html
+def append_after_section_table(body_html: str, section_id: str, insert_html: str) -> str:
+    section_start = body_html.find(f'id="{section_id}"')
+    section_end = body_html.find("</section>", section_start)
+    if section_start == -1 or section_end == -1:
+        return body_html
+    section_html = body_html[section_start:section_end]
     table_end = section_html.find("</table></div>")
     if table_end == -1:
-        return section_html
+        return body_html
     table_end += len("</table></div>")
-    return section_html[:table_end] + insert_html + section_html[table_end:]
+    updated_section = section_html[:table_end] + insert_html + section_html[table_end:]
+    return body_html[:section_start] + updated_section + body_html[section_end:]
 
 
 def tune_catalog_layout(body_html: str) -> str:
     """Apply editorial moves that keep generated content aligned with the catalog story."""
-    section_start = body_html.find('id="section-06"')
-    section_end = body_html.find("</section>", section_start)
-    if section_start != -1 and section_end != -1:
-        section_html = body_html[section_start:section_end]
-        visuals = render_supplemental_visuals(
-            [
-                ("valvola-tkan-150-presek.png", "Valvola TKAN 150 - presek"),
-                ("valvola-tkan-150.png", "Valvola TKAN 150"),
-            ],
-            "two valvola-tkan-150-visuals",
-        )
-        updated_section = append_after_first_table(
-            section_html,
-            visuals,
-            "valvola-tkan-150-visuals",
-        )
-        body_html = body_html[:section_start] + updated_section + body_html[section_end:]
-
     section_start = body_html.find('id="section-07"')
     section_end = body_html.find("</section>", section_start)
     if section_start != -1 and section_end != -1:
@@ -497,25 +505,6 @@ def tune_catalog_layout(body_html: str) -> str:
                 + reordered_section
                 + body_html[section_end:]
             )
-
-    section_start = body_html.find('id="section-08"')
-    section_end = body_html.find("</section>", section_start)
-    if section_start != -1 and section_end != -1:
-        section_html = body_html[section_start:section_end]
-        visuals = render_supplemental_visuals(
-            [
-                ("valvola-tkan-300-integra-presek.png", "Valvola TKAN 300 Integra - presek"),
-                ("valvola-tkan-300-integra.png", "Valvola TKAN 300 Integra"),
-                ("multiciklon-tkan-300.png", "Multiciklon TKAN 300"),
-            ],
-            "three valvola-tkan-300-visuals",
-        )
-        updated_section = append_after_first_table(
-            section_html,
-            visuals,
-            "valvola-tkan-300-visuals",
-        )
-        body_html = body_html[:section_start] + updated_section + body_html[section_end:]
 
     section_start = body_html.find('id="section-10"')
     section_end = body_html.find("</section>", section_start)
@@ -560,6 +549,30 @@ def tune_catalog_layout(body_html: str) -> str:
         '      <img src="assets/full-catalog/catalog-image-14.png" alt="Slika 14" />\n'
         '    </figure>\n'
         '    </div></div></section>',
+    )
+
+    body_html = append_after_section_table(
+        body_html,
+        "section-03",
+        render_supplemental_visuals(
+            [
+                ("valvola-tkan-150-presek.png", "Valvola TKAN 150 - presek"),
+                ("valvola-tkan-150.png", "Valvola TKAN 150"),
+            ],
+            "two",
+        ),
+    )
+    body_html = append_after_section_table(
+        body_html,
+        "section-07",
+        render_supplemental_visuals(
+            [
+                ("valvola-tkan-300-integra-presek.png", "Valvola TKAN 300 Integra - presek"),
+                ("valvola-tkan-300-integra.png", "Valvola TKAN 300 Integra"),
+                ("multiciklon-tkan-300.png", "Multiciklon TKAN 300"),
+            ],
+            "three",
+        ),
     )
 
     return body_html
@@ -691,6 +704,7 @@ def build_content(images_by_key: dict[str, dict[str, str]]) -> tuple[str, list[s
 
 
 def render_page() -> None:
+    prepare_supplemental_images()
     images = extract_images()
     images_by_key = {item["key"]: item for item in images}
     body_html, toc, _, _, _ = build_content(images_by_key)
