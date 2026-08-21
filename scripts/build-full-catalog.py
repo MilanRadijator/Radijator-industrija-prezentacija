@@ -391,6 +391,33 @@ def render_section(section: dict[str, object], section_number: int) -> str:
     )
 
 
+def render_production_spread() -> str:
+    return """
+<section class="catalog-section production-spread" id="production-standards" data-section="PRO">
+  <div class="production-spread__brand">
+    <img src="assets/logo.png" alt="Radijator Inzenjering" />
+    <span>Proizvodnja</span>
+  </div>
+  <div class="production-spread__copy">
+    <p class="production-spread__kicker">Tehnologija i kvalitet</p>
+    <h2>Proizvodnja po savremenim evropskim standardima</h2>
+    <p>Kako se proizvodnja sirila i usavrsavala, kotlovi su poceli da se izradjuju najsavremenijim tehnologijama: lasersko secenje, CNC plazma postupak, CNC probijanje, robotsko zavarivanje i zavarivanje automatima.</p>
+    <p>Danas Radijator Inzenjering zaposljava preko 350 radnika, medju kojima je 40 diplomiranih masinskih inzenjera koji svakodnevno rade na unapredjenju kvaliteta proizvoda.</p>
+  </div>
+  <div class="production-spread__media">
+    <figure><img src="assets/editorial/company-aerial-complex-wide.jpg" alt="Proizvodni kompleks Radijator Inzenjering iz vazduha" /></figure>
+    <figure><img src="assets/editorial/company-aerial-complex-top.jpg" alt="Pogon Radijator Inzenjering sa savremenom proizvodnjom" /></figure>
+  </div>
+  <div class="production-spread__stats">
+    <div><strong>350+</strong><span>zaposlenih</span></div>
+    <div><strong>40</strong><span>dipl. masinskih inzenjera</span></div>
+    <div><strong>EU</strong><span>izvoz u 27+ zemalja EU</span></div>
+  </div>
+  <p class="production-spread__footer">Tehnologija / kvalitet / trziste</p>
+</section>
+"""
+
+
 def build_content(images_by_key: dict[str, dict[str, str]]) -> tuple[str, list[str], int, int, set[str]]:
     document = Document(DOCX)
     sections: list[dict[str, object]] = []
@@ -520,6 +547,9 @@ def render_page() -> None:
     images = extract_images()
     images_by_key = {item["key"]: item for item in images}
     body_html, toc, _, _, _ = build_content(images_by_key)
+    production_spread = render_production_spread()
+    body_html = body_html.replace("</section>", f"</section>\n{production_spread}", 1)
+    toc.insert(1, '<a href="#production-standards">Proizvodnja i standardi</a>')
     nav_pdf_link = render_pdf_link("web-nav-pdf", "PDF katalog")
     hero_pdf_link = render_pdf_link("action-secondary", "Preuzmi PDF")
 
