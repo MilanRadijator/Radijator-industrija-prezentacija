@@ -395,7 +395,6 @@ def render_production_spread() -> str:
     return """
 <section class="catalog-section production-spread" id="production-standards" data-section="PRO">
   <div class="production-spread__brand">
-    <img src="assets/logo.png" alt="Radijator Inzenjering" />
     <span>Proizvodnja</span>
   </div>
   <div class="production-spread__copy">
