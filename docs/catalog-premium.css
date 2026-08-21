@@ -1582,6 +1582,10 @@ body.catalog-page {
     page-break-before: auto;
   }
 
+  .catalog-page #section-01 {
+    min-height: 242mm;
+  }
+
   .catalog-page #section-11 .word-page-break {
     break-before: auto;
     page-break-before: auto;
@@ -1592,7 +1596,7 @@ body.catalog-page {
     z-index: 2;
     display: grid;
     grid-template-columns: minmax(0, 112mm) minmax(0, 60mm);
-    grid-template-rows: 66mm repeat(4, 29mm);
+    grid-template-rows: 62mm repeat(4, 28mm);
     gap: 3mm 5mm;
     align-items: start;
   }
@@ -1608,9 +1612,9 @@ body.catalog-page {
 
   .catalog-page #section-01 .about-copy p {
     max-width: none;
-    margin-bottom: 1.35mm;
-    font-size: 7.7pt;
-    line-height: 1.27;
+    margin-bottom: 1.12mm;
+    font-size: 7.55pt;
+    line-height: 1.24;
   }
 
   .catalog-page #section-01 .about-gallery {
@@ -1626,12 +1630,12 @@ body.catalog-page {
   .catalog-page #section-01 .about-photo--company {
     grid-column: 1 / -1;
     grid-row: 1;
-    height: 66mm;
+    height: 62mm;
   }
 
   .catalog-page #section-01 .about-photo:not(.about-photo--company) {
     grid-column: 2;
-    height: 29mm;
+    height: 28mm;
   }
 
   .catalog-page #section-01 .about-photo:nth-of-type(2) {
