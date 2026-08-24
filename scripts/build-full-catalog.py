@@ -39,6 +39,8 @@ DOCS = ROOT / "docs"
 ASSET_DIR = DOCS / "assets" / "full-catalog"
 OUT_HTML = DOCS / "index.html"
 ALIAS_HTML = DOCS / "full-catalog.html"
+RO_HTML = DOCS / "index-ro.html"
+RO_ALIAS_HTML = DOCS / "full-catalog-ro.html"
 PDF_DOWNLOAD_ENABLED = True
 EDITORIAL_ASSET_DIR = DOCS / "assets" / "editorial"
 SUPPLEMENTAL_IMAGE_SOURCES = {
@@ -53,11 +55,374 @@ SUPPLEMENTAL_IMAGE_SOURCES = {
     "multiciklon-tkan-300.png": Path.home() / "Downloads" / "Multiciklon TKAN 300.PNG",
 }
 
+LANGUAGE_CONFIG = {
+    "sr": {
+        "html_lang": "sr",
+        "html_path": OUT_HTML,
+        "alias_path": ALIAS_HTML,
+        "pdf_filename": "radijator-industrijski-kotlovi.pdf",
+        "page_title": "Kompletan katalog | Radijator Inzenjering",
+        "aria_main": "Glavna navigacija",
+        "brand_title": "Industrijski katalog",
+        "brand_aria": "Radijator Inženjering - vrh kataloga",
+        "nav_boilers": "Kotlovi",
+        "nav_systems": "Sistemi",
+        "nav_equipment": "Oprema",
+        "nav_contact": "Kontakt",
+        "pdf_label": "PDF katalog",
+        "hero_topline": "Industrijska termoenergetska rešenja",
+        "hero_eyebrow": "Kompletan proizvodni katalog / 2026",
+        "hero_title": "Industrijski kotlovi <em>na biomasu</em>",
+        "hero_lead": (
+            "Pouzdani sistemi visokih snaga, projektovani za efikasnost, "
+            "dug radni vek i potpunu kontrolu procesa sagorevanja."
+        ),
+        "hero_primary": "Pregledaj katalog",
+        "hero_secondary": "Preuzmi PDF",
+        "scroll": "Skrolujte",
+        "toc_summary": "Sadržaj kataloga",
+        "top_link": "Vrh kataloga",
+        "production_toc": "Proizvodnja i standardi",
+        "footer_kicker": "Projektovanje / proizvodnja / podrška",
+        "footer_title": "Partner za kompletna termoenergetska rešenja.",
+        "footer_address": "Živojina Lazića Solunca 6<br />36000 Kraljevo, Srbija",
+        "footer_gallery": "Radijator Inženjering u praksi",
+        "footer_product": "Industrijski kotlovi na biomasu",
+        "footer_top": "Nazad na vrh",
+        "dialog_label": "Uvećani tehnički prikaz",
+        "dialog_close": "Zatvori uvećani prikaz",
+        "dialog_close_text": "Zatvori",
+        "badge_alt": "35 godina iskustva - kvalitet bez kompromisa",
+        "badge_title": "35 godina iskustva",
+    },
+    "ro": {
+        "html_lang": "ro",
+        "html_path": RO_HTML,
+        "alias_path": RO_ALIAS_HTML,
+        "pdf_filename": "radijator-industrijski-kotlovi-ro.pdf",
+        "page_title": "Catalog complet | Radijator Inzenjering",
+        "aria_main": "Navigare principală",
+        "brand_title": "Catalog industrial",
+        "brand_aria": "Radijator Inženjering - începutul catalogului",
+        "nav_boilers": "Cazane",
+        "nav_systems": "Sisteme",
+        "nav_equipment": "Echipamente",
+        "nav_contact": "Contact",
+        "pdf_label": "Catalog PDF",
+        "hero_topline": "Soluții termoenergetice industriale",
+        "hero_eyebrow": "Catalog complet de produse / 2026",
+        "hero_title": "Cazane industriale <em>pe biomasă</em>",
+        "hero_lead": (
+            "Sisteme fiabile de putere mare, proiectate pentru eficiență, "
+            "durată lungă de viață și control complet al procesului de ardere."
+        ),
+        "hero_primary": "Vezi catalogul",
+        "hero_secondary": "Descarcă PDF",
+        "scroll": "Derulați",
+        "toc_summary": "Cuprins catalog",
+        "top_link": "Început catalog",
+        "production_toc": "Producție și standarde",
+        "footer_kicker": "Proiectare / producție / suport",
+        "footer_title": "Partener pentru soluții termoenergetice complete.",
+        "footer_address": "Živojina Lazića Solunca 6<br />36000 Kraljevo, Serbia",
+        "footer_gallery": "Radijator Inženjering în practică",
+        "footer_product": "Cazane industriale pe biomasă",
+        "footer_top": "Înapoi sus",
+        "dialog_label": "Vizualizare tehnică mărită",
+        "dialog_close": "Închide vizualizarea mărită",
+        "dialog_close_text": "Închide",
+        "badge_alt": "35 de ani de experiență - calitate fără compromis",
+        "badge_title": "35 de ani de experiență",
+    },
+}
 
-def render_pdf_link(class_name: str, label: str) -> str:
+LANGUAGE_LABELS = {"sr": "SR", "ro": "RO"}
+
+RO_EXACT_TRANSLATIONS = {
+    "O nama": "Despre noi",
+    'Radijator inženjering" d.o.o. u poslovnom smislu je pravni naslednik zanatske radnje ,,Radijatorˮ koja je osnovana 1991. godine, čija je osnovna delatnost bila montaža i održavanje centralnog grejanja. Prvi toplovodni kotao na čvrsto gorivo izradili smo 1985. godine.': (
+        "Radijator Inženjering d.o.o. este continuatorul juridic al atelierului artizanal "
+        "„Radijator”, fondat în 1991, a cărui activitate principală a fost montajul și "
+        "întreținerea sistemelor de încălzire centrală. Primul cazan de apă caldă pe "
+        "combustibil solid l-am produs în anul 1985."
+    ),
+    "Preduzeće u današnjoj formi postoji od 2002. godine, i iz godine u godinu, napreduje velikim koracima, uvek se trudeći da bude prvo u primeni novih tehnologija, kvalitetu proizvoda i osvajanju novih - evropskih tržišta.": (
+        "Compania funcționează în forma actuală din anul 2002 și progresează constant, "
+        "urmărind să fie printre primele în aplicarea tehnologiilor noi, în calitatea "
+        "produselor și în dezvoltarea de noi piețe europene."
+    ),
+    "Kako smo proširivali i usavršavali proizvodnju tako smo došli do nivoa da se kotlovi prave najsavremenijim svetskim tehnologijama. Iz oblasti sečenja limova izdvajaju se: sečenje laserom, CNC plazma postupak i CNC probijanje. Postupak zavarivanja izvodi se robotski kao i upotrebom automata. Najbolji pokazatelji kvaliteta proizvoda i usluga jeste činjenica da se svake godine proizvodnja povećava.": (
+        "Prin extinderea și perfecționarea producției am ajuns la nivelul la care cazanele "
+        "sunt fabricate cu tehnologii moderne de clasă mondială. În prelucrarea tablei se "
+        "remarcă tăierea laser, procedeele CNC cu plasmă și perforarea CNC. Sudura se "
+        "realizează robotic și cu echipamente automate. Cel mai bun indicator al calității "
+        "produselor și serviciilor este faptul că producția crește de la an la an."
+    ),
+    'Danas "Radijator-inženjering" zapošljava preko 350 radnika od kojih je 40 dipl.maš.ing. koji svakodnevno rade na usavršavanju kvaliteta proizvoda.': (
+        "Astăzi, Radijator Inženjering are peste 350 de angajați, dintre care 40 sunt "
+        "ingineri mecanici absolvenți care lucrează zilnic la perfecționarea calității "
+        "produselor."
+    ),
+    "Sigurna postojanost kvaliteta, kako proizvoda tako i poslovanja firme, potvrđena je dobijanjem sertifikata sistema kvaliteta ISO 9001:2008.": (
+        "Constanța calității produselor și a activității companiei este confirmată prin "
+        "certificarea sistemului de management al calității ISO 9001:2008."
+    ),
+    "Radijator Inženjering je domaći proizvođač kotlova na biomasu sa dugogodišnjom tradicijom, prepoznat po pouzdanim i tehnološki naprednim rešenjima za grejanje. Razvojem sopstvenih proizvodnih procesa i primenom savremenih tehnologija, stvaramo proizvode koji odgovaraju najvišim zahtevima tržišta kada su u pitanju kvalitet, efikasnost i dug vek trajanja.": (
+        "Radijator Inženjering este un producător local de cazane pe biomasă cu tradiție "
+        "îndelungată, recunoscut pentru soluții de încălzire fiabile și avansate tehnologic. "
+        "Prin dezvoltarea propriilor procese de producție și aplicarea tehnologiilor moderne, "
+        "realizăm produse care răspund celor mai înalte cerințe ale pieței privind calitatea, "
+        "eficiența și durata lungă de exploatare."
+    ),
+    "Naša proizvodnja obuhvata kotlove snage od 6 do 600 kW, namenjene grejanju porodičnih kuća, stambenih i poslovnih objekata, javnih ustanova i industrijskih postrojenja. Zahvaljujući širokom asortimanu i mogućnosti izrade kaskadnih sistema, u mogućnosti smo da ponudimo optimalno rešenje za svaki objekat i svaku potrebu.": (
+        "Producția noastră include cazane cu puteri de la 6 la 600 kW, destinate încălzirii "
+        "caselor familiale, clădirilor rezidențiale și comerciale, instituțiilor publice și "
+        "instalațiilor industriale. Datorită gamei largi și posibilității realizării "
+        "sistemelor în cascadă, putem oferi soluția optimă pentru fiecare obiectiv și fiecare nevoie."
+    ),
+    "Kvalitet naših proizvoda rezultat je pažljivo odabranih materijala, precizne proizvodnje i rigorozne kontrole kvaliteta u svim fazama procesa. Svaki kotao razvijen je sa ciljem da obezbedi maksimalnu energetsku efikasnost, pouzdan rad i dugoročnu eksploataciju uz minimalne troškove održavanja.": (
+        "Calitatea produselor noastre este rezultatul materialelor atent selectate, al "
+        "producției precise și al controlului riguros al calității în toate etapele procesului. "
+        "Fiecare cazan este dezvoltat pentru a asigura eficiență energetică maximă, funcționare "
+        "fiabilă și exploatare pe termen lung cu costuri minime de întreținere."
+    ),
+    "Posebnu pažnju posvećujemo inovacijama i unapređenju tehnologije proizvodnje, kako bismo korisnicima obezbedili savremena rešenja koja kombinuju visok stepen automatizacije, jednostavno upravljanje i maksimalno iskorišćenje energije.": (
+        "Acordăm o atenție specială inovațiilor și îmbunătățirii tehnologiei de producție, "
+        "pentru a oferi utilizatorilor soluții moderne care combină un nivel ridicat de "
+        "automatizare, operare simplă și valorificare maximă a energiei."
+    ),
+    "Svi naši proizvodi projektovani su i proizvedeni u skladu sa važećim evropskim standardima i propisima u oblasti kotlova, što predstavlja potvrdu njihove bezbednosti, pouzdanosti i visokog kvaliteta.": (
+        "Toate produsele noastre sunt proiectate și fabricate în conformitate cu standardele "
+        "și reglementările europene aplicabile în domeniul cazanelor, confirmând siguranța, "
+        "fiabilitatea și calitatea lor ridicată."
+    ),
+    "Izborom Radijator Inženjering kotlova birate domaći proizvod, provereni kvalitet i partnera koji svojim iskustvom, stručnom podrškom i kompletnim sistemskim rešenjima pruža sigurnost tokom celog životnog veka sistema grejanja.": (
+        "Alegând cazanele Radijator Inženjering, alegeți un produs local, calitate verificată "
+        "și un partener care, prin experiență, suport profesional și soluții complete de sistem, "
+        "oferă siguranță pe întreaga durată de viață a sistemului de încălzire."
+    ),
+    "Kompanija sa 35 godina iskustva u projektovanju, izradi i inovacijama na polju kotlova koji zagrevaju hiljade objekata širom Evrope!": (
+        "O companie cu 35 de ani de experiență în proiectarea, fabricarea și inovarea cazanelor "
+        "care încălzesc mii de obiective în întreaga Europă!"
+    ),
+    "Serija TKAN modeli": "Modele seria TKAN",
+    "Serija TKAN Integra modeli": "Modele seria TKAN Integra",
+    "Položaj TKAN običnog i TKAN Integra kotla u kotlarnici": (
+        "Poziționarea cazanului TKAN și TKAN Integra în camera tehnică"
+    ),
+    "PROIZVODNI PROGRAM – INDUSTRIJA": "PROGRAM DE PRODUCȚIE - INDUSTRIE",
+    "PROIZVODNI PROGRAM - INDUSTRIJA": "PROGRAM DE PRODUCȚIE - INDUSTRIE",
+    "TOPLOVODNI KOTAO NA PELET SA AUTOMATSKIM NALAGANJEM TKAN MODEL": (
+        "CAZAN DE APĂ CALDĂ PE PELEȚI CU ALIMENTARE AUTOMATĂ - MODEL TKAN"
+    ),
+    "PRESEK TKAN KOTLA SA OPISOM ELEMENATA": (
+        "SECȚIUNE CAZAN TKAN CU DESCRIEREA ELEMENTELOR"
+    ),
+    "TABELA SA DIMENZIJAMA TKAN KOTLA": "TABEL CU DIMENSIUNILE CAZANULUI TKAN",
+    "TABELA SA DIMENZIJAMA TKAN SILOSA": "TABEL CU DIMENSIUNILE SILOZULUI TKAN",
+    "TOPLOVODNI KOTAO NA PELET SA AUTOMATSKIM NALAGANJEM, OTPRAŠIVANJEM I CIKLONOM – TKAN INTEGRA MODEL": (
+        "CAZAN DE APĂ CALDĂ PE PELEȚI CU ALIMENTARE AUTOMATĂ, DESPRĂFUIRE ȘI CICLON - MODEL TKAN INTEGRA"
+    ),
+    "PRESEK TKAN INTEGRA KOTLA SA OPISOM ELEMENATA": (
+        "SECȚIUNE CAZAN TKAN INTEGRA CU DESCRIEREA ELEMENTELOR"
+    ),
+    "TABELA SA DIMENZIJAMA TKAN INTEGRA SILOSA": (
+        "TABEL CU DIMENSIUNILE SILOZULUI TKAN INTEGRA"
+    ),
+    "POLOŽAJ TKAN OBIČNOG I TKAN INTEGRA KOTLA U KOTLARNICI": (
+        "POZIȚIONAREA CAZANULUI TKAN ȘI TKAN INTEGRA ÎN CAMERA TEHNICĂ"
+    ),
+    "KASKADNI SISTEMI": "SISTEME ÎN CASCADĂ",
+    "DODATNA OPREMA": "ECHIPAMENTE SUPLIMENTARE",
+    "AUTOMATSKI TRANSPORT PELETA": "TRANSPORT AUTOMAT AL PELEȚILOR",
+    "SERIJA TKAN MODELI": "SERIA DE MODELE TKAN",
+    "SERIJA TKAN INTEGRA MODELI": "SERIA DE MODELE TKAN INTEGRA",
+    "DIMENZIJE": "DIMENSIUNI",
+    "TIP KOTLA": "TIP CAZAN",
+    "Jed.mere": "UM",
+    "Snaga": "Putere",
+    "Radni pritisak": "Presiune de lucru",
+    "Probni pritisak": "Presiune de probă",
+    "Zapremina vode u kotlu": "Volum apă în cazan",
+    "Masa kotla": "Masă cazan",
+    "Masa silosa": "Masă siloz",
+    "Količina peleta koja staje u silosu": "Cantitate de peleți în siloz",
+}
+
+RO_PHRASE_TRANSLATIONS = [
+    ("kotlove snage od 15 do 500 kW", "cazane cu puteri de la 6 la 600 kW"),
+    ("kotlove snage od 6 do 600 kW", "cazane cu puteri de la 6 la 600 kW"),
+    ("snage od 15 do 500 kW", "puteri de la 6 la 600 kW"),
+    ("snage od 6 do 600 kW", "puteri de la 6 la 600 kW"),
+    ("Radijator inženjering", "Radijator Inženjering"),
+    ("Radijator Inženjering", "Radijator Inženjering"),
+    ("industrijski kotao na biomasu", "cazan industrial pe biomasă"),
+    ("Industrijski kotao na biomasu", "Cazan industrial pe biomasă"),
+    ("industrijski kotlovi na biomasu", "cazane industriale pe biomasă"),
+    ("Industrijski kotlovi na biomasu", "Cazane industriale pe biomasă"),
+    ("kotlovi na biomasu", "cazane pe biomasă"),
+    ("kotlovskih limova debljine 6 mm i više", "tablă de cazan cu grosimea de 6 mm și mai mult"),
+    ("kotlovskih cevi", "țevi de cazan"),
+    ("izmenjivačem toplote", "schimbător de căldură"),
+    ("izmenjivač toplote", "schimbător de căldură"),
+    ("stepen iskorišćenja", "randament"),
+    ("temperatura dimnih gasova", "temperatura gazelor de ardere"),
+    ("displeju automatike", "afișajul automatizării"),
+    ("dostupan je u opsegu snaga", "este disponibil în gama de puteri"),
+    ("opsegu snaga", "gama de puteri"),
+    ("pelet", "peleți"),
+    ("peleta", "peleți"),
+    ("silosa", "silozului"),
+    ("silos", "siloz"),
+    ("ložištem", "focar"),
+    ("ložište", "focar"),
+    ("automatikom", "automatizare"),
+    ("automatika", "automatizare"),
+    ("automatsko", "automat"),
+    ("automatskim", "automat"),
+    ("sagorevanja", "arderii"),
+    ("pouzdanost", "fiabilitate"),
+    ("efikasnost", "eficiență"),
+    ("primene", "utilizare"),
+    ("proizvodnja", "producție"),
+    ("proizvodnju", "producția"),
+    ("proizvodnih procesa", "proceselor de producție"),
+    ("kvalitet", "calitate"),
+    ("tržišta", "pieței"),
+    ("tržište", "piață"),
+    ("evropskih", "europene"),
+    ("savremenih tehnologija", "tehnologii moderne"),
+    ("lasersko sečenje", "tăiere laser"),
+    ("CNC plazma postupak", "procedeu CNC plasmă"),
+    ("CNC probijanje", "perforare CNC"),
+    ("robotsko zavarivanje", "sudură robotică"),
+    ("zavarivanje automatima", "sudură automatizată"),
+    ("zaposljava preko 350 radnika", "are peste 350 de angajați"),
+    ("preko 350 radnika", "peste 350 de angajați"),
+    ("40 diplomiranih masinskih inzenjera", "40 de ingineri mecanici absolvenți"),
+    ("dipl. masinskih inzenjera", "ingineri mecanici absolvenți"),
+    ("zaposlenih", "angajați"),
+    ("izvoz u 27+ zemalja EU", "export în 27+ țări UE"),
+    ("Tehnologija i kvalitet", "Tehnologie și calitate"),
+    ("Proizvodnja po savremenim evropskim standardima", "Producție conform standardelor europene moderne"),
+    ("Kako se proizvodnja sirila i usavrsavala", "Pe măsură ce producția s-a extins și s-a perfecționat"),
+    ("Danas Radijator Inzenjering", "Astăzi Radijator Inženjering"),
+    ("unapredjenju kvaliteta proizvoda", "îmbunătățirea calității produselor"),
+    ("opremljen", "echipat"),
+    ("opremljeni", "echipate"),
+    ("standardno", "standard"),
+    ("model", "model"),
+    ("Tabela", "Tabel"),
+    ("tabela", "tabel"),
+    ("dimenzijama", "dimensiunile"),
+    ("Dimenzije", "Dimensiuni"),
+    ("Masa", "Masă"),
+    ("Radni", "De lucru"),
+    ("Probni", "De probă"),
+]
+
+RO_PREFIX_TRANSLATIONS = [
+    (
+        "Radijator inženjering",
+        "Radijator Inženjering d.o.o. este continuatorul juridic al atelierului artizanal "
+        "„Radijator”, fondat în 1991, a cărui activitate principală a fost montajul și "
+        "întreținerea sistemelor de încălzire centrală. Primul cazan de apă caldă pe "
+        "combustibil solid l-am produs în anul 1985.",
+    ),
+    (
+        "Preduzeće u današnjoj formi postoji od 2002.",
+        "Compania funcționează în forma actuală din anul 2002 și progresează constant, "
+        "urmărind să fie printre primele în aplicarea tehnologiilor noi, în calitatea "
+        "produselor și în dezvoltarea de noi piețe europene.",
+    ),
+    (
+        "Kako smo proširivali i usavršavali proizvodnju",
+        "Prin extinderea și perfecționarea producției am ajuns la nivelul la care cazanele "
+        "sunt fabricate cu tehnologii moderne de clasă mondială. În prelucrarea tablei se "
+        "remarcă tăierea laser, procedeele CNC cu plasmă și perforarea CNC. Sudura se "
+        "realizează robotic și cu echipamente automate. Cel mai bun indicator al calității "
+        "produselor și serviciilor este faptul că producția crește de la an la an.",
+    ),
+    (
+        'Danas "Radijator-inženjering"',
+        "Astăzi, Radijator Inženjering are peste 350 de angajați, dintre care 40 sunt "
+        "ingineri mecanici absolvenți care lucrează zilnic la perfecționarea calității "
+        "produselor.",
+    ),
+    (
+        "Sigurna postojanost kvaliteta",
+        "Constanța calității produselor și a activității companiei este confirmată prin "
+        "certificarea sistemului de management al calității ISO 9001:2008.",
+    ),
+]
+
+RO_SKIP_PREFIXES = (
+    "pravni naslednik zanatske radnje",
+    "osnovana 1991.",
+    "montaža i održavanje",
+    "toplovodni kotao",
+    "godine.",
+    "iz godine u godinu",
+    "trudeći da bude",
+    "kvalitetu proizvoda",
+    "calitateu proizvoda",
+    "proizvoda i usluga",
+    "proizvodnja povećava",
+    "došli do nivoa",
+    "svetskim tehnologijama",
+    "izdvajaju se",
+    "CNC probijanje",
+    "kao i upotrebom",
+    "perforare CNC.",
+    "radnika od kojih",
+    "rade na usavršavanju",
+    "poslovanja firme",
+    "sistema kvaliteta",
+    "sistema calitatea",
+)
+
+
+def normalize_catalog_text(text: str) -> str:
+    return (
+        text.replace("kotlove snage od 15 do 500 kW", "kotlove snage od 6 do 600 kW")
+        .replace("snage od 15 do 500 kW", "snage od 6 do 600 kW")
+        .replace("15 do 500 kW", "6 do 600 kW")
+        .replace("15-500 kW", "6-600 kW")
+    )
+
+
+def translate_text(text: str, language: str) -> str:
+    text = normalize_catalog_text(text)
+    if language == "sr":
+        return text
+    if text.startswith(RO_SKIP_PREFIXES):
+        return ""
+    if text in RO_EXACT_TRANSLATIONS:
+        return RO_EXACT_TRANSLATIONS[text]
+    for prefix, translation in RO_PREFIX_TRANSLATIONS:
+        if text.startswith(prefix):
+            return translation
+    translated = text
+    for source, target in sorted(RO_PHRASE_TRANSLATIONS, key=lambda item: len(item[0]), reverse=True):
+        translated = translated.replace(source, target)
+    return translated
+
+
+def render_language_switch(current_language: str) -> str:
+    links = []
+    for language, label in LANGUAGE_LABELS.items():
+        config = LANGUAGE_CONFIG[language]
+        classes = "is-active" if language == current_language else ""
+        aria_current = ' aria-current="page"' if language == current_language else ""
+        href = config["html_path"].name
+        links.append(f'<a class="{classes}" href="{href}"{aria_current}>{label}</a>')
+    return '<div class="language-switch" aria-label="Language">{} </div>'.format("".join(links))
+
+
+def render_pdf_link(class_name: str, label: str, pdf_filename: str) -> str:
     if PDF_DOWNLOAD_ENABLED:
         return (
-            f'<a class="{class_name}" href="radijator-industrijski-kotlovi.pdf">'
+            f'<a class="{class_name}" href="{html.escape(pdf_filename)}">'
             f"{html.escape(label)}</a>"
         )
     return (
@@ -111,10 +476,10 @@ def is_subheading(paragraph: Paragraph, text: str) -> bool:
     return text.lower().startswith(prefixes)
 
 
-def table_to_html(table: Table) -> str:
+def table_to_html(table: Table, language: str) -> str:
     rows_html: list[str] = []
     for row_index, row in enumerate(table.rows):
-        cells = [clean_text(cell.text) for cell in row.cells]
+        cells = [translate_text(clean_text(cell.text), language) for cell in row.cells]
         tag = "th" if row_index == 0 else "td"
         cell_html = "".join(f"<{tag}>{html.escape(cell)}</{tag}>" for cell in cells)
         rows_html.append(f"<tr>{cell_html}</tr>")
@@ -273,17 +638,18 @@ def has_word_page_break(paragraph: Paragraph) -> bool:
     )
 
 
-def image_figure(item: dict[str, str], index: int) -> str:
+def image_figure(item: dict[str, str], index: int, language: str) -> str:
+    label = "Slika" if language == "sr" else "Imagine"
     if not item.get("display"):
         return (
             "<div class=\"catalog-original-note\">"
-            f"<strong>{html.escape(item['label'])}</strong>: originalni fajl "
+            f"<strong>{label} {index}</strong>: originalni fajl "
             f"{html.escape(item['original'])} je sacuvan u assets/full-catalog."
             "</div>"
         )
     return f"""
     <figure class="catalog-figure">
-      <img src="assets/full-catalog/{html.escape(item['display'])}" alt="{html.escape(item['label'])}" />
+      <img src="assets/full-catalog/{html.escape(item['display'])}" alt="{label} {index}" />
     </figure>
     """
 
@@ -304,7 +670,7 @@ def render_copy(blocks: list[dict[str, object]]) -> str:
     return "".join(rendered)
 
 
-def render_section(section: dict[str, object], section_number: int) -> str:
+def render_section(section: dict[str, object], section_number: int, language: str) -> str:
     blocks = list(section["blocks"])
     rendered: list[str] = []
     media_index = 0
@@ -373,29 +739,34 @@ def render_section(section: dict[str, object], section_number: int) -> str:
 
     section_body = "".join(rendered)
     if section_number == 1:
+        gallery_label = (
+            "Radijator Inženjering producție"
+            if language == "ro"
+            else "Radijator Inženjering proizvodnja"
+        )
         section_body = (
             '<div class="about-layout">'
             f'<div class="about-copy">{section_body}</div>'
-            '<aside class="about-gallery" aria-label="Radijator Inženjering proizvodnja">'
+            f'<aside class="about-gallery" aria-label="{gallery_label}">'
             '<figure class="about-photo about-photo--company">'
             '<img src="assets/editorial/about-factory-exterior.jpg" '
-            'alt="Proizvodni kompleks Radijator Inženjering u Kraljevu" />'
+            'alt="Radijator Inženjering factory complex in Kraljevo" />'
             '</figure>'
             '<figure class="about-photo">'
             '<img src="assets/editorial/about-production-forming.jpg" '
-            'alt="Automatizovana obrada limova u proizvodnji" />'
+            'alt="Automated sheet metal processing in production" />'
             '</figure>'
             '<figure class="about-photo">'
             '<img src="assets/editorial/about-production-laser.jpg" '
-            'alt="Lasersko sečenje kotlovskog lima" />'
+            'alt="Laser cutting of boiler sheet metal" />'
             '</figure>'
             '<figure class="about-photo">'
             '<img src="assets/editorial/about-production-control.jpg" '
-            'alt="Operater nadgleda savremeni proizvodni proces" />'
+            'alt="Operator supervising a modern production process" />'
             '</figure>'
             '<figure class="about-photo">'
             '<img src="assets/editorial/about-production-welding.jpg" '
-            'alt="Zavarivanje komponenti industrijskog kotla" />'
+            'alt="Welding industrial boiler components" />'
             '</figure>'
             '</aside>'
             '</div>'
@@ -411,7 +782,33 @@ def render_section(section: dict[str, object], section_number: int) -> str:
     )
 
 
-def render_production_spread() -> str:
+def render_production_spread(language: str) -> str:
+    if language == "ro":
+        return """
+<section class="catalog-section production-spread" id="production-standards" data-section="PRO">
+  <div class="production-spread__brand">
+    <span>Producție</span>
+  </div>
+  <div class="production-spread__headline">
+    <p class="production-spread__kicker">Tehnologie și calitate</p>
+    <h2>Producție conform standardelor europene moderne</h2>
+  </div>
+  <div class="production-spread__media">
+    <figure><img src="assets/editorial/company-aerial-complex-wide.jpg" alt="Complexul de producție Radijator Inzenjering văzut din aer" /></figure>
+    <figure><img src="assets/editorial/company-aerial-complex-top.jpg" alt="Fabrica Radijator Inzenjering cu producție modernă" /></figure>
+  </div>
+  <div class="production-spread__copy">
+    <p>Pe măsură ce producția s-a extins și s-a perfecționat, cazanele au început să fie fabricate cu cele mai moderne tehnologii: tăiere laser, procedeu CNC plasmă, perforare CNC, sudură robotică și sudură automatizată.</p>
+    <p>Astăzi Radijator Inženjering are peste 350 de angajați, printre care 40 de ingineri mecanici absolvenți care lucrează zilnic la îmbunătățirea calității produselor.</p>
+  </div>
+  <div class="production-spread__stats">
+    <div><strong>350+</strong><span>angajați</span></div>
+    <div><strong>40</strong><span>ingineri mecanici absolvenți</span></div>
+    <div><strong>EU</strong><span>export în 27+ țări UE</span></div>
+  </div>
+  <p class="production-spread__footer">Tehnologie / calitate / piață</p>
+</section>
+"""
     return """
 <section class="catalog-section production-spread" id="production-standards" data-section="PRO">
   <div class="production-spread__brand">
@@ -580,7 +977,7 @@ def tune_catalog_layout(body_html: str) -> str:
     return body_html
 
 
-def build_content(images_by_key: dict[str, dict[str, str]]) -> tuple[str, list[str], int, int, set[str]]:
+def build_content(images_by_key: dict[str, dict[str, str]], language: str) -> tuple[str, list[str], int, int, set[str]]:
     document = Document(DOCX)
     sections: list[dict[str, object]] = []
     toc: list[str] = []
@@ -620,38 +1017,41 @@ def build_content(images_by_key: dict[str, dict[str, str]]) -> tuple[str, list[s
             list_buffer = []
             list_break_before = False
 
-    def ensure_section(title: str = "O nama") -> dict[str, object]:
+    def ensure_section(title: str | None = None) -> dict[str, object]:
         nonlocal current_section
         if current_section is None:
+            section_title = title or translate_text("O nama", language)
             section_id = f"section-{len(sections) + 1:02d}"
-            current_section = {"id": section_id, "title": title, "blocks": []}
+            current_section = {"id": section_id, "title": section_title, "blocks": []}
             sections.append(current_section)
-            toc.append(f"<a href=\"#{section_id}\">{html.escape(title)}</a>")
+            toc.append(f"<a href=\"#{section_id}\">{html.escape(section_title)}</a>")
         return current_section
 
     def start_section(title: str) -> None:
         nonlocal current_section
         flush_paragraph()
         flush_list()
+        section_title = translate_text(title, language)
         section_id = f"section-{len(sections) + 1:02d}"
-        current_section = {"id": section_id, "title": title, "blocks": []}
+        current_section = {"id": section_id, "title": section_title, "blocks": []}
         sections.append(current_section)
-        toc.append(f"<a href=\"#{section_id}\">{html.escape(title)}</a>")
+        toc.append(f"<a href=\"#{section_id}\">{html.escape(section_title)}</a>")
 
     for block in iter_blocks(document):
         if isinstance(block, Paragraph):
-            text = clean_text(block.text)
+            source_text = clean_text(block.text)
+            text = translate_text(source_text, language)
             image_keys = paragraph_image_keys(block)
             page_break_before = has_word_page_break(block)
-            if not text and not image_keys:
+            if not source_text and not image_keys:
                 continue
-            if is_heading(block, text):
-                start_section(text)
+            if is_heading(block, source_text):
+                start_section(source_text)
             else:
                 section = ensure_section()
                 if text:
                     paragraph_count += 1
-                    if is_subheading(block, text):
+                    if is_subheading(block, source_text):
                         flush_paragraph()
                         flush_list()
                         section["blocks"].append(
@@ -686,7 +1086,7 @@ def build_content(images_by_key: dict[str, dict[str, str]]) -> tuple[str, list[s
                             continue
                         used_images.add(key)
                         figure_count += 1
-                        figure_group.append(image_figure(item, figure_count))
+                        figure_group.append(image_figure(item, figure_count, language))
                     if figure_group:
                         section["blocks"].append(
                             {"type": "figure", "html": f"<div class=\"figure-row\">{''.join(figure_group)}</div>"}
@@ -697,32 +1097,37 @@ def build_content(images_by_key: dict[str, dict[str, str]]) -> tuple[str, list[s
             flush_paragraph()
             flush_list()
             table_count += 1
-            section["blocks"].append({"type": "table", "html": table_to_html(block)})
+            section["blocks"].append({"type": "table", "html": table_to_html(block, language)})
 
     flush_paragraph()
     flush_list()
-    rendered_sections = [render_section(section, index) for index, section in enumerate(sections, start=1)]
+    rendered_sections = [
+        render_section(section, index, language)
+        for index, section in enumerate(sections, start=1)
+    ]
     return "\n".join(rendered_sections), toc, paragraph_count, table_count, used_images
 
 
-def render_page() -> None:
+def render_page(language: str) -> None:
+    config = LANGUAGE_CONFIG[language]
     prepare_supplemental_images()
     images = extract_images()
     images_by_key = {item["key"]: item for item in images}
-    body_html, toc, _, _, _ = build_content(images_by_key)
+    body_html, toc, _, _, _ = build_content(images_by_key, language)
     body_html = tune_catalog_layout(body_html)
-    production_spread = render_production_spread()
+    production_spread = render_production_spread(language)
     body_html = body_html.replace("</section>", f"</section>\n{production_spread}", 1)
-    toc.insert(1, '<a href="#production-standards">Proizvodnja i standardi</a>')
-    nav_pdf_link = render_pdf_link("web-nav-pdf", "PDF katalog")
-    hero_pdf_link = render_pdf_link("action-secondary", "Preuzmi PDF")
+    toc.insert(1, f'<a href="#production-standards">{html.escape(config["production_toc"])}</a>')
+    language_switch = render_language_switch(language)
+    nav_pdf_link = render_pdf_link("web-nav-pdf", config["pdf_label"], config["pdf_filename"])
+    hero_pdf_link = render_pdf_link("action-secondary", config["hero_secondary"], config["pdf_filename"])
 
     page = f"""<!doctype html>
-<html lang="sr">
+<html lang="{config["html_lang"]}">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Kompletan katalog | Radijator Inzenjering</title>
+    <title>{html.escape(config["page_title"])}</title>
     <link rel="icon" href="assets/favicon.svg" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="catalog-premium.css" />
@@ -730,17 +1135,18 @@ def render_page() -> None:
   </head>
   <body class="catalog-page" id="top">
     <div class="catalog-progress" aria-hidden="true"><span></span></div>
-    <nav class="catalog-web-nav" aria-label="Glavna navigacija">
-      <a class="web-nav-brand" href="#top" aria-label="Radijator Inženjering - vrh kataloga">
+    <nav class="catalog-web-nav" aria-label="{html.escape(config["aria_main"])}">
+      <a class="web-nav-brand" href="#top" aria-label="{html.escape(config["brand_aria"])}">
         <img src="assets/logo.png" alt="" />
-        <span>Industrijski katalog</span>
+        <span>{html.escape(config["brand_title"])}</span>
       </a>
       <div class="web-nav-links">
-        <a href="#section-03">Kotlovi</a>
-        <a href="#section-11">Sistemi</a>
-        <a href="#section-12">Oprema</a>
-        <a href="#kontakt">Kontakt</a>
+        <a href="#section-03">{html.escape(config["nav_boilers"])}</a>
+        <a href="#section-11">{html.escape(config["nav_systems"])}</a>
+        <a href="#section-12">{html.escape(config["nav_equipment"])}</a>
+        <a href="#kontakt">{html.escape(config["nav_contact"])}</a>
       </div>
+      {language_switch}
       {nav_pdf_link}
     </nav>
     <header class="catalog-hero">
@@ -748,14 +1154,14 @@ def render_page() -> None:
         <div class="catalog-logo-card">
           <img src="assets/logo.png" alt="Radijator Inzenjering" />
         </div>
-        <span>Industrijska termoenergetska rešenja</span>
+        <span>{html.escape(config["hero_topline"])}</span>
       </div>
       <div class="catalog-hero-copy">
-        <p class="eyebrow">Kompletan proizvodni katalog / 2026</p>
-        <h1>Industrijski kotlovi <em>na biomasu</em></h1>
-        <p class="catalog-lead">Pouzdani sistemi visokih snaga, projektovani za efikasnost, dug radni vek i potpunu kontrolu procesa sagorevanja.</p>
+        <p class="eyebrow">{html.escape(config["hero_eyebrow"])}</p>
+        <h1>{config["hero_title"]}</h1>
+        <p class="catalog-lead">{html.escape(config["hero_lead"])}</p>
         <div class="catalog-actions">
-          <a class="action-primary" href="#section-01">Pregledaj katalog</a>
+          <a class="action-primary" href="#section-01">{html.escape(config["hero_primary"])}</a>
           {hero_pdf_link}
         </div>
       </div>
@@ -764,16 +1170,16 @@ def render_page() -> None:
         <span class="machine-orbit machine-orbit--inner"></span>
         <div class="hero-live-frame">
           <figure class="hero-anniversary-card">
-            <img src="assets/editorial/anniversary-badge.png" alt="35 godina iskustva - kvalitet bez kompromisa" fetchpriority="high" />
+            <img src="assets/editorial/anniversary-badge.png" alt="{html.escape(config["badge_alt"])}" fetchpriority="high" />
           </figure>
         </div>
       </div>
-      <a class="scroll-cue" href="#section-01" aria-label="Nastavi na sadržaj"><span></span>Skrolujte</a>
+      <a class="scroll-cue" href="#section-01" aria-label="{html.escape(config["hero_primary"])}"><span></span>{html.escape(config["scroll"])}</a>
     </header>
     <main class="catalog-layout">
       <details class="catalog-toc" open>
-        <summary>Sadržaj kataloga</summary>
-        <a class="back-link" href="#top">Vrh kataloga</a>
+        <summary>{html.escape(config["toc_summary"])}</summary>
+        <a class="back-link" href="#top">{html.escape(config["top_link"])}</a>
         <nav>{"".join(toc)}</nav>
       </details>
       <article class="catalog-content">
@@ -782,25 +1188,25 @@ def render_page() -> None:
     </main>
     <footer class="catalog-footer" id="kontakt">
       <div class="catalog-footer-main">
-        <p class="footer-kicker">Projektovanje / proizvodnja / podrška</p>
-        <h2>Partner za kompletna termoenergetska rešenja.</h2>
+        <p class="footer-kicker">{html.escape(config["footer_kicker"])}</p>
+        <h2>{html.escape(config["footer_title"])}</h2>
         <a class="footer-mail" href="mailto:radijator@radijator.rs">radijator@radijator.rs</a>
       </div>
       <div class="catalog-footer-contact">
-        <p><strong>Radijator Inženjering d.o.o.</strong><br />Živojina Lazića Solunca 6<br />36000 Kraljevo, Srbija</p>
+        <p><strong>Radijator Inženjering d.o.o.</strong><br />{config["footer_address"]}</p>
         <p><a href="tel:+38136399140">+381 36 399 140</a><br /><a href="https://www.radijator.rs/">www.radijator.rs</a></p>
       </div>
-      <section class="catalog-footer-gallery" aria-label="Radijator Inženjering u praksi">
+      <section class="catalog-footer-gallery" aria-label="{html.escape(config["footer_gallery"])}">
         <figure class="footer-photo footer-photo--wide"><img src="assets/editorial/hero-boiler-installation.jpg" alt="Instalirani industrijski kotao Radijator u kotlarnici" /></figure>
         <figure class="footer-photo footer-photo--tall"><img src="assets/editorial/hero-boiler-room.jpg" alt="Kaskadno postrojenje sa industrijskim kotlovima Radijator" /></figure>
       </section>
       <div class="catalog-footer-bottom">
-        <span>Industrijski kotlovi na biomasu</span>
-        <a href="#top">Nazad na vrh</a>
+        <span>{html.escape(config["footer_product"])}</span>
+        <a href="#top">{html.escape(config["footer_top"])}</a>
       </div>
     </footer>
-    <dialog class="catalog-lightbox" aria-label="Uvećani tehnički prikaz">
-      <button class="lightbox-close" type="button" aria-label="Zatvori uvećani prikaz">Zatvori</button>
+    <dialog class="catalog-lightbox" aria-label="{html.escape(config["dialog_label"])}">
+      <button class="lightbox-close" type="button" aria-label="{html.escape(config["dialog_close"])}">{html.escape(config["dialog_close_text"])}</button>
       <div class="lightbox-stage">
         <img alt="" />
         <p></p>
@@ -810,9 +1216,10 @@ def render_page() -> None:
   </body>
 </html>
 """
-    OUT_HTML.write_text(page, encoding="utf-8")
-    ALIAS_HTML.write_text(page, encoding="utf-8")
+    config["html_path"].write_text(page, encoding="utf-8")
+    config["alias_path"].write_text(page, encoding="utf-8")
 
 
 if __name__ == "__main__":
-    render_page()
+    for selected_language in LANGUAGE_CONFIG:
+        render_page(selected_language)

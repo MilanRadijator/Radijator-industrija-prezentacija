@@ -53,7 +53,7 @@
     left: 50%;
     z-index: 1100;
     display: grid;
-    grid-template-columns: minmax(13rem, 1fr) auto minmax(8rem, 1fr);
+    grid-template-columns: minmax(13rem, 1fr) auto auto minmax(8rem, 1fr);
     align-items: center;
     gap: clamp(1rem, 3vw, 3rem);
     width: min(calc(100% - 2rem), 82rem);
@@ -142,6 +142,42 @@
   .catalog-page .web-nav-links a:focus-visible::after {
     transform: scaleX(1);
     transform-origin: left;
+  }
+
+  .catalog-page .language-switch {
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.18rem;
+    padding: 0.2rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+  }
+
+  .catalog-page .language-switch a {
+    display: grid;
+    place-items: center;
+    min-width: 2.15rem;
+    min-height: 2.1rem;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 0.68rem;
+    font-weight: 950;
+    letter-spacing: 0.08em;
+    border-radius: 999px;
+    transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+  }
+
+  .catalog-page .language-switch a:hover,
+  .catalog-page .language-switch a:focus-visible {
+    color: #fff;
+    transform: translateY(-1px);
+  }
+
+  .catalog-page .language-switch a.is-active {
+    color: #fff;
+    background: rgba(223, 16, 40, 0.95);
+    box-shadow: 0 8px 18px rgba(223, 16, 40, 0.2);
   }
 
   .catalog-page .web-nav-pdf {
@@ -1214,7 +1250,7 @@
 
 @media screen and (max-width: 1180px) {
   .catalog-page .catalog-web-nav {
-    grid-template-columns: minmax(11rem, 1fr) auto auto;
+    grid-template-columns: minmax(11rem, 1fr) auto auto minmax(7rem, auto);
   }
 
   .catalog-page .web-nav-brand span {
@@ -1233,7 +1269,7 @@
 
 @media screen and (max-width: 960px) {
   .catalog-page .catalog-web-nav {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
     width: calc(100% - 1.25rem);
   }
 
@@ -1313,6 +1349,10 @@
 
   .catalog-page .web-nav-pdf {
     display: none;
+  }
+
+  .catalog-page .language-switch {
+    justify-self: end;
   }
 
   .catalog-page .catalog-hero {
