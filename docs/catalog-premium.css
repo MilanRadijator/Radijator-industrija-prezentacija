@@ -2742,11 +2742,12 @@ body.catalog-page {
   }
 
   .catalog-page #section-12 > .media-block:nth-of-type(2) {
-    break-after: page;
+    break-after: avoid;
+    page-break-after: avoid;
   }
 
   .catalog-page #section-12 > .media-block:nth-of-type(2) .catalog-figure {
-    min-height: 122mm;
+    min-height: 112mm;
   }
 
   .catalog-page #section-12 > .media-block:nth-of-type(2) p,
@@ -2763,11 +2764,12 @@ body.catalog-page {
 
   .catalog-page #section-12 > .media-block:nth-of-type(2) .catalog-figure img {
     width: 184mm;
-    max-height: 122mm;
+    max-height: 112mm;
   }
 
   .catalog-page #section-12 > .media-block:nth-of-type(3) {
-    break-before: page;
+    break-before: avoid;
+    page-break-before: avoid;
     break-after: avoid;
     position: relative;
   }
@@ -2803,13 +2805,13 @@ body.catalog-page {
   }
 
   .catalog-page #section-12 > .technical-visual.word-page-break .catalog-figure {
-    height: 58mm;
+    height: 46mm;
     break-inside: avoid;
     page-break-inside: avoid;
   }
 
   .catalog-page #section-12 > .technical-visual.word-page-break .catalog-figure img {
-    max-height: 58mm;
+    max-height: 46mm;
     padding: 0.5mm;
   }
 

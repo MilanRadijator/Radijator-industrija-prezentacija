@@ -206,7 +206,37 @@ RO_EXACT_TRANSLATIONS = {
         "care încălzesc mii de obiective în întreaga Europă!"
     ),
     "Serija TKAN modeli": "Modele seria TKAN",
+    "Industrijski kotlovi na biomasu su izrađeni od kotlovskih limova debljine 6 mm i više. Izmenjivač toplote je od bešavnih, kotlovskih cevi. Stepen iskorišćenja preko 90% na pelet. Temperature dimnih gasova na izlazu su od 170 do 190 stepeni pri višim režimima, što uvek možemo da proverimo na displeju automatike. Dostupni su u osegu od 80 – 500 kW.": (
+        "Cazanele industriale pe biomasă sunt realizate din tablă de cazan cu grosimea de "
+        "6 mm și mai mult. Schimbătorul de căldură este realizat din țevi de cazan fără "
+        "sudură. Randamentul depășește 90% la peleți. Temperatura gazelor de ardere la "
+        "ieșire este între 170 și 190 de grade în regimuri superioare, valoare care poate "
+        "fi verificată pe afișajul automatizării. Sunt disponibile în gama de puteri 80-500 kW."
+    ),
     "Serija TKAN Integra modeli": "Modele seria TKAN Integra",
+    "Industrijski kotao na biomasu predstavlja unapređenu verziju standardnog TKAN kotla. Opremljen je zidanim ložištem, naprednijom automatikom i bogatijom pratećom opremom, čime se postižu veća pouzdanost, bolja efikasnost sagorevanja i šire mogućnosti primene. Izrađen je od kotlovskih limova debljine 6 mm i više, sa izmenjivačem toplote od bešavnih kotlovskih cevi. Stepen iskorišćenja je preko 90% Dostupan je u opsegu snaga od 80 do 500 kW.": (
+        "Cazanul industrial pe biomasă reprezintă o versiune îmbunătățită a cazanului "
+        "standard TKAN. Este echipat cu focar zidit, automatizare mai avansată și echipamente "
+        "auxiliare mai bogate, obținându-se fiabilitate mai mare, eficiență mai bună a arderii "
+        "și posibilități mai largi de utilizare. Este realizat din tablă de cazan cu grosimea "
+        "de 6 mm și mai mult, cu schimbător de căldură din țevi de cazan fără sudură. "
+        "Randamentul depășește 90%, iar gama de puteri disponibilă este 80-500 kW."
+    ),
+    "Kaskadni sistemi": "Sisteme în cascadă",
+    "Kaskadni sistemi predstavljaju kombinaciju dva ili više kotlova povezanih u jedinstven sistem sa zajedničkim silosom za skladištenje peleta. Ovakva konfiguracija omogućava veću ukupnu instalisanu snagu, pouzdaniji rad, ravnomernu raspodelu opterećenja i veću energetsku efikasnost sistema.": (
+        "Sistemele în cascadă reprezintă o combinație de două sau mai multe cazane conectate "
+        "într-un sistem unic, cu siloz comun pentru depozitarea peleților. O astfel de "
+        "configurație permite o putere totală instalată mai mare, funcționare mai fiabilă, "
+        "distribuție uniformă a sarcinii și eficiență energetică mai ridicată a sistemului."
+    ),
+    "Dodatna oprema": "Echipamente suplimentare",
+    "Pored kotlova, u ponudi je kompletna prateća oprema za formiranje funkcionalnog sistema grejanja. Asortiman obuhvata silose za skladištenje peleta, pužne transportere, elevatore, bafer rezervoare, automatiku i ostalu opremu potrebnu za pouzdan transport, doziranje i kontrolu peleta, kao i siguran i efikasan rad celokupnog sistema.": (
+        "Pe lângă cazane, oferta include echipamente auxiliare complete pentru formarea unui "
+        "sistem funcțional de încălzire. Gama cuprinde silozuri pentru depozitarea peleților, "
+        "transportoare melcate, elevatoare, rezervoare tampon, automatizare și alte echipamente "
+        "necesare pentru transportul, dozarea și controlul fiabil al peleților, precum și "
+        "pentru funcționarea sigură și eficientă a întregului sistem."
+    ),
     "Položaj TKAN običnog i TKAN Integra kotla u kotlarnici": (
         "Poziționarea cazanului TKAN și TKAN Integra în camera tehnică"
     ),
@@ -232,6 +262,9 @@ RO_EXACT_TRANSLATIONS = {
     "POLOŽAJ TKAN OBIČNOG I TKAN INTEGRA KOTLA U KOTLARNICI": (
         "POZIȚIONAREA CAZANULUI TKAN ȘI TKAN INTEGRA ÎN CAMERA TEHNICĂ"
     ),
+    "POLOŽAJ TKAN OBIČNOG i TKAN INTEGRA KOTLA U KOTLARNICI": (
+        "POZIȚIONAREA CAZANULUI TKAN ȘI TKAN INTEGRA ÎN CAMERA TEHNICĂ"
+    ),
     "KASKADNI SISTEMI": "SISTEME ÎN CASCADĂ",
     "DODATNA OPREMA": "ECHIPAMENTE SUPLIMENTARE",
     "AUTOMATSKI TRANSPORT PELETA": "TRANSPORT AUTOMAT AL PELEȚILOR",
@@ -247,6 +280,78 @@ RO_EXACT_TRANSLATIONS = {
     "Masa kotla": "Masă cazan",
     "Masa silosa": "Masă siloz",
     "Količina peleta koja staje u silosu": "Cantitate de peleți în siloz",
+    "Turbulatori": "Turbulatoare",
+    "Cevni izmenjivač": "Schimbător tubular",
+    "Vrata za čišćenje cevnog izmenjivača i samog kotla": (
+        "Ușă pentru curățarea schimbătorului tubular și a cazanului"
+    ),
+    "Razvodni ormar sa automatizacije": "Dulap de comandă cu automatizare",
+    "Razvodni ormar sa automatikom": "Dulap de comandă cu automatizare",
+    "Razvodni ormar sa automatizare": "Dulap de comandă cu automatizare",
+    "Kanta za pepeo": "Cutie pentru cenușă",
+    "Vrata za loženje i potpalu": "Ușă pentru alimentare și aprindere",
+    "Spirala za automat izbacivanje pepela iz prostora ložišta": (
+        "Spirală pentru evacuarea automată a cenușii din zona focarului"
+    ),
+    "Spirala za automatsko izbacivanje pepela iz prostora ložišta": (
+        "Spirală pentru evacuarea automată a cenușii din zona focarului"
+    ),
+    "Ložište kotla": "Focarul cazanului",
+    "Liveni segmenti": "Segmente turnate",
+    "Motor za pokretanje spirale za automat čišćenje ložišta": (
+        "Motor pentru acționarea spiralei de curățare automată a focarului"
+    ),
+    "Motor za pokretanje spirale za automatsko čišćenje ložišta": (
+        "Motor pentru acționarea spiralei de curățare automată a focarului"
+    ),
+    "Donja osovina pužnog transportera": "Ax inferior al transportorului melcat",
+    "Ćelijski dozator (valvola)": "Dozator celular (valvola)",
+    "Gornja osovina pužnog transportera": "Ax superior al transportorului melcat",
+    "Izmenjivač termičkog osiguranja": "Schimbător pentru protecție termică",
+    "Boca komprimovanog vazduha": "Rezervor de aer comprimat",
+    "Impulsni elektroventil": "Electrovalvă cu impuls",
+    "Ozida ložišta": "Căptușeala focarului",
+    "Ožid ložišta": "Căptușeala focarului",
+    "Centrifugalni ventilator multiciklona": "Ventilator centrifugal al multiciclonului",
+    "Multiciklon": "Multiciclon",
+    "(U ponudi snaga od 80 – 500 [kW] )": "(Disponibil în gama de puteri 80 - 500 [kW])",
+    "(U ponudi snaga od 80 - 500 [kW] )": "(Disponibil în gama de puteri 80 - 500 [kW])",
+    "Pozicioniranje kotla u kotlarnici": "Poziționarea cazanului în camera tehnică",
+    "Kotlarnica mora biti obezbeđena od smrzavanja. Podloga za kotao u kotlarnici mora biti od nezapaljivog materijala. Preporučene vrednosti udaljenosti sve četiri strane kotla u odnosu na zidove kotlarnice ili neka druga kruta tela (akomulacioni bojler itd.) prikazane su tablično slici ispod.": (
+        "Camera tehnică trebuie protejată împotriva înghețului. Baza pe care se amplasează "
+        "cazanul trebuie să fie realizată din material incombustibil. Valorile recomandate "
+        "ale distanțelor pe toate cele patru laturi ale cazanului față de pereții camerei "
+        "tehnice sau față de alte corpuri rigide (rezervor de acumulare etc.) sunt prezentate "
+        "în tabelul și imaginea de mai jos."
+    ),
+    "VEĆI DNEVNI SILOS": "SILOZ ZILNIC DE CAPACITATE MAI MARE",
+    "Standardni TKAN kotlovi opremljeni su dnevnim silosom, dok proizvođač za veće sisteme omogućava izradu većih spoljnih silosa sa posebnim dimenzijama. U zavisnosti od potreba sistema, mogu se izraditi silosi kapaciteta nekoliko desetina tona sa kofičastim elevatorom.": (
+        "Cazanele standard TKAN sunt echipate cu siloz zilnic, iar pentru sisteme mai mari "
+        "producătorul permite realizarea unor silozuri externe de capacitate mai mare, cu "
+        "dimensiuni speciale. În funcție de necesarul sistemului, se pot realiza silozuri cu "
+        "capacitate de câteva zeci de tone, cu elevator cu cupe."
+    ),
+    "Veliki spoljni silos povezuje se sa dnevnim silosom kotla putem pužnih transportera, čime se omogućava automatsko dopremanje dnevnog silosa putem sondi minimuma i maksimuma. Za skladištenje većih količina peleta mogu se koristiti i Jumbo vreće.": (
+        "Silozul exterior mare se conectează la silozul zilnic al cazanului prin transportoare "
+        "melcate, ceea ce permite alimentarea automată a silozului zilnic prin sonde de minim "
+        "și maxim. Pentru depozitarea unor cantități mai mari de peleți se pot utiliza și saci Jumbo."
+    ),
+    "Proizvođač predviđa: pužne transportere, pogone/motore pužnih transportera, povezivanje velikog i dnevnog silosa, automatsko dopunjavanje dnevnog silosa, sonde minimuma i maksimuma u dnevnom silosu.": (
+        "Producătorul prevede transportoare melcate, acționări/motoare pentru transportoare, "
+        "conectarea silozului mare cu silozul zilnic, completarea automată a silozului zilnic "
+        "și sonde de minim și maxim în silozul zilnic."
+    ),
+    "Kod velikih sistema preporučuje se veliki silos sa kofičastim elevatorom, pužnim transporterima i automatskim dopunjavanjem dnevnog silosa putem sondi minimuma i maksimuma. Za skladištenje većih količina peleta mogu se koristiti i Jumbo vreće.": (
+        "La sistemele mari se recomandă un siloz mare cu elevator cu cupe, transportoare melcate "
+        "și completare automată a silozului zilnic prin sonde de minim și maxim. Pentru depozitarea "
+        "unor cantități mai mari de peleți se pot utiliza și saci Jumbo."
+    ),
+    "veliki centralni siloz → pužni transporter → dnevni siloz TKAN → puž do ložišta": (
+        "siloz central mare -> transportor melcat -> siloz zilnic TKAN -> melc către focar"
+    ),
+    "veliki centralni silos → pužni transporter → dnevni silos TKAN → puž do ložišta": (
+        "siloz central mare -> transportor melcat -> siloz zilnic TKAN -> melc către focar"
+    ),
 }
 
 RO_PHRASE_TRANSLATIONS = [
@@ -354,6 +459,149 @@ RO_PREFIX_TRANSLATIONS = [
         "Constanța calității produselor și a activității companiei este confirmată prin "
         "certificarea sistemului de management al calității ISO 9001:2008.",
     ),
+    (
+        "TKAN INTEGRA predstavlja novu generaciju",
+        "TKAN INTEGRA reprezintă o nouă generație de cazane industriale pe biomasă, "
+        "dezvoltată ca îmbunătățire a modelului standard TKAN. Modelul a fost creat ca "
+        "răspuns la cerințele pieței pentru un nivel mai ridicat de automatizare, eficiență "
+        "energetică superioară și fiabilitate mai mare în exploatare, păstrând soluțiile "
+        "constructive verificate pentru care RADIJATOR INŽENJERING este recunoscut."
+    ),
+    (
+        "Zahvaljujući zidanom ložištu",
+        "Datorită focarului zidit, sistemului de ardere îmbunătățit, automatizării moderne "
+        "și echipării standard mai bogate, TKAN INTEGRA asigură funcționare stabilă, "
+        "valorificare maximă a energiei și durată lungă de viață a componentelor cheie. "
+        "Construcția cazanului este realizată din tablă de cazan cu grosimea de 6 mm și "
+        "mai mult, iar schimbătorul tubular este realizat din țevi de cazan fără sudură, "
+        "asigurând rezistență mecanică ridicată, fiabilitate și durabilitate."
+    ),
+    (
+        "Zidano ložište predstavlja jednu od ključnih",
+        "Focarul zidit este unul dintre avantajele principale ale modelului TKAN INTEGRA. "
+        "Această construcție permite arderea completă și stabilă a combustibilului, emisii "
+        "minime de gaze nocive și particule de praf, precum și utilizarea maximă a energiei "
+        "conținute în peleți. În același timp, piesele din oțel ale cazanului nu sunt expuse "
+        "direct flăcării, ceea ce prelungește semnificativ durata de viață a cazanului."
+    ),
+    (
+        "Za smanjenje količine čestica koje odlaze u dimnjak",
+        "Pentru reducerea cantității de particule evacuate către coș este prevăzut un ciclon, "
+        "iar la configurațiile mai mari un multiciclon cu ventilator centrifugal. Producătorul "
+        "recomandă în mod special ciclonul atunci când se utilizează curățarea pneumatică a "
+        "schimbătorului, deoarece atunci cenușa și funinginea sunt evacuate suplimentar din "
+        "cazan. La modelele TKAN Integra mai mari se utilizează multiciclon cu ventilator "
+        "centrifugal. Mai exact, la modelele TKAN 80 Integra și TKAN 100 Integra ventilatorul "
+        "este montat pe racordul de fum, iar la modelele TKAN 150 Integra, TKAN 200 Integra, "
+        "TKAN 250 Integra și TKAN 300 Integra este proiectat multiciclon cu ventilator centrifugal."
+    ),
+    (
+        "Kod pojedinih TKAN konfiguracija koristi se ventilator",
+        "La anumite configurații TKAN se utilizează ventilator pe partea de evacuare a gazelor "
+        "arse, iar la sistemele mai mari multiciclonul poate fi echipat cu ventilator "
+        "centrifugal. Acest aspect este important la proiectarea întregului coș de fum, mai "
+        "ales în cazul mai multor cazane, traseelor de fum mai lungi, ciclonului/multiciclonului, "
+        "numărului mai mare de coturi sau al unui coș comun."
+    ),
+    (
+        "Kotlovi serije TKAN INTEGRA standardno su opremljeni",
+        "Cazanele din seria TKAN INTEGRA sunt echipate standard cu sistem pentru curățarea "
+        "automată a zonei din jurul focarului, iar schimbătorul tubular se curăță automat cu "
+        "aer comprimat. Prin impulsuri periodice de aer, sistemul elimină depunerile de "
+        "funingine din țevile de fum, menține randamentul ridicat al cazanului și reduce "
+        "semnificativ necesarul de întreținere manuală."
+    ),
+    (
+        "Za pouzdan i efikasan rad industrijskih kotlovskih postrojenja",
+        "Pentru funcționarea fiabilă și eficientă a instalațiilor industriale de cazane, "
+        "sistemul poate fi echipat cu componente suplimentare adaptate cerințelor obiectivului "
+        "și modului de utilizare."
+    ),
+    (
+        "Dodatna oprema obuhvata sisteme za automatsko doziranje",
+        "Echipamentele suplimentare includ sisteme pentru dozarea automată și transportul "
+        "combustibilului, depozitarea peleților, reglarea automată a funcționării, precum și "
+        "echipamente pentru conectarea și controlul în cascadă al cazanelor."
+    ),
+    (
+        "Rešenja se projektuju prema kapacitetu kotlarnice",
+        "Soluțiile sunt proiectate în funcție de capacitatea camerei tehnice, autonomia necesară "
+        "de funcționare și spațiul disponibil, cu scopul de a obține un nivel ridicat de "
+        "automatizare, fiabilitate și consum optim de combustibil."
+    ),
+    (
+        "U ložišnom delu, za automatsko izdvajanje pepela",
+        "În zona focarului, pentru evacuarea automată a cenușii, se montează două spirale melcate "
+        "cu acționări electrice proprii. Acestea transportă cenușa în două cutii care trebuie "
+        "golite periodic."
+    ),
+    (
+        "Na vrata izmenjivačkog sklopa cevi ugrađuje se sistem",
+        "Pe ușa ansamblului schimbătorului tubular se montează un sistem de electrovalve care "
+        "eliberează periodic aer sub presiune și curăță astfel țevile cazanului de cenușă și "
+        "funingine. Este necesară o sursă de aer comprimat cu capacitate adecvată, precum și "
+        "automatizare care controlează acest proces."
+    ),
+    (
+        "Zbog smanjene emisije čestica pepela u vazduhu",
+        "Pentru reducerea emisiilor de particule de cenușă în aer, se recomandă montarea "
+        "ciclonului, în special dacă beneficiarul a instalat și sistem de curățare pneumatică."
+    ),
+    (
+        "Kod velikih sistema gde se dnevna potrošnja peleta kreće",
+        "La sistemele mari, unde consumul zilnic de peleți variază de la câteva sute de "
+        "kilograme până la câteva tone, se recomandă montarea unui siloz mare cu elevator "
+        "cu cupe. Acesta este conectat la silozul mic prin transportoare melcate, iar întregul "
+        "proces de alimentare este automatizat prin sonde de minim și maxim în silozul mic."
+    ),
+    (
+        "Standardni TKAN kotlovi opremljeni su dnevnim silosom",
+        "Cazanele standard TKAN sunt echipate cu siloz zilnic, iar pentru sisteme mai mari "
+        "producătorul permite realizarea unor silozuri externe de capacitate mai mare, cu "
+        "dimensiuni speciale. În funcție de necesarul sistemului, se pot realiza silozuri cu "
+        "capacitate de câteva zeci de tone, cu elevator cu cupe."
+    ),
+    (
+        "Veliki spoljni silos povezuje se sa dnevnim silosom",
+        "Silozul exterior mare se conectează la silozul zilnic al cazanului prin transportoare "
+        "melcate, ceea ce permite alimentarea automată a silozului zilnic prin sonde de minim "
+        "și maxim. Pentru depozitarea unor cantități mai mari de peleți se pot utiliza și saci Jumbo."
+    ),
+    (
+        "Kod novijih modela TKAN 60",
+        "La modelele mai noi TKAN 60-300, silozul zilnic standard are volumul de 800 litri, "
+        "cu posibilitatea conectării la un siloz exterior mare. Conectarea poate fi realizată "
+        "lateral sau frontal, în funcție de dispunerea echipamentelor și de condițiile de spațiu. "
+        "Schema este:"
+    ),
+    (
+        "Proizvođač predviđa: pužne transportere",
+        "Producătorul prevede transportoare melcate, acționări/motoare pentru transportoare, "
+        "conectarea silozului mare cu silozul zilnic, completarea automată a silozului zilnic "
+        "și sonde de minim și maxim în silozul zilnic."
+    ),
+    (
+        "Kod velikih sistema preporučuje se veliki siloz",
+        "La sistemele mari se recomandă un siloz mare cu elevator cu cupe, transportoare melcate "
+        "și completare automată a silozului zilnic prin sonde de minim și maxim. Pentru depozitarea "
+        "unor cantități mai mari de peleți se pot utiliza și saci Jumbo."
+    ),
+    (
+        "Automatika kotla može da upravlja motorom puža",
+        "Automatizarea cazanului poate comanda motorul melcului de alimentare din silozul mare."
+    ),
+    (
+        "Za kaskadu više TKAN kotlova",
+        "Pentru o cascadă cu mai multe cazane TKAN, această soluție este deosebit de utilă "
+        "deoarece permite proiectarea unui sistem central de distribuție a peleților."
+    ),
+    (
+        "Kod automatskog punjenja dnevnog silosa koriste se sonde",
+        "La umplerea automată a silozului zilnic se utilizează sonde de minim și maxim. "
+        "Principiul este: MIN -> pornește transportul peleților, MAX -> oprește transportul "
+        "peleților. În acest fel cazanul solicită singur combustibil din depozitul central și "
+        "nu necesită completare manuală."
+    ),
 ]
 
 RO_SKIP_PREFIXES = (
@@ -379,6 +627,30 @@ RO_SKIP_PREFIXES = (
     "poslovanja firme",
     "sistema kvaliteta",
     "sistema calitatea",
+    "više kotlova, duži dimovod",
+    "MIN → uključi transport",
+    "MAX → zaustavi transport",
+)
+
+RO_POST_PREFIX_TRANSLATIONS = [
+    (
+        "Proizvođač predviđa:",
+        "Producătorul prevede transportoare melcate, acționări/motoare pentru transportoare, "
+        "conectarea silozului mare cu silozul zilnic, completarea automată a silozului zilnic "
+        "și sonde de minim și maxim în silozul zilnic.",
+    ),
+]
+
+RO_POST_SKIP_PREFIXES = (
+    "više kotlova, duži dimovod",
+    "Na taj način kotao sam traži",
+    "MAX → zaustavi transport",
+    "pužne transportere",
+    "pogone/motore pužnih transportera",
+    "povezivanje velikog i dnevnog",
+    "automatsko dopunjavanje dnevnog",
+    "automat dopunjavanje dnevnog",
+    "sonde minimuma",
 )
 
 
@@ -405,6 +677,11 @@ def translate_text(text: str, language: str) -> str:
     translated = text
     for source, target in sorted(RO_PHRASE_TRANSLATIONS, key=lambda item: len(item[0]), reverse=True):
         translated = translated.replace(source, target)
+    if translated.startswith(RO_POST_SKIP_PREFIXES):
+        return ""
+    for prefix, translation in RO_POST_PREFIX_TRANSLATIONS:
+        if translated.startswith(prefix):
+            return translation
     return translated
 
 
@@ -949,6 +1226,19 @@ def tune_catalog_layout(body_html: str) -> str:
         '    </figure>\n'
         '    </div></div></section>',
     )
+    body_html = body_html.replace(
+        '    </figure>\n'
+        '    </div></div><div class="technical-visual"><div class="figure-row">\n'
+        '    <figure class="catalog-figure">\n'
+        '      <img src="assets/full-catalog/catalog-image-14.png" alt="Imagine 19" />\n'
+        '    </figure>\n'
+        '    </div></div></section>',
+        '    </figure>\n'
+        '    <figure class="catalog-figure">\n'
+        '      <img src="assets/full-catalog/catalog-image-14.png" alt="Imagine 19" />\n'
+        '    </figure>\n'
+        '    </div></div></section>',
+    )
 
     body_html = append_after_section_table(
         body_html,
@@ -974,6 +1264,59 @@ def tune_catalog_layout(body_html: str) -> str:
         ),
     )
 
+    return body_html
+
+
+def tune_romanian_catalog_html(body_html: str) -> str:
+    """Clean Word fragments that survive paragraph-level translation in Romanian output."""
+    replacements = {
+        "<h3>Kaskadni sistemi</h3>": "<h3>Sisteme în cascadă</h3>",
+        (
+            "Kaskadni sistemi predstavljaju kombinaciju dva ili više kotlova povezanih u "
+            "jedinstven sistem sa zajedničkim silozom za skladištenje peleți. Ovakva "
+            "konfiguracija omogućava veću ukupnu instalisanu snagu, pouzdaniji rad, "
+            "ravnomernu raspodelu opterećenja i veću energetsku eficiență sistema."
+        ): (
+            "Sistemele în cascadă reprezintă o combinație de două sau mai multe cazane "
+            "conectate într-un sistem unic, cu siloz comun pentru depozitarea peleților. "
+            "O astfel de configurație permite o putere totală instalată mai mare, "
+            "funcționare mai fiabilă, distribuție uniformă a sarcinii și eficiență "
+            "energetică mai ridicată a sistemului."
+        ),
+        "<h3>Dodatna oprema</h3>": "<h3>Echipamente suplimentare</h3>",
+        (
+            "Pored kotlova, u ponudi je kompletna prateća oprema za formiranje "
+            "funkcionalnog sistema grejanja. Asortiman obuhvata siloze za skladištenje "
+            "peleți, pužne transportere, elevatore, bafer rezervoare, automatiku i ostalu "
+            "opremu potrebnu za pouzdan transport, doziranje i kontrolu peleți, kao i "
+            "siguran i efikasan rad celokupnog sistema."
+        ): (
+            "Pe lângă cazane, oferta include echipamente auxiliare complete pentru formarea "
+            "unui sistem funcțional de încălzire. Gama cuprinde silozuri pentru depozitarea "
+            "peleților, transportoare melcate, elevatoare, rezervoare tampon, automatizare "
+            "și alte echipamente necesare pentru transportul, dozarea și controlul fiabil "
+            "al peleților, precum și pentru funcționarea sigură și eficientă a întregului sistem."
+        ),
+        (
+            "<p>više kotlova, duži dimovod, ciklon/multiciklon, veći broj kolena, "
+            "zajednički dimnjak.</p>"
+        ): "",
+        (
+            "<p>Proizvođač predviđa: pužne transportere, pogone/motore pužnih transportera, "
+            "povezivanje velikog i dnevnog silozului, automat dopunjavanje dnevnog silozului, "
+            "sonde minimuma i maksimuma u dnevnom silozu.</p>"
+        ): (
+            "<p>Producătorul prevede transportoare melcate, acționări/motoare pentru "
+            "transportoare, conectarea silozului mare cu silozul zilnic, completarea "
+            "automată a silozului zilnic și sonde de minim și maxim în silozul zilnic.</p>"
+        ),
+        (
+            "<p>Na taj način kotao sam traži gorivo iz centralnog skladišta i ne zahteva "
+            "ručno dopunjavanje.</p>"
+        ): "",
+    }
+    for source, target in replacements.items():
+        body_html = body_html.replace(source, target)
     return body_html
 
 
@@ -1115,12 +1458,27 @@ def render_page(language: str) -> None:
     images_by_key = {item["key"]: item for item in images}
     body_html, toc, _, _, _ = build_content(images_by_key, language)
     body_html = tune_catalog_layout(body_html)
+    if language == "ro":
+        body_html = tune_romanian_catalog_html(body_html)
     production_spread = render_production_spread(language)
     body_html = body_html.replace("</section>", f"</section>\n{production_spread}", 1)
     toc.insert(1, f'<a href="#production-standards">{html.escape(config["production_toc"])}</a>')
     language_switch = render_language_switch(language)
     nav_pdf_link = render_pdf_link("web-nav-pdf", config["pdf_label"], config["pdf_filename"])
     hero_pdf_link = render_pdf_link("action-secondary", config["hero_secondary"], config["pdf_filename"])
+    print_title_override = ""
+    if language == "ro":
+        print_title_override = """
+    <style>
+      @media print {
+        @page {
+          @top-center { content: "CAZANE INDUSTRIALE PE BIOMASĂ"; }
+        }
+        @page catalog {
+          @top-center { content: "CAZANE INDUSTRIALE PE BIOMASĂ"; }
+        }
+      }
+    </style>"""
 
     page = f"""<!doctype html>
 <html lang="{config["html_lang"]}">
@@ -1132,6 +1490,7 @@ def render_page(language: str) -> None:
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="catalog-premium.css" />
     <link rel="stylesheet" href="catalog-web.css" />
+{print_title_override}
   </head>
   <body class="catalog-page" id="top">
     <div class="catalog-progress" aria-hidden="true"><span></span></div>
