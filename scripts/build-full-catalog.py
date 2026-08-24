@@ -211,7 +211,14 @@ RO_EXACT_TRANSLATIONS = {
         "6 mm și mai mult. Schimbătorul de căldură este realizat din țevi de cazan fără "
         "sudură. Randamentul depășește 90% la peleți. Temperatura gazelor de ardere la "
         "ieșire este între 170 și 190 de grade în regimuri superioare, valoare care poate "
-        "fi verificată pe afișajul automatizării. Sunt disponibile în gama de puteri 80-500 kW."
+        "fi verificată pe afișajul automatizării. Sunt disponibile în gama de puteri 60-300 kW."
+    ),
+    "Industrijski kotlovi na biomasu su izrađeni od kotlovskih limova debljine 6 mm i više. Izmenjivač toplote je od bešavnih, kotlovskih cevi. Stepen iskorišćenja preko 90% na pelet. Temperature dimnih gasova na izlazu su od 170 do 190 stepeni pri višim režimima, što uvek možemo da proverimo na displeju automatike. Dostupni su u opsegu snaga od 60 do 300 kW.": (
+        "Cazanele industriale pe biomasă sunt realizate din tablă de cazan cu grosimea de "
+        "6 mm și mai mult. Schimbătorul de căldură este realizat din țevi de cazan fără "
+        "sudură. Randamentul depășește 90% la peleți. Temperatura gazelor de ardere la "
+        "ieșire este între 170 și 190 de grade în regimuri superioare, valoare care poate "
+        "fi verificată pe afișajul automatizării. Sunt disponibile în gama de puteri 60-300 kW."
     ),
     "Serija TKAN Integra modeli": "Modele seria TKAN Integra",
     "Industrijski kotao na biomasu predstavlja unapređenu verziju standardnog TKAN kotla. Opremljen je zidanim ložištem, naprednijom automatikom i bogatijom pratećom opremom, čime se postižu veća pouzdanost, bolja efikasnost sagorevanja i šire mogućnosti primene. Izrađen je od kotlovskih limova debljine 6 mm i više, sa izmenjivačem toplote od bešavnih kotlovskih cevi. Stepen iskorišćenja je preko 90% Dostupan je u opsegu snaga od 80 do 500 kW.": (
@@ -220,7 +227,15 @@ RO_EXACT_TRANSLATIONS = {
         "auxiliare mai bogate, obținându-se fiabilitate mai mare, eficiență mai bună a arderii "
         "și posibilități mai largi de utilizare. Este realizat din tablă de cazan cu grosimea "
         "de 6 mm și mai mult, cu schimbător de căldură din țevi de cazan fără sudură. "
-        "Randamentul depășește 90%, iar gama de puteri disponibilă este 80-500 kW."
+        "Randamentul depășește 90%, iar gama de puteri disponibilă este 80-600 kW."
+    ),
+    "Industrijski kotao na biomasu predstavlja unapređenu verziju standardnog TKAN kotla. Opremljen je zidanim ložištem, naprednijom automatikom i bogatijom pratećom opremom, čime se postižu veća pouzdanost, bolja efikasnost sagorevanja i šire mogućnosti primene. Izrađen je od kotlovskih limova debljine 6 mm i više, sa izmenjivačem toplote od bešavnih kotlovskih cevi. Stepen iskorišćenja je preko 90% Dostupan je u opsegu snaga od 80 do 600 kW.": (
+        "Cazanul industrial pe biomasă reprezintă o versiune îmbunătățită a cazanului "
+        "standard TKAN. Este echipat cu focar zidit, automatizare mai avansată și echipamente "
+        "auxiliare mai bogate, obținându-se fiabilitate mai mare, eficiență mai bună a arderii "
+        "și posibilități mai largi de utilizare. Este realizat din tablă de cazan cu grosimea "
+        "de 6 mm și mai mult, cu schimbător de căldură din țevi de cazan fără sudură. "
+        "Randamentul depășește 90%, iar gama de puteri disponibilă este 80-600 kW."
     ),
     "Kaskadni sistemi": "Sisteme în cascadă",
     "Kaskadni sistemi predstavljaju kombinaciju dva ili više kotlova povezanih u jedinstven sistem sa zajedničkim silosom za skladištenje peleta. Ovakva konfiguracija omogućava veću ukupnu instalisanu snagu, pouzdaniji rad, ravnomernu raspodelu opterećenja i veću energetsku efikasnost sistema.": (
@@ -387,6 +402,8 @@ RO_EXACT_TRANSLATIONS = {
     "Multiciklon": "Multiciclon",
     "(U ponudi snaga od 80 – 500 [kW] )": "(Disponibil în gama de puteri 80 - 500 [kW])",
     "(U ponudi snaga od 80 - 500 [kW] )": "(Disponibil în gama de puteri 80 - 500 [kW])",
+    "(U ponudi snaga od 80 – 600 [kW] )": "(Disponibil în gama de puteri 80 - 600 [kW])",
+    "(U ponudi snaga od 80 - 600 [kW] )": "(Disponibil în gama de puteri 80 - 600 [kW])",
     "Pozicioniranje kotla u kotlarnici": "Poziționarea cazanului în camera tehnică",
     "Kotlarnica mora biti obezbeđena od smrzavanja. Podloga za kotao u kotlarnici mora biti od nezapaljivog materijala. Preporučene vrednosti udaljenosti sve četiri strane kotla u odnosu na zidove kotlarnice ili neka druga kruta tela (akomulacioni bojler itd.) prikazane su tablično slici ispod.": (
         "Camera tehnică trebuie protejată împotriva înghețului. Baza pe care se amplasează "
@@ -810,6 +827,12 @@ def normalize_catalog_text(text: str) -> str:
         .replace("snage od 15 do 500 kW", "snage od 6 do 600 kW")
         .replace("15 do 500 kW", "6 do 600 kW")
         .replace("15-500 kW", "6-600 kW")
+        .replace("Dostupni su u osegu od 80 – 500 kW.", "Dostupni su u opsegu snaga od 60 do 300 kW.")
+        .replace("Dostupni su u opsegu od 80 – 500 kW.", "Dostupni su u opsegu snaga od 60 do 300 kW.")
+        .replace("Dostupni su u opsegu snaga od 80 do 500 kW.", "Dostupni su u opsegu snaga od 60 do 300 kW.")
+        .replace("Dostupan je u opsegu snaga od 80 do 500 kW.", "Dostupan je u opsegu snaga od 80 do 600 kW.")
+        .replace("(U ponudi snaga od 80 – 500 [kW] )", "(U ponudi snaga od 80 – 600 [kW] )")
+        .replace("(U ponudi snaga od 80 - 500 [kW] )", "(U ponudi snaga od 80 - 600 [kW] )")
     )
 
 
