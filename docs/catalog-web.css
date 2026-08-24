@@ -808,7 +808,8 @@
     display: block;
     width: 100%;
     height: clamp(18rem, 28vw, 31rem);
-    object-fit: cover;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.42);
   }
 
   .catalog-page .production-spread__stats {

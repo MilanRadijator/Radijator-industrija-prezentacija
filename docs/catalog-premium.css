@@ -580,7 +580,8 @@ body.catalog-page {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.42);
 }
 
 .catalog-page .production-spread__stats {
@@ -2021,7 +2022,8 @@ body.catalog-page {
     display: block;
     width: 100%;
     height: 70mm;
-    object-fit: cover;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.42);
   }
 
   .catalog-page .production-spread__stats {

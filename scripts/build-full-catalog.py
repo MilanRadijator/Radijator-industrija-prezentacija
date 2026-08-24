@@ -52,7 +52,7 @@ SUPPLEMENTAL_IMAGE_SOURCES = {
     "valvola-tkan-300-integra.png": Path.home()
     / "Downloads"
     / "Valvola - TKAN 300 Integra.PNG",
-    "multiciklon-tkan-300.png": Path.home() / "Downloads" / "Multiciklon TKAN 300.PNG",
+    "multiciklon-tkan-300.png": Path.home() / "Downloads" / "Sivi ciklon TKAN 300.PNG",
 }
 
 LANGUAGE_CONFIG = {
