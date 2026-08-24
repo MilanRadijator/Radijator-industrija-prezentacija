@@ -2517,6 +2517,11 @@ body.catalog-page {
     break-before: page;
   }
 
+  .catalog-page #section-13 {
+    break-before: page;
+    page-break-before: always;
+  }
+
   .catalog-page #section-07 > .media-block:nth-of-type(2) {
     grid-template-columns: minmax(0, 74mm) 82mm;
     gap: 5mm;

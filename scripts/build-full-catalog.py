@@ -240,6 +240,76 @@ RO_EXACT_TRANSLATIONS = {
     "Položaj TKAN običnog i TKAN Integra kotla u kotlarnici": (
         "Poziționarea cazanului TKAN și TKAN Integra în camera tehnică"
     ),
+    "(U ponudi snaga od 60 – 300 [kW] ) Kotao TKAN je razvijen sa ciljem da RADIJATOR INŽENJERING ponudi tržištu kotao koji je po svojim mehaničkim i termičkim osobinama izrazito namenjen biomasi kao gorivu. Sa druge strane zahtevi tržišta su uvek okrenuti ka što većoj univerzalnosti goriva, tako da je TKAN moguće ložiti i sa drvetom i tada je loženje ručno.": (
+        "(Disponibil în gama de puteri 60 - 300 [kW]) Cazanul TKAN a fost dezvoltat cu scopul "
+        "ca RADIJATOR INŽENJERING să ofere pieței un cazan ale cărui proprietăți mecanice și "
+        "termice sunt adaptate în mod special biomasei ca combustibil. Pe de altă parte, "
+        "cerințele pieței sunt orientate către o universalitate cât mai mare a combustibilului, "
+        "astfel încât TKAN poate fi alimentat și cu lemn, caz în care alimentarea este manuală."
+    ),
+    "Po spoljašnjem dizajnu, dimenzijama ložišta, otvorima za loženje i čišćenje TKAN je zadržao sve dobre osobine predhodnih modela po kojima je RADIJATOR INŽENJERING prepoznatljiv na tržištu. Vodeni deo kotla, njegov način izmene toplote između dimnih gasova i vode putem cevnog izmenjivača, prilagođen je biomasi. Zbog upotrebe ventilatora tj. prinudne promaje put dimnih gasova duži je nego kod standardnih kotlova. Iz istih razloga moguća je primena usmerivača dimnih gasova tzv. turbulatora koji dodatno povećavaju stepen iskorišćenja kotla. Turbulatori su spirale napravljene od specijalnog materijala.": (
+        "Prin designul exterior, dimensiunile focarului și deschiderile pentru alimentare și "
+        "curățare, TKAN păstrează toate calitățile modelelor anterioare prin care RADIJATOR "
+        "INŽENJERING este recunoscut pe piață. Partea de apă a cazanului și transferul de "
+        "căldură dintre gazele de ardere și apă prin schimbătorul tubular sunt adaptate "
+        "biomasei. Datorită utilizării ventilatorului, respectiv a tirajului forțat, traseul "
+        "gazelor de ardere este mai lung decât la cazanele standard. Din același motiv se pot "
+        "utiliza dirijori ai gazelor de ardere, așa-numitele turbultoare, care cresc suplimentar "
+        "randamentul cazanului. Turbulatoarele sunt spirale realizate din material special."
+    ),
+    "Stepen korisnosti na pelet je preko 90%. Pri normalnim režimima temperatura dimnih gasova na izlazu je oko 160  ̊ C, a pri maksimalnim režimima je ispod 180  ̊ C. Ove vrednosti mogu u svakom trenutku da se očitaju na displeju.": (
+        "Randamentul la peleți depășește 90%. În regimuri normale, temperatura gazelor de "
+        "ardere la ieșire este de aproximativ 160 °C, iar în regimuri maxime este sub 180 °C. "
+        "Aceste valori pot fi citite în orice moment pe afișaj."
+    ),
+    "Svi delovi vodenog dela kotla izrađeni su od bešavnih cevi kvaliteta ST 35.4 i kotlovskih limova debljine 5mm i više, u zavisnosti od snage kotla. Limovi su kvaliteta 1.0425 EU standard odnosno P265GH standard EUII. Ložište je po svom principu rada tzv. „izviruće“, gde gorivo iz zone transporta ide vertikalno uvis tj. izvire do zone sagorevanja. Napravljeno je od masivnih izolacijskih materijala i sivog liva. Transport goriva obezbeđen je pužnim transporterima.": (
+        "Toate componentele părții de apă a cazanului sunt realizate din țevi fără sudură de "
+        "calitate ST 35.4 și din tablă de cazan cu grosimea de 5 mm și mai mult, în funcție "
+        "de puterea cazanului. Tablele sunt de calitate 1.0425 conform standardului UE, "
+        "respectiv P265GH conform standardului EUII. Focarul funcționează pe principiul "
+        "așa-numitului focar ascendent, în care combustibilul din zona de transport se deplasează "
+        "vertical în sus către zona de ardere. Este realizat din materiale izolante masive și "
+        "fontă cenușie. Transportul combustibilului este asigurat prin transportoare melcate."
+    ),
+    "Tabela 1. Raspoložive snage": "Tabelul 1. Puteri disponibile",
+    "Primena TKAN kotlova u kaskadi": "Utilizarea cazanelor TKAN în cascadă",
+    "Specifičnosti TKAN kaskadnih sistema": "Particularitățile sistemelor TKAN în cascadă",
+    "Kompanija Radijator Inženjering razvila je seriju kotlova TKAN prvenstvenstveno za sagorevanje biomase (pelet, koštica voća) i drveta. Kada se ovi kotlovi povezuju u kaskadne sisteme, dobija se izuzetno moćno i fleksibilno rešenje za grejanje velikih objekata.": (
+        "Compania Radijator Inženjering a dezvoltat seria de cazane TKAN în principal pentru "
+        "arderea biomasei (peleți, sâmburi de fructe) și a lemnului. Atunci când aceste cazane "
+        "sunt conectate în sisteme în cascadă, se obține o soluție extrem de puternică și "
+        "flexibilă pentru încălzirea obiectivelor mari."
+    ),
+    "Za kaskadne sisteme najčešće se koriste industrijski modeli veće snage, kao što su TKAN 100, 150, 200, 250 i 300 kW.": (
+        "Pentru sistemele în cascadă se utilizează cel mai frecvent modele industriale de "
+        "putere mai mare, precum TKAN 100, 150, 200, 250 și 300 kW."
+    ),
+    "Pokrivanje velikih snaga: Povezivanjem npr. dva kotla TKAN 300 u kaskadu, dobija se sistem ukupne snage od 600 kW koji može da greje hotele, proizvodne hale ili stambene komplekse.": (
+        "Acoperirea puterilor mari: prin conectarea, de exemplu, a două cazane TKAN 300 în "
+        "cascadă, se obține un sistem cu putere totală de 600 kW, capabil să încălzească "
+        "hoteluri, hale de producție sau ansambluri rezidențiale."
+    ),
+    "Modularnost i fleksibilnost: U prelaznim periodima (jesen/proleće) radi samo jedan TKAN kotao na optimalnom režimu, dok se drugi pali tek kada spoljna temperatura drastično padne.": (
+        "Modularitate și flexibilitate: în perioadele de tranziție (toamnă/primăvară) "
+        "funcționează un singur cazan TKAN în regim optim, iar al doilea pornește doar când "
+        "temperatura exterioară scade semnificativ."
+    ),
+    "Upravljanje i automatika: TKAN kotlovi poseduju naprednu elektroniku koja preko spoljnih kaskadnih regulatora omogućava sinhronizovan rad. Automatika prati temperaturu u hidrauličnoj skretnici i komanduje koji će kotao startovati.": (
+        "Comandă și automatizare: cazanele TKAN dispun de electronică avansată care, prin "
+        "regulatoare externe de cascadă, permite funcționarea sincronizată. Automatizarea "
+        "urmărește temperatura în separatorul hidraulic și comandă cazanul care trebuie să pornească."
+    ),
+    "Kontinuirano snabdevanje gorivom: Industrijski TKAN kotlovi dolaze sa dnevnim silozima (npr. 800 litara) koji se preko dodatnih pužnih transportera mogu povezati sa jednim velikim, centralnim silosom za pelet koji snabdeva celu kaskadu.": (
+        "Alimentare continuă cu combustibil: cazanele industriale TKAN sunt livrate cu silozuri "
+        "zilnice (de exemplu 800 litri), care pot fi conectate prin transportoare melcate "
+        "suplimentare la un siloz central mare pentru peleți, ce alimentează întreaga cascadă."
+    ),
+    "Sigurnost i kontinuitet: Ukoliko je na jednom kotlu potrebno uraditi čišćenje pepela ili redovan servis, hidraulički sistem i kaskadna automatika omogućavaju da drugi kotao nesmetano nastavi rad, tako da objekat nikada ne ostaje bez grejanja.": (
+        "Siguranță și continuitate: dacă la un cazan este necesară curățarea cenușii sau "
+        "service-ul periodic, sistemul hidraulic și automatizarea în cascadă permit celuilalt "
+        "cazan să continue funcționarea fără întreruperi, astfel încât obiectivul să nu rămână "
+        "niciodată fără încălzire."
+    ),
     "PROIZVODNI PROGRAM – INDUSTRIJA": "PROGRAM DE PRODUCȚIE - INDUSTRIE",
     "PROIZVODNI PROGRAM - INDUSTRIJA": "PROGRAM DE PRODUCȚIE - INDUSTRIE",
     "TOPLOVODNI KOTAO NA PELET SA AUTOMATSKIM NALAGANJEM TKAN MODEL": (
@@ -272,6 +342,7 @@ RO_EXACT_TRANSLATIONS = {
     "SERIJA TKAN INTEGRA MODELI": "SERIA DE MODELE TKAN INTEGRA",
     "DIMENZIJE": "DIMENSIUNI",
     "TIP KOTLA": "TIP CAZAN",
+    "Tip kotla": "Tip cazan",
     "Jed.mere": "UM",
     "Snaga": "Putere",
     "Radni pritisak": "Presiune de lucru",
@@ -460,6 +531,84 @@ RO_PREFIX_TRANSLATIONS = [
         "certificarea sistemului de management al calității ISO 9001:2008.",
     ),
     (
+        "(U ponudi snaga od 60",
+        "(Disponibil în gama de puteri 60 - 300 [kW]) Cazanul TKAN a fost dezvoltat cu scopul "
+        "ca RADIJATOR INŽENJERING să ofere pieței un cazan ale cărui proprietăți mecanice și "
+        "termice sunt adaptate în mod special biomasei ca combustibil. Pe de altă parte, "
+        "cerințele pieței sunt orientate către o universalitate cât mai mare a combustibilului, "
+        "astfel încât TKAN poate fi alimentat și cu lemn, caz în care alimentarea este manuală.",
+    ),
+    (
+        "Po spoljašnjem dizajnu",
+        "Prin designul exterior, dimensiunile focarului și deschiderile pentru alimentare și "
+        "curățare, TKAN păstrează toate calitățile modelelor anterioare prin care RADIJATOR "
+        "INŽENJERING este recunoscut pe piață. Partea de apă a cazanului și transferul de "
+        "căldură dintre gazele de ardere și apă prin schimbătorul tubular sunt adaptate "
+        "biomasei. Datorită utilizării ventilatorului, respectiv a tirajului forțat, traseul "
+        "gazelor de ardere este mai lung decât la cazanele standard. Din același motiv se pot "
+        "utiliza dirijori ai gazelor de ardere, așa-numitele turbulatoare, care cresc suplimentar "
+        "randamentul cazanului. Turbulatoarele sunt spirale realizate din material special.",
+    ),
+    (
+        "Stepen korisnosti na pelet",
+        "Randamentul la peleți depășește 90%. În regimuri normale, temperatura gazelor de "
+        "ardere la ieșire este de aproximativ 160 °C, iar în regimuri maxime este sub 180 °C. "
+        "Aceste valori pot fi citite în orice moment pe afișaj.",
+    ),
+    (
+        "Svi delovi vodenog dela kotla",
+        "Toate componentele părții de apă a cazanului sunt realizate din țevi fără sudură de "
+        "calitate ST 35.4 și din tablă de cazan cu grosimea de 5 mm și mai mult, în funcție "
+        "de puterea cazanului. Tablele sunt de calitate 1.0425 conform standardului UE, "
+        "respectiv P265GH conform standardului EUII. Focarul funcționează pe principiul "
+        "așa-numitului focar ascendent, în care combustibilul din zona de transport se deplasează "
+        "vertical în sus către zona de ardere. Este realizat din materiale izolante masive și "
+        "fontă cenușie. Transportul combustibilului este asigurat prin transportoare melcate.",
+    ),
+    (
+        "Kompanija Radijator Inženjering razvila je seriju kotlova TKAN",
+        "Compania Radijator Inženjering a dezvoltat seria de cazane TKAN în principal pentru "
+        "arderea biomasei (peleți, sâmburi de fructe) și a lemnului. Atunci când aceste cazane "
+        "sunt conectate în sisteme în cascadă, se obține o soluție extrem de puternică și "
+        "flexibilă pentru încălzirea obiectivelor mari.",
+    ),
+    (
+        "Za kaskadne sisteme najčešće",
+        "Pentru sistemele în cascadă se utilizează cel mai frecvent modele industriale de "
+        "putere mai mare, precum TKAN 100, 150, 200, 250 și 300 kW.",
+    ),
+    (
+        "Pokrivanje velikih snaga",
+        "Acoperirea puterilor mari: prin conectarea, de exemplu, a două cazane TKAN 300 în "
+        "cascadă, se obține un sistem cu putere totală de 600 kW, capabil să încălzească "
+        "hoteluri, hale de producție sau ansambluri rezidențiale.",
+    ),
+    (
+        "Modularnost i fleksibilnost",
+        "Modularitate și flexibilitate: în perioadele de tranziție (toamnă/primăvară) "
+        "funcționează un singur cazan TKAN în regim optim, iar al doilea pornește doar când "
+        "temperatura exterioară scade semnificativ.",
+    ),
+    (
+        "Upravljanje i automatika",
+        "Comandă și automatizare: cazanele TKAN dispun de electronică avansată care, prin "
+        "regulatoare externe de cascadă, permite funcționarea sincronizată. Automatizarea "
+        "urmărește temperatura în separatorul hidraulic și comandă cazanul care trebuie să pornească.",
+    ),
+    (
+        "Kontinuirano snabdevanje gorivom",
+        "Alimentare continuă cu combustibil: cazanele industriale TKAN sunt livrate cu silozuri "
+        "zilnice, care pot fi conectate prin transportoare melcate suplimentare la un siloz "
+        "central mare pentru peleți, ce alimentează întreaga cascadă.",
+    ),
+    (
+        "Sigurnost i kontinuitet",
+        "Siguranță și continuitate: dacă la un cazan este necesară curățarea cenușii sau "
+        "service-ul periodic, sistemul hidraulic și automatizarea în cascadă permit celuilalt "
+        "cazan să continue funcționarea fără întreruperi, astfel încât obiectivul să nu rămână "
+        "niciodată fără încălzire.",
+    ),
+    (
         "TKAN INTEGRA predstavlja novu generaciju",
         "TKAN INTEGRA reprezintă o nouă generație de cazane industriale pe biomasă, "
         "dezvoltată ca îmbunătățire a modelului standard TKAN. Modelul a fost creat ca "
@@ -630,6 +779,7 @@ RO_SKIP_PREFIXES = (
     "više kotlova, duži dimovod",
     "MIN → uključi transport",
     "MAX → zaustavi transport",
+    "Kotao TKAN je razvijen",
 )
 
 RO_POST_PREFIX_TRANSLATIONS = [
