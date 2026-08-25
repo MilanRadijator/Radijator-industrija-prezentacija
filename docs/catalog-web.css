@@ -1712,11 +1712,14 @@
 
 @media screen and (min-width: 701px) {
   .catalog-page .production-spread__media figure {
-    aspect-ratio: 16 / 8.4 !important;
+    aspect-ratio: 16 / 9.2 !important;
   }
 
   .catalog-page .production-spread__media img {
+    height: 100% !important;
+    max-height: none !important;
     object-fit: contain !important;
+    object-position: center center !important;
   }
 
   .catalog-page .technical-visual {
