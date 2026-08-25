@@ -11,6 +11,7 @@ const pdfJobs = [
   {
     source: "index.html",
     output: join(docs, "radijator-industrijski-kotlovi.pdf"),
+    aliases: [join(docs, "radijator-industrijski-kotlovi-kompletan-katalog.pdf")],
     tempPrefix: "radijator-industrijski-kotlovi",
   },
   {
@@ -98,6 +99,9 @@ try {
     }
 
     copyFileSync(printOutput, job.output);
+    for (const alias of job.aliases || []) {
+      copyFileSync(printOutput, alias);
+    }
     unlinkSync(printOutput);
     rmSync(userDataDir, { recursive: true, force: true });
     console.log(`PDF exported: ${job.output}`);
