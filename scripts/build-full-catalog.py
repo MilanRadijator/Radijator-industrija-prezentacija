@@ -1026,6 +1026,13 @@ def prepare_supplemental_images() -> None:
         save_display_image(source_path, EDITORIAL_ASSET_DIR / target_name)
 
 
+def prepare_boiler_room_position_image() -> None:
+    source_path = EDITORIAL_ASSET_DIR / "boiler-room-position.png"
+    target_path = EDITORIAL_ASSET_DIR / "boiler-room-position-clean.png"
+    if source_path.is_file():
+        save_display_image(source_path, target_path)
+
+
 def extract_images() -> list[dict[str, str]]:
     if ASSET_DIR.exists():
         shutil.rmtree(ASSET_DIR)
@@ -1296,7 +1303,7 @@ def render_boiler_room_figure() -> str:
         '<div class="technical-visual boiler-room-visual">'
         '<div class="figure-row">'
         '<figure class="catalog-figure">'
-        '<img src="assets/editorial/boiler-room-position.png" '
+        '<img src="assets/editorial/boiler-room-position-clean.png" '
         'alt="Pozicioniranje TKAN kotla u kotlarnici" />'
         '</figure>'
         '</div>'
@@ -1331,6 +1338,43 @@ def append_after_section_table(body_html: str, section_id: str, insert_html: str
         return body_html
     table_end += len("</table></div>")
     updated_section = section_html[:table_end] + insert_html + section_html[table_end:]
+    return body_html[:section_start] + updated_section + body_html[section_end:]
+
+
+def merge_split_technical_figure(body_html: str, section_id: str, image_name: str) -> str:
+    section_start = body_html.find(f'id="{section_id}"')
+    section_end = body_html.find("</section>", section_start)
+    if section_start == -1 or section_end == -1:
+        return body_html
+
+    section_html = body_html[section_start:section_end]
+    image_pos = section_html.find(image_name)
+    if image_pos == -1:
+        return body_html
+
+    container_start = section_html.rfind('<div class="technical-visual"', 0, image_pos)
+    figure_start = section_html.rfind("<figure", container_start, image_pos)
+    figure_end = section_html.find("</figure>", image_pos)
+    container_end = section_html.find("</div></div>", figure_end)
+    previous_container_end = section_html.rfind("</div></div>", 0, container_start)
+    if min(container_start, figure_start, figure_end, container_end, previous_container_end) == -1:
+        return body_html
+
+    # If the figure has already been merged into the previous row, leave the section untouched.
+    if section_html.find(image_name, 0, container_start) != -1:
+        return body_html
+
+    figure_end += len("</figure>")
+    container_end += len("</div></div>")
+    figure_html = section_html[figure_start:figure_end]
+    updated_section = (
+        section_html[:previous_container_end]
+        + "\n    "
+        + figure_html
+        + "\n    "
+        + section_html[previous_container_end:container_start]
+        + section_html[container_end:]
+    )
     return body_html[:section_start] + updated_section + body_html[section_end:]
 
 
@@ -1391,32 +1435,7 @@ def tune_catalog_layout(body_html: str) -> str:
                     + body_html[section_end:]
                 )
 
-    body_html = body_html.replace(
-        '    </figure>\n'
-        '    </div></div><div class="technical-visual"><div class="figure-row">\n'
-        '    <figure class="catalog-figure">\n'
-        '      <img src="assets/full-catalog/catalog-image-14.png" alt="Slika 14" />\n'
-        '    </figure>\n'
-        '    </div></div></section>',
-        '    </figure>\n'
-        '    <figure class="catalog-figure">\n'
-        '      <img src="assets/full-catalog/catalog-image-14.png" alt="Slika 14" />\n'
-        '    </figure>\n'
-        '    </div></div></section>',
-    )
-    body_html = body_html.replace(
-        '    </figure>\n'
-        '    </div></div><div class="technical-visual"><div class="figure-row">\n'
-        '    <figure class="catalog-figure">\n'
-        '      <img src="assets/full-catalog/catalog-image-14.png" alt="Imagine 19" />\n'
-        '    </figure>\n'
-        '    </div></div></section>',
-        '    </figure>\n'
-        '    <figure class="catalog-figure">\n'
-        '      <img src="assets/full-catalog/catalog-image-14.png" alt="Imagine 19" />\n'
-        '    </figure>\n'
-        '    </div></div></section>',
-    )
+    body_html = merge_split_technical_figure(body_html, "section-12", "catalog-image-14.png")
 
     body_html = append_after_section_table(
         body_html,
@@ -1632,6 +1651,7 @@ def build_content(images_by_key: dict[str, dict[str, str]], language: str) -> tu
 def render_page(language: str) -> None:
     config = LANGUAGE_CONFIG[language]
     prepare_supplemental_images()
+    prepare_boiler_room_position_image()
     images = extract_images()
     images_by_key = {item["key"]: item for item in images}
     body_html, toc, _, _, _ = build_content(images_by_key, language)
