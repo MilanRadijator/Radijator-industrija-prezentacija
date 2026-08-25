@@ -820,6 +820,110 @@ body.catalog-page {
   object-fit: contain;
 }
 
+@media screen and (min-width: 701px) {
+  .catalog-page .catalog-section {
+    scroll-margin-top: 6.5rem;
+  }
+
+  .catalog-page .production-spread {
+    gap: clamp(1.15rem, 1.8vw, 1.65rem);
+  }
+
+  .catalog-page .production-spread__media figure {
+    aspect-ratio: 16 / 8.25;
+  }
+
+  .catalog-page .technical-visual {
+    width: min(100%, 68rem);
+    margin-bottom: clamp(1rem, 1.6vw, 1.6rem);
+  }
+
+  .catalog-page .catalog-figure img,
+  .catalog-page .technical-visual .catalog-figure img {
+    height: clamp(22rem, 44vw, 42rem);
+    padding: clamp(0.25rem, 0.7vw, 0.75rem);
+  }
+
+  .catalog-page #section-05 .technical-visual,
+  .catalog-page #section-06 .technical-visual,
+  .catalog-page #section-09 .technical-visual {
+    width: min(100%, 74rem);
+    margin-top: -0.35rem;
+  }
+
+  .catalog-page #section-05 .technical-visual .catalog-figure img {
+    height: clamp(25rem, 48vw, 46rem);
+  }
+
+  .catalog-page #section-06 .technical-visual .catalog-figure img,
+  .catalog-page #section-09 .technical-visual .catalog-figure img {
+    height: clamp(24rem, 42vw, 39rem);
+  }
+
+  .catalog-page #section-08 > .media-block:first-of-type {
+    grid-template-columns: minmax(28rem, 1.18fr) minmax(18rem, 0.82fr);
+    gap: clamp(1.6rem, 3vw, 3.2rem);
+    align-items: center;
+  }
+
+  .catalog-page #section-08 > .media-block:first-of-type .catalog-figure img {
+    height: clamp(28rem, 50vw, 48rem);
+    padding: 0.25rem;
+  }
+
+  .catalog-page #section-08 > .technical-visual {
+    width: min(100%, 76rem);
+  }
+
+  .catalog-page #section-08 > .technical-visual .catalog-figure img {
+    height: clamp(23rem, 42vw, 38rem);
+  }
+
+  .catalog-page #section-10 .boiler-room-visual {
+    width: min(100%, 76rem);
+    margin-bottom: clamp(1.1rem, 1.7vw, 1.8rem);
+  }
+
+  .catalog-page #section-10 .boiler-room-visual img {
+    height: clamp(29rem, 54vw, 52rem);
+    padding: 0.2rem;
+  }
+
+  .catalog-page #section-12 .media-block {
+    gap: clamp(1.25rem, 2.4vw, 2.6rem);
+  }
+
+  .catalog-page #section-12 .media-block .catalog-figure img {
+    height: clamp(22rem, 38vw, 36rem);
+  }
+
+  .catalog-page #section-12 > .technical-visual.word-page-break {
+    width: min(100%, 76rem);
+    margin-top: clamp(1rem, 1.8vw, 1.6rem);
+  }
+
+  .catalog-page #section-12 > .technical-visual.word-page-break .figure-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: end;
+    gap: clamp(1rem, 2vw, 1.8rem);
+  }
+
+  .catalog-page #section-12 > .technical-visual.word-page-break .catalog-figure img {
+    height: clamp(16rem, 24vw, 24rem);
+    padding: 0.2rem;
+  }
+
+  .catalog-page #section-13 .figure-row {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    align-items: center;
+  }
+
+  .catalog-page #section-13 .catalog-figure img {
+    height: clamp(24rem, 44vw, 42rem);
+    padding: 0.2rem;
+  }
+}
+
 .catalog-page .source-archive {
   display: grid;
   grid-template-columns: minmax(12rem, 0.7fr) minmax(15rem, 1.15fr) minmax(15rem, 0.9fr);
