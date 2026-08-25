@@ -1685,9 +1685,9 @@ def render_page(language: str) -> None:
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{html.escape(config["page_title"])}</title>
     <link rel="icon" href="assets/favicon.svg" />
-    <link rel="stylesheet" href="styles.css?v=20260825-web-images" />
-    <link rel="stylesheet" href="catalog-premium.css?v=20260825-web-images" />
-    <link rel="stylesheet" href="catalog-web.css?v=20260825-web-images" />
+    <link rel="stylesheet" href="styles.css?v=20260825-web-fit" />
+    <link rel="stylesheet" href="catalog-premium.css?v=20260825-web-fit" />
+    <link rel="stylesheet" href="catalog-web.css?v=20260825-web-fit" />
 {print_title_override}
   </head>
   <body class="catalog-page" id="top">
