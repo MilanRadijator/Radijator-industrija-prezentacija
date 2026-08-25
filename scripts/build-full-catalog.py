@@ -951,11 +951,16 @@ def remove_light_background(image: Image.Image) -> Image.Image:
     rgb = data[:, :, :3].astype(np.int16)
     alpha = data[:, :, 3]
     brightness = rgb.mean(axis=2)
-    neutral = rgb.max(axis=2) - rgb.min(axis=2) <= 42
+    color_spread = rgb.max(axis=2) - rgb.min(axis=2)
+    neutral = color_spread <= 42
     light_candidate = (brightness >= 238) & neutral & (alpha > 0)
+    off_white_candidate = (
+        ((brightness >= 232) & (color_spread <= 58) & (alpha > 0))
+        | ((brightness >= 218) & (color_spread <= 34) & (alpha > 0))
+    )
 
-    # Remove only the light background connected to the outside of the image.
-    # This preserves highlights, labels and bright details inside the boiler drawings.
+    # Remove the edge-connected backdrop and isolated off-white islands
+    # left inside dimension drawings, while keeping dark callouts and colored geometry.
     connected = np.zeros((height, width), dtype=bool)
     queue: deque[tuple[int, int]] = deque()
 
@@ -982,7 +987,7 @@ def remove_light_background(image: Image.Image) -> Image.Image:
         if y < height - 1:
             enqueue(x, y + 1)
 
-    data[connected, 3] = 0
+    data[connected | off_white_candidate, 3] = 0
     rgba = Image.fromarray(data, "RGBA")
 
     bbox = rgba.getbbox()
