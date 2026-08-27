@@ -2,5 +2,6 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/radijator/public_html/industrija-prezentacija/
+    - /bin/rm -rf /home/radijator/public_html/industrija
     - /bin/mkdir -p $DEPLOYPATH
     - /bin/cp -R docs/* $DEPLOYPATH
