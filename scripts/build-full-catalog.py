@@ -54,6 +54,11 @@ SUPPLEMENTAL_IMAGE_SOURCES = {
     / "Valvola - TKAN 300 Integra.PNG",
     "multiciklon-tkan-300.png": Path.home() / "Downloads" / "Sivi ciklon TKAN 300.PNG",
 }
+EDITORIAL_PRODUCT_IMAGE_SOURCES = {
+    "tkan-300-silos.png": Path.home() / "Downloads" / "TKAN 300 + SILOS.jpg",
+    "tkan-integra-render.png": Path.home() / "Downloads" / "TKAN INTEGRA.jpg",
+    "kaskadni-sistem-render.png": Path.home() / "Downloads" / "KASKADNI SISTEM.jpg",
+}
 
 LANGUAGE_CONFIG = {
     "sr": {
@@ -1051,7 +1056,10 @@ def save_display_image(raw_path: Path, display_path: Path) -> None:
 
 def prepare_supplemental_images() -> None:
     EDITORIAL_ASSET_DIR.mkdir(parents=True, exist_ok=True)
-    for target_name, source_path in SUPPLEMENTAL_IMAGE_SOURCES.items():
+    for target_name, source_path in {
+        **SUPPLEMENTAL_IMAGE_SOURCES,
+        **EDITORIAL_PRODUCT_IMAGE_SOURCES,
+    }.items():
         if not source_path.is_file():
             raise FileNotFoundError(f"Nedostaje slika za katalog: {source_path}")
         save_display_image(source_path, EDITORIAL_ASSET_DIR / target_name)
@@ -1372,6 +1380,34 @@ def append_after_section_table(body_html: str, section_id: str, insert_html: str
     return body_html[:section_start] + updated_section + body_html[section_end:]
 
 
+def replace_section_images(
+    body_html: str,
+    section_id: str,
+    replacements: list[tuple[str, str]],
+) -> str:
+    section_start = body_html.find(f'id="{section_id}"')
+    section_end = body_html.find("</section>", section_start)
+    if section_start == -1 or section_end == -1:
+        return body_html
+
+    section_html = body_html[section_start:section_end]
+    replacement_index = 0
+
+    def replace_image(match: re.Match[str]) -> str:
+        nonlocal replacement_index
+        if replacement_index >= len(replacements):
+            return match.group(0)
+        filename, alt = replacements[replacement_index]
+        replacement_index += 1
+        return (
+            f'<img src="assets/editorial/{html.escape(filename)}" '
+            f'alt="{html.escape(alt)}" />'
+        )
+
+    updated_section = re.sub(r'<img src="[^"]+" alt="[^"]*" />', replace_image, section_html)
+    return body_html[:section_start] + updated_section + body_html[section_end:]
+
+
 def merge_split_technical_figure(body_html: str, section_id: str, image_name: str) -> str:
     section_start = body_html.find(f'id="{section_id}"')
     section_end = body_html.find("</section>", section_start)
@@ -1411,6 +1447,31 @@ def merge_split_technical_figure(body_html: str, section_id: str, image_name: st
 
 def tune_catalog_layout(body_html: str) -> str:
     """Apply editorial moves that keep generated content aligned with the catalog story."""
+    body_html = replace_section_images(
+        body_html,
+        "section-02",
+        [
+            ("tkan-300-silos.png", "TKAN 300 sa silosom"),
+            ("tkan-integra-render.png", "TKAN Integra kotao"),
+            ("kaskadni-sistem-render.png", "Kaskadni sistem kotlova"),
+        ],
+    )
+    body_html = replace_section_images(
+        body_html,
+        "section-03",
+        [("tkan-300-silos.png", "TKAN 300 sa silosom")],
+    )
+    body_html = replace_section_images(
+        body_html,
+        "section-08",
+        [("tkan-integra-render.png", "TKAN Integra kotao")],
+    )
+    body_html = replace_section_images(
+        body_html,
+        "section-11",
+        [("kaskadni-sistem-render.png", "Kaskadni sistem kotlova")],
+    )
+
     section_start = body_html.find('id="section-07"')
     section_end = body_html.find("</section>", section_start)
     if section_start != -1 and section_end != -1:
