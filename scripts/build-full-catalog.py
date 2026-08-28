@@ -1463,6 +1463,11 @@ def tune_catalog_layout(body_html: str) -> str:
     )
     body_html = replace_section_images(
         body_html,
+        "section-07",
+        [("tkan-integra-render.png", "TKAN Integra kotao")],
+    )
+    body_html = replace_section_images(
+        body_html,
         "section-11",
         [("kaskadni-sistem-render.png", "Kaskadni sistem kotlova")],
     )
