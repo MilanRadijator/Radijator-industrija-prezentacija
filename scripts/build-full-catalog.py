@@ -205,7 +205,8 @@ RO_EXACT_TRANSLATIONS = {
         "O companie cu 35 de ani de experiență în proiectarea, fabricarea și inovarea cazanelor "
         "care încălzesc mii de obiective în întreaga Europă!"
     ),
-    "Serija TKAN modeli": "Modele seria TKAN",
+    "Serija TKAN modeli": "Seria TKAN",
+    "Serija TKAN": "Seria TKAN",
     "Industrijski kotlovi na biomasu su izrađeni od kotlovskih limova debljine 6 mm i više. Izmenjivač toplote je od bešavnih, kotlovskih cevi. Stepen iskorišćenja preko 90% na pelet. Temperature dimnih gasova na izlazu su od 170 do 190 stepeni pri višim režimima, što uvek možemo da proverimo na displeju automatike. Dostupni su u osegu od 80 – 500 kW.": (
         "Cazanele industriale pe biomasă sunt realizate din tablă de cazan cu grosimea de "
         "6 mm și mai mult. Schimbătorul de căldură este realizat din țevi de cazan fără "
@@ -220,7 +221,8 @@ RO_EXACT_TRANSLATIONS = {
         "ieșire este între 170 și 190 de grade în regimuri superioare, valoare care poate "
         "fi verificată pe afișajul automatizării. Sunt disponibile în gama de puteri 60-300 kW."
     ),
-    "Serija TKAN Integra modeli": "Modele seria TKAN Integra",
+    "Serija TKAN Integra modeli": "Seria TKAN Integra",
+    "Serija TKAN Integra": "Seria TKAN Integra",
     "Industrijski kotao na biomasu predstavlja unapređenu verziju standardnog TKAN kotla. Opremljen je zidanim ložištem, naprednijom automatikom i bogatijom pratećom opremom, čime se postižu veća pouzdanost, bolja efikasnost sagorevanja i šire mogućnosti primene. Izrađen je od kotlovskih limova debljine 6 mm i više, sa izmenjivačem toplote od bešavnih kotlovskih cevi. Stepen iskorišćenja je preko 90% Dostupan je u opsegu snaga od 80 do 500 kW.": (
         "Cazanul industrial pe biomasă reprezintă o versiune îmbunătățită a cazanului "
         "standard TKAN. Este echipat cu focar zidit, automatizare mai avansată și echipamente "
@@ -328,33 +330,46 @@ RO_EXACT_TRANSLATIONS = {
     "PROIZVODNI PROGRAM – INDUSTRIJA": "PROGRAM DE PRODUCȚIE - INDUSTRIE",
     "PROIZVODNI PROGRAM - INDUSTRIJA": "PROGRAM DE PRODUCȚIE - INDUSTRIE",
     "TOPLOVODNI KOTAO NA PELET SA AUTOMATSKIM NALAGANJEM TKAN MODEL": (
-        "CAZAN DE APĂ CALDĂ PE PELEȚI CU ALIMENTARE AUTOMATĂ - MODEL TKAN"
+        "CAZAN DE APĂ CALDĂ PE PELEȚI CU ALIMENTARE AUTOMATĂ TKAN"
+    ),
+    "TOPLOVODNI KOTAO NA PELET SA AUTOMATSKIM NALAGANJEM TKAN": (
+        "CAZAN DE APĂ CALDĂ PE PELEȚI CU ALIMENTARE AUTOMATĂ TKAN"
     ),
     "PRESEK TKAN KOTLA SA OPISOM ELEMENATA": (
         "SECȚIUNE CAZAN TKAN CU DESCRIEREA ELEMENTELOR"
     ),
+    "PRESEK KOTLA TKAN": "SECȚIUNE CAZAN TKAN",
     "TABELA SA DIMENZIJAMA TKAN KOTLA": "TABEL CU DIMENSIUNILE CAZANULUI TKAN",
     "TABELA SA DIMENZIJAMA TKAN SILOSA": "TABEL CU DIMENSIUNILE SILOZULUI TKAN",
     "TOPLOVODNI KOTAO NA PELET SA AUTOMATSKIM NALAGANJEM, OTPRAŠIVANJEM I CIKLONOM – TKAN INTEGRA MODEL": (
-        "CAZAN DE APĂ CALDĂ PE PELEȚI CU ALIMENTARE AUTOMATĂ, DESPRĂFUIRE ȘI CICLON - MODEL TKAN INTEGRA"
+        "CAZAN DE APĂ CALDĂ PE PELEȚI CU ALIMENTARE AUTOMATĂ, DESPRĂFUIRE ȘI CICLON TKAN INTEGRA"
+    ),
+    "TOPLOVODNI KOTAO NA PELET SA AUTOMATSKIM NALAGANJEM, OTPRAŠIVANJEM I CIKLONOM – TKAN INTEGRA": (
+        "CAZAN DE APĂ CALDĂ PE PELEȚI CU ALIMENTARE AUTOMATĂ, DESPRĂFUIRE ȘI CICLON TKAN INTEGRA"
     ),
     "PRESEK TKAN INTEGRA KOTLA SA OPISOM ELEMENATA": (
         "SECȚIUNE CAZAN TKAN INTEGRA CU DESCRIEREA ELEMENTELOR"
     ),
+    "PRESEK KOTLA TKAN INTEGRA": "SECȚIUNE CAZAN TKAN INTEGRA",
     "TABELA SA DIMENZIJAMA TKAN INTEGRA SILOSA": (
         "TABEL CU DIMENSIUNILE SILOZULUI TKAN INTEGRA"
     ),
     "POLOŽAJ TKAN OBIČNOG I TKAN INTEGRA KOTLA U KOTLARNICI": (
-        "POZIȚIONAREA CAZANULUI TKAN ȘI TKAN INTEGRA ÎN CAMERA TEHNICĂ"
+        "POZIȚIONAREA CAZANELOR TKAN ȘI TKAN INTEGRA ÎN CAMERA TEHNICĂ"
     ),
     "POLOŽAJ TKAN OBIČNOG i TKAN INTEGRA KOTLA U KOTLARNICI": (
-        "POZIȚIONAREA CAZANULUI TKAN ȘI TKAN INTEGRA ÎN CAMERA TEHNICĂ"
+        "POZIȚIONAREA CAZANELOR TKAN ȘI TKAN INTEGRA ÎN CAMERA TEHNICĂ"
+    ),
+    "POLOŽAJ KOTLOVA TKAN i TKAN INTEGRA U KOTLARNICI": (
+        "POZIȚIONAREA CAZANELOR TKAN ȘI TKAN INTEGRA ÎN CAMERA TEHNICĂ"
     ),
     "KASKADNI SISTEMI": "SISTEME ÎN CASCADĂ",
     "DODATNA OPREMA": "ECHIPAMENTE SUPLIMENTARE",
     "AUTOMATSKI TRANSPORT PELETA": "TRANSPORT AUTOMAT AL PELEȚILOR",
-    "SERIJA TKAN MODELI": "SERIA DE MODELE TKAN",
-    "SERIJA TKAN INTEGRA MODELI": "SERIA DE MODELE TKAN INTEGRA",
+    "SERIJA TKAN MODELI": "SERIA TKAN",
+    "SERIJA TKAN": "SERIA TKAN",
+    "SERIJA TKAN INTEGRA MODELI": "SERIA TKAN INTEGRA",
+    "SERIJA TKAN INTEGRA": "SERIA TKAN INTEGRA",
     "DIMENZIJE": "DIMENSIUNI",
     "TIP KOTLA": "TIP CAZAN",
     "Tip kotla": "Tip cazan",
@@ -833,6 +848,22 @@ def normalize_catalog_text(text: str) -> str:
         .replace("Dostupan je u opsegu snaga od 80 do 500 kW.", "Dostupan je u opsegu snaga od 80 do 600 kW.")
         .replace("(U ponudi snaga od 80 – 500 [kW] )", "(U ponudi snaga od 80 – 600 [kW] )")
         .replace("(U ponudi snaga od 80 - 500 [kW] )", "(U ponudi snaga od 80 - 600 [kW] )")
+        .replace("SERIJA TKAN INTEGRA MODELI", "SERIJA TKAN INTEGRA")
+        .replace("SERIJA TKAN MODELI", "SERIJA TKAN")
+        .replace("Serija TKAN Integra modeli", "Serija TKAN Integra")
+        .replace("Serija TKAN modeli", "Serija TKAN")
+        .replace(
+            "TOPLOVODNI KOTAO NA PELET SA AUTOMATSKIM NALAGANJEM, OTPRAŠIVANJEM I CIKLONOM – TKAN INTEGRA MODEL",
+            "TOPLOVODNI KOTAO NA PELET SA AUTOMATSKIM NALAGANJEM, OTPRAŠIVANJEM I CIKLONOM – TKAN INTEGRA",
+        )
+        .replace(
+            "TOPLOVODNI KOTAO NA PELET SA AUTOMATSKIM NALAGANJEM TKAN MODEL",
+            "TOPLOVODNI KOTAO NA PELET SA AUTOMATSKIM NALAGANJEM TKAN",
+        )
+        .replace("PRESEK TKAN INTEGRA KOTLA SA OPISOM ELEMENATA", "PRESEK KOTLA TKAN INTEGRA")
+        .replace("PRESEK TKAN KOTLA SA OPISOM ELEMENATA", "PRESEK KOTLA TKAN")
+        .replace("POLOŽAJ TKAN OBIČNOG I TKAN INTEGRA KOTLA U KOTLARNICI", "POLOŽAJ KOTLOVA TKAN i TKAN INTEGRA U KOTLARNICI")
+        .replace("POLOŽAJ TKAN OBIČNOG i TKAN INTEGRA KOTLA U KOTLARNICI", "POLOŽAJ KOTLOVA TKAN i TKAN INTEGRA U KOTLARNICI")
     )
 
 
