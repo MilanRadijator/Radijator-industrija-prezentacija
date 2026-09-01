@@ -19,6 +19,11 @@ const pdfJobs = [
     output: join(docs, "radijator-industrijski-kotlovi-ro.pdf"),
     tempPrefix: "radijator-industrijski-kotlovi-ro",
   },
+  {
+    source: "index-bg.html",
+    output: join(docs, "radijator-industrijski-kotlovi-bg.pdf"),
+    tempPrefix: "radijator-industrijski-kotlovi-bg",
+  },
 ];
 
 const edgeCandidates = [

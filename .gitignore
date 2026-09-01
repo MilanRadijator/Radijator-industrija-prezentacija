@@ -39,4 +39,5 @@ yarn-error.log*
 /outputs/
 /work/
 /tmp/
+__pycache__/
 site-dist.tgz

@@ -41,6 +41,8 @@ OUT_HTML = DOCS / "index.html"
 ALIAS_HTML = DOCS / "full-catalog.html"
 RO_HTML = DOCS / "index-ro.html"
 RO_ALIAS_HTML = DOCS / "full-catalog-ro.html"
+BG_HTML = DOCS / "index-bg.html"
+BG_ALIAS_HTML = DOCS / "full-catalog-bg.html"
 PDF_DOWNLOAD_ENABLED = True
 EDITORIAL_ASSET_DIR = DOCS / "assets" / "editorial"
 SUPPLEMENTAL_IMAGE_SOURCES = {
@@ -139,9 +141,48 @@ LANGUAGE_CONFIG = {
         "badge_alt": "35 de ani de experiență - calitate fără compromis",
         "badge_title": "35 de ani de experiență",
     },
+    "bg": {
+        "html_lang": "bg",
+        "html_path": BG_HTML,
+        "alias_path": BG_ALIAS_HTML,
+        "pdf_filename": "radijator-industrijski-kotlovi-bg.pdf",
+        "page_title": "Пълен каталог | Radijator Inzenjering",
+        "aria_main": "Основна навигация",
+        "brand_title": "Индустриален каталог",
+        "brand_aria": "Radijator Inženjering - начало на каталога",
+        "nav_boilers": "Котли",
+        "nav_systems": "Системи",
+        "nav_equipment": "Оборудване",
+        "nav_contact": "Контакт",
+        "pdf_label": "PDF каталог",
+        "hero_topline": "Индустриални топлоенергийни решения",
+        "hero_eyebrow": "Пълен продуктов каталог / 2026",
+        "hero_title": "Индустриални котли <em>на биомаса</em>",
+        "hero_lead": (
+            "Надеждни системи с висока мощност, проектирани за ефективност, "
+            "дълъг експлоатационен живот и пълен контрол на горивния процес."
+        ),
+        "hero_primary": "Разгледай каталога",
+        "hero_secondary": "Изтегли PDF",
+        "scroll": "Превъртете",
+        "toc_summary": "Съдържание на каталога",
+        "top_link": "Начало на каталога",
+        "production_toc": "Производство и стандарти",
+        "footer_kicker": "Проектиране / производство / поддръжка",
+        "footer_title": "Партньор за цялостни топлоенергийни решения.",
+        "footer_address": "Živojina Lazića Solunca 6<br />36000 Кралево, Сърбия",
+        "footer_gallery": "Radijator Inženjering на практика",
+        "footer_product": "Индустриални котли на биомаса",
+        "footer_top": "Назад към началото",
+        "dialog_label": "Увеличен технически изглед",
+        "dialog_close": "Затвори увеличения изглед",
+        "dialog_close_text": "Затвори",
+        "badge_alt": "35 години опит - качество без компромис",
+        "badge_title": "35 години опит",
+    },
 }
 
-LANGUAGE_LABELS = {"sr": "SR", "ro": "RO"}
+LANGUAGE_LABELS = {"sr": "SR", "ro": "RO", "bg": "BG"}
 
 RO_EXACT_TRANSLATIONS = {
     "O nama": "Despre noi",
@@ -840,6 +881,157 @@ RO_POST_SKIP_PREFIXES = (
     "sonde minimuma",
 )
 
+BG_EXACT_TRANSLATIONS = {
+    "O nama": "За нас",
+    "PROIZVODNI PROGRAM – INDUSTRIJA": "ПРОИЗВОДСТВЕНА ПРОГРАМА - ИНДУСТРИЯ",
+    "PROIZVODNI PROGRAM - INDUSTRIJA": "ПРОИЗВОДСТВЕНА ПРОГРАМА - ИНДУСТРИЯ",
+    "Serija TKAN": "Серия TKAN",
+    "Serija TKAN Integra": "Серия TKAN Integra",
+    "Kaskadni sistemi": "Каскадни системи",
+    "Dodatna oprema": "Допълнително оборудване",
+    "TOPLOVODNI KOTAO NA PELET SA AUTOMATSKIM NALAGANJEM TKAN": "ВОДОГРЕЕН КОТЕЛ НА ПЕЛЕТИ С АВТОМАТИЧНО ПОДАВАНЕ TKAN",
+    "(U ponudi snaga od 60 – 300 [kW] )": "(Предлага се в мощностен диапазон 60 - 300 [kW])",
+    "(U ponudi snaga od 60 - 300 [kW] )": "(Предлага се в мощностен диапазон 60 - 300 [kW])",
+    "PRESEK KOTLA TKAN": "РАЗРЕЗ НА КОТЕЛ TKAN",
+    "TABELA SA DIMENZIJAMA TKAN KOTLA": "ТАБЛИЦА С РАЗМЕРИ НА КОТЕЛ TKAN",
+    "TABELA SA DIMENZIJAMA TKAN SILOSA": "ТАБЛИЦА С РАЗМЕРИ НА СИЛОЗ TKAN",
+    "TOPLOVODNI KOTAO NA PELET SA AUTOMATSKIM NALAGANJEM, OTPRAŠIVANJEM I CIKLONOM – TKAN INTEGRA": "ВОДОГРЕЕН КОТЕЛ НА ПЕЛЕТИ С АВТОМАТИЧНО ПОДАВАНЕ, ОБЕЗПРАШАВАНЕ И ЦИКЛОН - TKAN INTEGRA",
+    "(U ponudi snaga od 80 – 600 [kW] )": "(Предлага се в мощностен диапазон 80 - 600 [kW])",
+    "(U ponudi snaga od 80 - 600 [kW] )": "(Предлага се в мощностен диапазон 80 - 600 [kW])",
+    "PRESEK KOTLA TKAN INTEGRA": "РАЗРЕЗ НА КОТЕЛ TKAN INTEGRA",
+    "TABELA SA DIMENZIJAMA TKAN INTEGRA SILOSA": "ТАБЛИЦА С РАЗМЕРИ НА СИЛОЗ TKAN INTEGRA",
+    "POLOŽAJ KOTLOVA TKAN i TKAN INTEGRA U KOTLARNICI": "РАЗПОЛОЖЕНИЕ НА КОТЛИТЕ TKAN И TKAN INTEGRA В КОТЕЛНОТО ПОМЕЩЕНИЕ",
+    "Pozicioniranje kotla u kotlarnici": "Позициониране на котела в котелното помещение",
+    "KASKADNI SISTEMI": "КАСКАДНИ СИСТЕМИ",
+    "DODATNA OPREMA": "ДОПЪЛНИТЕЛНО ОБОРУДВАНЕ",
+    "VEĆI DNEVNI SILOS": "ПО-ГОЛЯМ ДНЕВЕН СИЛОЗ",
+    "AUTOMATSKI TRANSPORT PELETA": "АВТОМАТИЧЕН ТРАНСПОРТ НА ПЕЛЕТИ",
+    "Tabela 1. Raspoložive snage": "Таблица 1. Налични мощности",
+    "Primena TKAN kotlova u kaskadi": "Приложение на котли TKAN в каскада",
+    "Specifičnosti TKAN kaskadnih sistema": "Особености на каскадните системи TKAN",
+    "Turbulatori": "Турбулатори",
+    "Cevni izmenjivač": "Тръбен топлообменник",
+    "Vrata za čišćenje cevnog izmenjivača i samog kotla": "Врата за почистване на тръбния топлообменник и самия котел",
+    "Razvodni ormar sa automatikom": "Разпределително табло с автоматика",
+    "Kanta za pepeo": "Контейнер за пепел",
+    "Vrata za loženje i potpalu": "Врата за зареждане и разпалване",
+    "Spirala za automatsko izbacivanje pepela iz prostora ložišta": "Шнек за автоматично извеждане на пепелта от горивната камера",
+    "Ložište kotla": "Горивна камера на котела",
+    "Liveni segmenti": "Лети сегменти",
+    "Motor za pokretanje spirale za automatsko čišćenje ložišta": "Мотор за задвижване на шнека за автоматично почистване на горивната камера",
+    "Donja osovina pužnog transportera": "Долна ос на шнековия транспортьор",
+    "Ćelijski dozator (valvola)": "Клетъчен дозатор (valvola)",
+    "Gornja osovina pužnog transportera": "Горна ос на шнековия транспортьор",
+    "Izmenjivač termičkog osiguranja": "Топлообменник за термична защита",
+    "Boca komprimovanog vazduha": "Бутилка за сгъстен въздух",
+    "Impulsni elektroventil": "Импулсен електромагнитен вентил",
+    "Ozida ložišta": "Облицовка на горивната камера",
+    "Ožid ložišta": "Облицовка на горивната камера",
+    "Centrifugalni ventilator multiciklona": "Центробежен вентилатор на мултициклона",
+    "Multiciklon": "Мултициклон",
+    "DIMENZIJE": "РАЗМЕРИ",
+    "Dimenzije": "Размери",
+    "TIP KOTLA": "ТИП КОТЕЛ",
+    "Tip kotla": "Тип котел",
+    "Jed.mere": "Мерна ед.",
+    "Snaga": "Мощност",
+    "Radni pritisak": "Работно налягане",
+    "Probni pritisak": "Пробно налягане",
+    "Zapremina vode u kotlu": "Обем вода в котела",
+    "Masa kotla": "Маса на котела",
+    "Masa silosa": "Маса на силоза",
+    "Količina peleta koja staje u silosu": "Количество пелети в силоза",
+    "Proizvođač predviđa:": "Производителят предвижда:",
+    "pužne transportere,": "шнекови транспортьори,",
+    "pogone/motore pužnih transportera,": "задвижвания/мотори на шнековите транспортьори,",
+    "povezivanje velikog i dnevnog silosa,": "свързване на големия и дневния силоз,",
+    "automatsko dopunjavanje dnevnog silosa,": "автоматично допълване на дневния силоз,",
+    "sonde minimuma i maksimuma u dnevnom silosu.": "сонди за минимум и максимум в дневния силоз.",
+    "MIN → uključi transport peleta": "MIN -> включва транспорта на пелети",
+    "MAX → zaustavi transport peleta": "MAX -> спира транспорта на пелети",
+    "više kotlova,": "няколко котела,",
+    "duži dimovod,": "по-дълъг димоотвод,",
+    "ciklon/multiciklon,": "циклон/мултициклон,",
+    "veći broj kolena,": "по-голям брой колена,",
+    "zajednički dimnjak.": "общ комин.",
+    ".": "",
+    "Radijator Inženjering je domaći proizvođač kotlova na biomasu sa dugogodišnjom tradicijom, prepoznat po pouzdanim i tehnološki naprednim rešenjima za grejanje. Razvojem sopstvenih proizvodnih procesa i primenom savremenih tehnologija, stvaramo proizvode koji odgovaraju najvišim zahtevima tržišta kada su u pitanju kvalitet, efikasnost i dug vek trajanja.": "Radijator Inženjering е местен производител на котли на биомаса с дългогодишна традиция, разпознаваем с надеждни и технологично напреднали решения за отопление. Чрез развитие на собствени производствени процеси и прилагане на съвременни технологии създаваме продукти, които отговарят на най-високите пазарни изисквания за качество, ефективност и дълъг експлоатационен живот.",
+    "Naša proizvodnja obuhvata kotlove snage od 6 do 600 kW, namenjene grejanju porodičnih kuća, stambenih i poslovnih objekata, javnih ustanova i industrijskih postrojenja. Zahvaljujući širokom asortimanu i mogućnosti izrade kaskadnih sistema, u mogućnosti smo da ponudimo optimalno rešenje za svaki objekat i svaku potrebu.": "Нашето производство обхваща котли с мощност от 6 до 600 kW, предназначени за отопление на семейни къщи, жилищни и търговски обекти, обществени институции и индустриални инсталации. Благодарение на широкия асортимент и възможността за изработка на каскадни системи можем да предложим оптимално решение за всеки обект и всяка нужда.",
+    "Kvalitet naših proizvoda rezultat je pažljivo odabranih materijala, precizne proizvodnje i rigorozne kontrole kvaliteta u svim fazama procesa. Svaki kotao razvijen je sa ciljem da obezbedi maksimalnu energetsku efikasnost, pouzdan rad i dugoročnu eksploataciju uz minimalne troškove održavanja.": "Качеството на нашите продукти е резултат от внимателно подбрани материали, прецизно производство и строг контрол на качеството във всички фази на процеса. Всеки котел е разработен с цел да осигури максимална енергийна ефективност, надеждна работа и дългосрочна експлоатация с минимални разходи за поддръжка.",
+    "Posebnu pažnju posvećujemo inovacijama i unapređenju tehnologije proizvodnje, kako bismo korisnicima obezbedili savremena rešenja koja kombinuju visok stepen automatizacije, jednostavno upravljanje i maksimalno iskorišćenje energije.": "Обръщаме специално внимание на иновациите и усъвършенстването на производствените технологии, за да осигурим на потребителите съвременни решения, които съчетават висока степен на автоматизация, лесно управление и максимално оползотворяване на енергията.",
+    "Svi naši proizvodi projektovani su i proizvedeni u skladu sa važećim evropskim standardima i propisima u oblasti kotlova, što predstavlja potvrdu njihove bezbednosti, pouzdanosti i visokog kvaliteta.": "Всички наши продукти са проектирани и произведени в съответствие с действащите европейски стандарти и разпоредби в областта на котлите, което потвърждава тяхната безопасност, надеждност и високо качество.",
+    "Izborom Radijator Inženjering kotlova birate domaći proizvod, provereni kvalitet i partnera koji svojim iskustvom, stručnom podrškom i kompletnim sistemskim rešenjima pruža sigurnost tokom celog životnog veka sistema grejanja.": "Избирайки котлите Radijator Inženjering, избирате местен продукт, доказано качество и партньор, който със своя опит, професионална поддръжка и цялостни системни решения осигурява сигурност през целия жизнен цикъл на отоплителната система.",
+    "Kompanija sa 35 godina iskustva u projektovanju, izradi i inovacijama na polju kotlova koji zagrevaju hiljade objekata širom Evrope!": "Компания с 35 години опит в проектирането, производството и иновациите в областта на котлите, които отопляват хиляди обекти в цяла Европа!",
+    "Industrijski kotlovi na biomasu su izrađeni od kotlovskih limova debljine 6 mm i više. Izmenjivač toplote je od bešavnih, kotlovskih cevi. Stepen iskorišćenja preko 90% na pelet. Temperature dimnih gasova na izlazu su od 170 do 190 stepeni pri višim režimima, što uvek možemo da proverimo na displeju automatike. Dostupni su u opsegu snaga od 60 do 300 kW.": "Индустриалните котли на биомаса са изработени от котелна ламарина с дебелина 6 mm и повече. Топлообменникът е от безшевни котелни тръби. КПД при работа с пелети е над 90%. Температурата на димните газове на изхода е от 170 до 190 градуса при по-високи режими и винаги може да се провери на дисплея на автоматиката. Предлагат се в мощностен диапазон 60-300 kW.",
+    "Industrijski kotao na biomasu predstavlja unapređenu verziju standardnog TKAN kotla. Opremljen je zidanim ložištem, naprednijom automatikom i bogatijom pratećom opremom, čime se postižu veća pouzdanost, bolja efikasnost sagorevanja i šire mogućnosti primene. Izrađen je od kotlovskih limova debljine 6 mm i više, sa izmenjivačem toplote od bešavnih kotlovskih cevi. Stepen iskorišćenja je preko 90% Dostupan je u opsegu snaga od 80 do 600 kW.": "Индустриалният котел на биомаса представлява усъвършенствана версия на стандартния котел TKAN. Оборудван е със зидана горивна камера, по-усъвършенствана автоматика и по-богато съпътстващо оборудване, с което се постигат по-висока надеждност, по-добра ефективност на горенето и по-широки възможности за приложение. Изработен е от котелна ламарина с дебелина 6 mm и повече, с топлообменник от безшевни котелни тръби. КПД е над 90%, а мощностният диапазон е 80-600 kW.",
+    "Kaskadni sistemi predstavljaju kombinaciju dva ili više kotlova povezanih u jedinstven sistem sa zajedničkim silosom za skladištenje peleta. Ovakva konfiguracija omogućava veću ukupnu instalisanu snagu, pouzdaniji rad, ravnomernu raspodelu opterećenja i veću energetsku efikasnost sistema.": "Каскадните системи представляват комбинация от два или повече котела, свързани в единна система с общ силоз за съхранение на пелети. Такава конфигурация осигурява по-голяма обща инсталирана мощност, по-надеждна работа, равномерно разпределение на натоварването и по-висока енергийна ефективност на системата.",
+    "Pored kotlova, u ponudi je kompletna prateća oprema za formiranje funkcionalnog sistema grejanja. Asortiman obuhvata silose za skladištenje peleta, pužne transportere, elevatore, bafer rezervoare, automatiku i ostalu opremu potrebnu za pouzdan transport, doziranje i kontrolu peleta, kao i siguran i efikasan rad celokupnog sistema.": "Освен котлите, в предложението влиза и пълно съпътстващо оборудване за изграждане на функционална отоплителна система. Асортиментът включва силози за съхранение на пелети, шнекови транспортьори, елеватори, буферни съдове, автоматика и друго оборудване, необходимо за надежден транспорт, дозиране и контрол на пелетите, както и за безопасна и ефективна работа на цялата система.",
+    "Kotao TKAN je razvijen sa ciljem da RADIJATOR INŽENJERING ponudi tržištu kotao koji je po svojim mehaničkim i termičkim osobinama izrazito namenjen biomasi kao gorivu. Sa druge strane zahtevi tržišta su uvek okrenuti ka što većoj univerzalnosti goriva, tako da je TKAN moguće ložiti i sa drvetom i tada je loženje ručno.": "Котелът TKAN е разработен с цел RADIJATOR INŽENJERING да предложи на пазара котел, чиито механични и термични характеристики са специално пригодени за биомаса като гориво. От друга страна, изискванията на пазара са насочени към възможно най-голяма универсалност на горивото, поради което TKAN може да се захранва и с дърва, като тогава зареждането е ръчно.",
+    "Po spoljašnjem dizajnu, dimenzijama ložišta, otvorima za loženje i čišćenje TKAN je zadržao sve dobre osobine predhodnih modela po kojima je RADIJATOR INŽENJERING prepoznatljiv na tržištu. Vodeni deo kotla, njegov način izmene toplote između dimnih gasova i vode putem cevnog izmenjivača, prilagođen je biomasi. Zbog primene ventilatora tj. prinudne promaje put dimnih gasova duži je nego kod standardnih kotlova. Iz istih razloga moguća je primena usmerivača dimnih gasova tzv. turbulatora koji dodatno povećavaju stepen iskorišćenja kotla. Turbulatori su spirale napravljene od specijalnog materijala.": "По външен дизайн, размери на горивната камера и отвори за зареждане и почистване TKAN е запазил всички добри качества на предишните модели, с които RADIJATOR INŽENJERING е разпознаваем на пазара. Водната част на котела и начинът на топлообмен между димните газове и водата чрез тръбен топлообменник са пригодени за биомаса. Поради използването на вентилатор, тоест принудителна тяга, пътят на димните газове е по-дълъг отколкото при стандартните котли. По същите причини е възможно използване на насочващи елементи за димните газове, т.нар. турбулатори, които допълнително повишават КПД на котела. Турбулаторите са спирали, изработени от специален материал.",
+    "Stepen korisnosti na pelet je preko 90%. Pri normalnim režimima temperatura dimnih gasovana izlazu je oko 160 ̊C, a pri maksimalnim režimima je ispod 180 ̊C. Ove vrednosti mogu u svakom trenutku da se očitaju na displeju.": "КПД при работа с пелети е над 90%. При нормални режими температурата на димните газове на изхода е около 160 °C, а при максимални режими е под 180 °C. Тези стойности могат по всяко време да се отчетат на дисплея.",
+    "Svi delovi vodenog dela kotla izrađeni su od bešavnih cevi kvaliteta ST 35.4 i kotlovskih limova debljine 5mm i više, u zavisnosti od snage kotla. Limovi su kvaliteta 1.0425 EU standard odnosno P265GH standard EUII. Ložište je po svom principu rada tzv. „izviruće“, gde gorivo iz zone transporta ide vertikalno uvis tj. izvire do zone sagorevanja. Napravljeno je od masivnih izolacijskih materijala i sivog liva. Transport goriva obezbeđen je pužnim transporterima.": "Всички части на водната част на котела са изработени от безшевни тръби с качество ST 35.4 и котелна ламарина с дебелина 5 mm и повече, в зависимост от мощността на котела. Ламарините са с качество 1.0425 по стандарт EU, съответно P265GH по стандарт EUII. Горивната камера работи на принципа на т.нар. възходящо горене, при което горивото от зоната на транспорта се движи вертикално нагоре към зоната на горене. Изработена е от масивни изолационни материали и сив чугун. Транспортът на горивото се осигурява чрез шнекови транспортьори.",
+    "TKAN INTEGRA predstavlja novu generaciju industrijskih kotlova na biomasu, razvijenu kao unapređenje standardnog TKAN modela. Nastao je kao odgovor na zahteve tržišta za većim stepenom automatizacije, višom energetskom efikasnošću i većom pouzdanošću u radu, uz zadržavanje svih proverenih konstrukcionih rešenja po kojima je RADIJATOR INŽENJERING prepoznatljiv.": "TKAN INTEGRA представлява ново поколение индустриални котли на биомаса, разработено като усъвършенстване на стандартния модел TKAN. Създаден е като отговор на пазарните изисквания за по-висока степен на автоматизация, по-висока енергийна ефективност и по-голяма надеждност при работа, като запазва всички доказани конструктивни решения, с които RADIJATOR INŽENJERING е разпознаваем.",
+    "Zahvaljujući zidanom ložištu, unapređenom sistemu sagorevanja, savremenoj automatici i bogatijoj standardnoj opremi, TKAN INTEGRA obezbeđuje stabilan rad, maksimalno iskorišćenje energije i dug radni vek svih ključnih komponenti. Konstrukcija kotla izrađena je od visokokvalitetnih kotlovskih limova debljine 6 mm i više, dok je cevni izmenjivač toplote izrađen od bešavnih kotlovskih cevi, čime su obezbeđeni visoka mehanička čvrstoća, pouzdanost i dugotrajnost sistema.": "Благодарение на зиданата горивна камера, усъвършенстваната система за горене, съвременната автоматика и по-богатото стандартно оборудване, TKAN INTEGRA осигурява стабилна работа, максимално оползотворяване на енергията и дълъг експлоатационен живот на всички ключови компоненти. Конструкцията на котела е изработена от висококачествени котелни ламарини с дебелина 6 mm и повече, а тръбният топлообменник е от безшевни котелни тръби, което осигурява висока механична якост, надеждност и дълготрайност на системата.",
+    "Zidano ložište predstavlja jednu od ključnih prednosti modela TKAN INTEGRA. Ovakva konstrukcija omogućava potpuno i stabilno sagorevanje goriva, minimalne emisije štetnih gasova i čestica prašine, kao i maksimalno iskorišćenje energije sadržane u peletu. Istovremeno, čelični delovi kotla nisu direktno izloženi plamenu, čime se značajno produžava radni vek kotla.": "Зиданата горивна камера е едно от ключовите предимства на модела TKAN INTEGRA. Тази конструкция позволява пълно и стабилно изгаряне на горивото, минимални емисии на вредни газове и прахови частици, както и максимално оползотворяване на енергията в пелетите. Едновременно с това стоманените части на котела не са директно изложени на пламъка, което значително удължава експлоатационния живот на котела.",
+    "Za smanjenje količine čestica koje odlaze u dimnjak predviđen je ciklon, odnosno kod većih konfiguracija multiciklon sa centrifugalnim ventilatorom. Proizvođač posebno preporučuje ciklon kada se koristi pneumatsko čišćenje izmenjivača, jer se tada dodatno izbacuje pepeo/čađ iz kotla. Kod većih TKAN Integra modela koristi se multiciklon sa centrifugalnim ventilatorom. Tačnije, kod modela TKAN 80 Integra i TKAN 100 Integra ugrađen je ventilator na dimnjači, dok je kod modela TKAN 150 Integra, TKAN 200 Integra, TKAN 250 Integra i TKAN 300 Integra konstruisan multiciklon sa centrifugalnim ventilatorom.": "За намаляване на количеството частици, които отиват към комина, е предвиден циклон, а при по-големи конфигурации - мултициклон с центробежен вентилатор. Производителят особено препоръчва циклон, когато се използва пневматично почистване на топлообменника, тъй като тогава допълнително се извеждат пепел и сажди от котела. При по-големите модели TKAN Integra се използва мултициклон с центробежен вентилатор. По-точно, при моделите TKAN 80 Integra и TKAN 100 Integra вентилаторът е монтиран на димохода, а при моделите TKAN 150 Integra, TKAN 200 Integra, TKAN 250 Integra и TKAN 300 Integra е конструиран мултициклон с центробежен вентилатор.",
+    "Kod pojedinih TKAN konfiguracija koristi se ventilator na dimovodnoj strani, a kod većih sistema multiciklon može biti opremljen centrifugalnim ventilatorom. Ovo je bitno prilikom projektovanja kompletnog dimnjaka, naročito ako ima:": "При отделни конфигурации TKAN се използва вентилатор от страната на димоотвода, а при по-големи системи мултициклонът може да бъде оборудван с центробежен вентилатор. Това е важно при проектирането на цялата коминна система, особено ако има:",
+    "Kotlovi serije TKAN INTEGRA standardno su opremljeni sistemom za automatsko čišćenje prostora oko ložišta, dok se čišćenje cevnog izmenjivača vrši automatski pomoću komprimovanog vazduha. Sistem periodičnim vazdušnim impulsima uklanja naslage čađi iz dimovodnih cevi, održava visok stepen iskorišćenja kotla i značajno smanjuje potrebu za ručnim održavanjem.": "Котлите от серия TKAN INTEGRA стандартно са оборудвани със система за автоматично почистване на пространството около горивната камера, а тръбният топлообменник се почиства автоматично със сгъстен въздух. Чрез периодични въздушни импулси системата премахва наслояванията от сажди в димогарните тръби, поддържа висок КПД на котела и значително намалява нуждата от ръчна поддръжка.",
+    "Kotlarnica mora biti obezbeđena od smrzavanja. Podloga za kotao u kotlarnici mora biti od nezapaljivog materijala. Preporučene vrednosti udaljenosti sve četiri strane kotla u odnosu na zidove kotlarnice ili neka druga kruta tela (akomulacioni bojler itd.) prikazane su tablično slici ispod.": "Котелното помещение трябва да бъде защитено от замръзване. Основата за котела трябва да бъде от негорим материал. Препоръчителните разстояния от всички четири страни на котела до стените на котелното помещение или до други твърди тела (акумулиращ бойлер и др.) са показани в таблицата и изображението по-долу.",
+    "Kompanija Radijator Inženjering razvila je seriju kotlova TKAN prvenstvenstveno za sagorevanje biomase (peleta, koštica voća) i drveta. Kada se ovi kotlovi povezuju u kaskadne sisteme, dobija se izuzetno moćno i fleksibilno rešenje za grejanje velikih objekata.": "Компанията Radijator Inženjering разработи серията котли TKAN преди всичко за изгаряне на биомаса (пелети, костилки от плодове) и дърва. Когато тези котли се свържат в каскадни системи, се получава изключително мощно и гъвкаво решение за отопление на големи обекти.",
+    "Za kaskadne sisteme najčešće se koriste industrijski modeli veće snage, kao što su TKAN 100, 150, 200, 250 i 300 kW.": "За каскадни системи най-често се използват индустриални модели с по-голяма мощност, като TKAN 100, 150, 200, 250 и 300 kW.",
+    "Pokrivanje velikih snaga: Povezivanjem npr. dva kotla TKAN 300 u kaskadu, dobija se sistem ukupne snage od 600 kW koji može da greje hotele, proizvodne hale ili stambene komplekse.": "Покриване на големи мощности: чрез свързване например на два котела TKAN 300 в каскада се получава система с обща мощност 600 kW, която може да отоплява хотели, производствени халета или жилищни комплекси.",
+    "Modularnost i fleksibilnost: U prelaznim periodima (jesen/proleće) radi samo jedan TKAN kotao na optimalnom režimu, dok se drugi pali tek kada spoljna temperatura drastično padne.": "Модулност и гъвкавост: в преходните периоди (есен/пролет) работи само един котел TKAN в оптимален режим, а вторият се включва едва когато външната температура значително спадне.",
+    "Upravljanje i automatika: TKAN kotlovi poseduju naprednu elektroniku koja preko spoljnih kaskadnih regulatora omogućava sinhronizovan rad. Automatika prati temperaturu u hidrauličnoj skretnici i komanduje koji će kotao startovati.": "Управление и автоматика: котлите TKAN разполагат с усъвършенствана електроника, която чрез външни каскадни регулатори позволява синхронизирана работа. Автоматиката следи температурата в хидравличния разделител и управлява кой котел да стартира.",
+    "Kontinuirano snabdevanje gorivom: Industrijski TKAN kotlovi dolaze sa dnevnim silosima (npr. 800 litara) koji se preko dodatnih pužnih transportera mogu povezati sa jednim velikim, centralnim silosom za pelet koji snabdeva celu kaskadu.": "Непрекъснато снабдяване с гориво: индустриалните котли TKAN се доставят с дневни силози (например 800 литра), които чрез допълнителни шнекови транспортьори могат да се свържат с един голям централен силоз за пелети, захранващ цялата каскада.",
+    "Sigurnost i kontinuitet: Ukoliko je na jednom kotlu potrebno uraditi čišćenje pepela ili redovan servis, hidraulički sistem i kaskadna automatika omogućavaju da drugi kotao nesmetano nastavi rad, tako da objekat nikada ne ostaje bez grejanja.": "Сигурност и непрекъснатост: ако на един котел е необходимо почистване на пепелта или редовно сервизиране, хидравличната система и каскадната автоматика позволяват на другия котел да продължи работа без прекъсване, така че обектът никога да не остава без отопление.",
+    "Za pouzdan i efikasan rad industrijskih kotlovskih postrojenja, sistem se može opremiti dodatnim komponentama prilagođenim potrebama objekta i načinu korišćenja.": "За надеждна и ефективна работа на индустриалните котелни инсталации системата може да бъде оборудвана с допълнителни компоненти, съобразени с нуждите на обекта и начина на използване.",
+    "Dodatna oprema obuhvata sisteme za automatsko doziranje i transport goriva, skladištenje peleta, automatizovanu regulaciju rada, kao i opremu za povezivanje i kaskadno upravljanje kotlovima.": "Допълнителното оборудване включва системи за автоматично дозиране и транспорт на гориво, съхранение на пелети, автоматизирано регулиране на работата, както и оборудване за свързване и каскадно управление на котлите.",
+    "Rešenja se projektuju prema kapacitetu kotlarnice, potrebnoj autonomiji rada i raspoloživom prostoru, sa ciljem postizanja visokog stepena automatizacije, pouzdanosti i optimalne potrošnje goriva.": "Решенията се проектират според капацитета на котелното помещение, необходимата автономност на работа и наличното пространство, с цел постигане на висока степен на автоматизация, надеждност и оптимален разход на гориво.",
+    "U ložišnom delu, za automatsko izdvajanje pepela ugrađuju se dve pužne spirale sa svojim elektro pogonima. One pepeo ubacuju u dve kutije koje povremeno treba prazniti.": "В горивната част, за автоматично извеждане на пепелта, се монтират две шнекови спирали със собствени електрозадвижвания. Те отвеждат пепелта в две кутии, които периодично трябва да се изпразват.",
+    "Na vrata izmenjivačkog sklopa cevi ugrađuje se sistem elektromagnetnih ventila koji povremeno puste vazduh pod pritiskom i na taj način čiste cevi kotla od pepela i čađi. Potreban je izvor vazduha pod pritiskom određenog kapaciteta kao i automatika koja vodi ovaj proces.": "На вратата на тръбния топлообменен блок се монтира система от електромагнитни вентили, които периодично изпускат въздух под налягане и така почистват тръбите на котела от пепел и сажди. Необходим е източник на сгъстен въздух с определен капацитет, както и автоматика, която управлява този процес.",
+    "Zbog smanjene emisije čestica pepela u vazduhu, preporučuje se ugradnja ciklona naročito ako je kupac ugradio i sistem pneumatskog čišćenja.": "За намаляване на емисиите на пепелни частици във въздуха се препоръчва монтаж на циклон, особено ако клиентът е инсталирал и система за пневматично почистване.",
+    "Kod velikih sistema gde se dnevna potrošnja peleta kreće i od nekoliko stotina kilograma, pa do nekoliko tona, preporučuje se ugradnja velikog silosa sa kofičastim elevatorom. On je sistemom pužnih transportera vezan sa malim silosom, a ceo proces dopreme je automatizovan sa sondama minimuma i maksimuma u malom silosu.": "При големи системи, където дневният разход на пелети достига от няколкостотин килограма до няколко тона, се препоръчва голям силоз с кофичков елеватор. Той се свързва с малкия силоз чрез шнекови транспортьори, а подаването се автоматизира със сонди в малкия силоз.",
+    "Standardni TKAN kotlovi opremljeni su dnevnim silosom, dok proizvođač za veće sisteme omogućava izradu većih spoljnih silosa sa posebnim dimenzijama. U zavisnosti od potreba sistema, mogu se izraditi silosi kapaciteta nekoliko desetina tona sa kofičastim elevatorom.": "Стандартните котли TKAN са оборудвани с дневен силоз, а за по-големи системи производителят позволява изработка на по-големи външни силози със специални размери. В зависимост от нуждите на системата могат да се изработят силози с капацитет няколко десетки тона с кофичков елеватор.",
+    "Veliki spoljni silos povezuje se sa dnevnim silosom kotla putem pužnih transportera, čime se omogućava automatsko dopremanje dnevnog silosa putem sondi minimuma i maksimuma. Za skladištenje većih količina peleta mogu se koristiti i Jumbo vreće.": "Големият външен силоз се свързва с дневния силоз на котела чрез шнекови транспортьори, което позволява автоматично допълване на дневния силоз чрез сонди за минимум и максимум. За съхранение на по-големи количества пелети могат да се използват и Jumbo торби.",
+    "Kod novijih modela TKAN 60–300, standardni dnevni silos ima zapreminu od 800 litara, uz mogućnost povezivanja sa velikim spoljnim silosom. Povezivanje može biti izvedeno bočno ili čeono, u zavisnosti od rasporeda opreme i prostornih uslova. Dakle:": "При по-новите модели TKAN 60-300 стандартният дневен силоз е с обем 800 литра, с възможност за свързване с голям външен силоз. Свързването може да бъде странично или челно, в зависимост от разположението на оборудването и пространствените условия. Схемата е:",
+    "veliki centralni silos → pužni transporter → dnevni silos TKAN → puž do ložišta": "голям централен силоз -> шнеков транспортьор -> дневен силоз TKAN -> шнек до горивната камера",
+    "Kod velikih sistema preporučuje se veliki silos sa kofičastim elevatorom, pužnim transporterima i automatskim dopunjavanjem dnevnog silosa putem sondi minimuma i maksimuma. Za skladištenje većih količina peleta mogu se koristiti i Jumbo vreće.": "При големи системи се препоръчва голям силоз с кофичков елеватор, шнекови транспортьори и автоматично допълване на дневния силоз чрез сонди за минимум и максимум. За съхранение на по-големи количества пелети могат да се използват и Jumbo торби.",
+    "Automatika kotla može da upravlja motorom puža za dopremu iz velikog silosa.": "Автоматиката на котела може да управлява мотора на шнека за подаване от големия силоз.",
+    "Za kaskadu više TKAN kotlova, ovo je posebno interesantno jer se može projektovati centralni sistem distribucije peleta.": "За каскада от няколко котела TKAN това е особено полезно, защото може да се проектира централна система за разпределение на пелетите.",
+    "Kod automatskog punjenja dnevnog silosa koriste se sonde minimuma i maksimuma. Princip je:": "При автоматично пълнене на дневния силоз се използват сонди за минимум и максимум. Принципът е:",
+    "Na taj način kotao sam traži gorivo iz centralnog skladišta i ne zahteva ručno dopunjavanje.": "По този начин котелът сам заявява гориво от централния склад и не изисква ръчно допълване.",
+}
+
+BG_PREFIX_TRANSLATIONS = [
+    ('Radijator inženjering" d.o.o. u poslovnom smislu je', "Radijator Inženjering d.o.o. е правен наследник на занаятчийската работилница „Radijator“, основана през 1991 г., чиято основна дейност е била монтаж и поддръжка на централно отопление. Първият водогреен котел на твърдо гориво произведохме през 1985 г."),
+    ("Preduzeće u današnjoj formi postoji od 2002. godine", "Предприятието в днешната си форма съществува от 2002 г. и от година на година напредва с големи стъпки, като винаги се стреми да бъде сред първите в прилагането на нови технологии, качеството на продуктите и завладяването на нови европейски пазари."),
+    ("Kako smo proširivali i usavršavali proizvodnju", "С разширяването и усъвършенстването на производството достигнахме ниво, при което котлите се изработват с най-съвременни световни технологии. В областта на рязането на ламарина се открояват лазерно рязане, CNC плазмен процес и CNC щанцоване. Заваряването се извършва роботизирано, както и с автоматизирани машини. Най-добрият показател за качеството на продуктите и услугите е фактът, че производството се увеличава всяка година."),
+    ('Danas "Radijator-inženjering"', "Днес Radijator Inženjering има над 350 служители, от които 40 са дипломирани машинни инженери, които ежедневно работят за усъвършенстване на качеството на продуктите."),
+    ("Sigurna postojanost kvaliteta", "Постоянното качество както на продуктите, така и на дейността на фирмата е потвърдено с получаването на сертификат за система за качество ISO 9001:2008."),
+]
+
+BG_SKIP_PREFIXES = (
+    "pravni naslednik zanatske radnje",
+    "osnovana 1991.",
+    "montaža i održavanje",
+    "toplovodni kotao",
+    "godine.",
+    "iz godine u godinu",
+    "trudeći da bude",
+    "kvalitetu proizvoda",
+    "došli do nivoa",
+    "svetskim tehnologijama",
+    "izdvajaju se",
+    "CNC probijanje",
+    "kao i upotrebom",
+    "proizvoda i usluga",
+    "proizvodnja povećava",
+    "radnika od kojih",
+    "rade na usavršavanju",
+    "poslovanja firme",
+    "sistema kvaliteta",
+)
+
 
 def normalize_catalog_text(text: str) -> str:
     return (
@@ -875,6 +1067,15 @@ def normalize_catalog_text(text: str) -> str:
 def translate_text(text: str, language: str) -> str:
     text = normalize_catalog_text(text)
     if language == "sr":
+        return text
+    if language == "bg":
+        if text.startswith(BG_SKIP_PREFIXES):
+            return ""
+        if text in BG_EXACT_TRANSLATIONS:
+            return BG_EXACT_TRANSLATIONS[text]
+        for prefix, translation in BG_PREFIX_TRANSLATIONS:
+            if text.startswith(prefix):
+                return translation
         return text
     if text.startswith(RO_SKIP_PREFIXES):
         return ""
@@ -1140,7 +1341,7 @@ def has_word_page_break(paragraph: Paragraph) -> bool:
 
 
 def image_figure(item: dict[str, str], index: int, language: str) -> str:
-    label = "Slika" if language == "sr" else "Imagine"
+    label = {"sr": "Slika", "ro": "Imagine", "bg": "Фигура"}.get(language, "Slika")
     if not item.get("display"):
         return (
             "<div class=\"catalog-original-note\">"
@@ -1243,6 +1444,8 @@ def render_section(section: dict[str, object], section_number: int, language: st
         gallery_label = (
             "Radijator Inženjering producție"
             if language == "ro"
+            else "Производство Radijator Inženjering"
+            if language == "bg"
             else "Radijator Inženjering proizvodnja"
         )
         section_body = (
@@ -1308,6 +1511,32 @@ def render_production_spread(language: str) -> str:
     <div><strong>EU</strong><span>export în 27+ țări UE</span></div>
   </div>
   <p class="production-spread__footer">Tehnologie / calitate / piață</p>
+</section>
+"""
+    if language == "bg":
+        return """
+<section class="catalog-section production-spread" id="production-standards" data-section="PRO">
+  <div class="production-spread__brand">
+    <span>Производство</span>
+  </div>
+  <div class="production-spread__headline">
+    <p class="production-spread__kicker">Технология и качество</p>
+    <h2>Производство по съвременни европейски стандарти</h2>
+  </div>
+  <div class="production-spread__media">
+    <figure><img src="assets/editorial/company-aerial-complex-wide.jpg" alt="Производственият комплекс Radijator Inzenjering от въздуха" /></figure>
+    <figure><img src="assets/editorial/company-aerial-complex-top.jpg" alt="Заводът Radijator Inzenjering със съвременно производство" /></figure>
+  </div>
+  <div class="production-spread__copy">
+    <p>С разширяването и усъвършенстването на производството котлите започнаха да се изработват с най-съвременни технологии: лазерно рязане, CNC плазмен процес, CNC щанцоване, роботизирано заваряване и автоматизирано заваряване.</p>
+    <p>Днес Radijator Inženjering има над 350 служители, сред които 40 дипломирани машинни инженери, които ежедневно работят за подобряване на качеството на продуктите.</p>
+  </div>
+  <div class="production-spread__stats">
+    <div><strong>350+</strong><span>служители</span></div>
+    <div><strong>40</strong><span>дипл. машинни инженери</span></div>
+    <div><strong>EU</strong><span>износ в 27+ държави от ЕС</span></div>
+  </div>
+  <p class="production-spread__footer">Технология / качество / пазар</p>
 </section>
 """
     return """
@@ -1750,6 +1979,18 @@ def render_page(language: str) -> None:
     body_html = tune_catalog_layout(body_html)
     if language == "ro":
         body_html = tune_romanian_catalog_html(body_html)
+    if language == "bg":
+        body_html = (
+            body_html.replace('alt="TKAN 300 sa silosom"', 'alt="TKAN 300 със силоз"')
+            .replace('alt="TKAN Integra kotao"', 'alt="Котел TKAN Integra"')
+            .replace('alt="Kaskadni sistem kotlova"', 'alt="Каскадна система от котли"')
+            .replace('alt="Valvola TKAN 150 - presek"', 'alt="Valvola TKAN 150 - разрез"')
+            .replace('alt="Valvola TKAN 300 Integra - presek"', 'alt="Valvola TKAN 300 Integra - разрез"')
+            .replace('alt="Multiciklon TKAN 300"', 'alt="Мултициклон TKAN 300"')
+            .replace('alt="Pozicioniranje TKAN kotla u kotlarnici"', 'alt="Позициониране на котел TKAN в котелното помещение"')
+            .replace('alt="Instalirani industrijski kotao Radijator u kotlarnici"', 'alt="Инсталиран индустриален котел Radijator в котелно помещение"')
+            .replace('alt="Kaskadno postrojenje sa industrijskim kotlovima Radijator"', 'alt="Каскадна инсталация с индустриални котли Radijator"')
+        )
     production_spread = render_production_spread(language)
     body_html = body_html.replace("</section>", f"</section>\n{production_spread}", 1)
     toc.insert(1, f'<a href="#production-standards">{html.escape(config["production_toc"])}</a>')
@@ -1757,17 +1998,22 @@ def render_page(language: str) -> None:
     nav_pdf_link = render_pdf_link("web-nav-pdf", config["pdf_label"], config["pdf_filename"])
     hero_pdf_link = render_pdf_link("action-secondary", config["hero_secondary"], config["pdf_filename"])
     print_title_override = ""
-    if language == "ro":
-        print_title_override = """
+    if language in {"ro", "bg"}:
+        print_header = (
+            "CAZANE INDUSTRIALE PE BIOMASĂ"
+            if language == "ro"
+            else "ИНДУСТРИАЛНИ КОТЛИ НА БИОМАСА"
+        )
+        print_title_override = f"""
     <style>
-      @media print {
-        @page {
-          @top-center { content: "CAZANE INDUSTRIALE PE BIOMASĂ"; }
-        }
-        @page catalog {
-          @top-center { content: "CAZANE INDUSTRIALE PE BIOMASĂ"; }
-        }
-      }
+      @media print {{
+        @page {{
+          @top-center {{ content: "{print_header}"; }}
+        }}
+        @page catalog {{
+          @top-center {{ content: "{print_header}"; }}
+        }}
+      }}
     </style>"""
 
     page = f"""<!doctype html>
@@ -1865,6 +2111,16 @@ def render_page(language: str) -> None:
   </body>
 </html>
 """
+    if language == "bg":
+        page = (
+            page.replace('alt="Radijator Inženjering factory complex in Kraljevo"', 'alt="Производствен комплекс Radijator Inženjering в Кралево"')
+            .replace('alt="Automated sheet metal processing in production"', 'alt="Автоматизирана обработка на ламарина в производството"')
+            .replace('alt="Laser cutting of boiler sheet metal"', 'alt="Лазерно рязане на котелна ламарина"')
+            .replace('alt="Operator supervising a modern production process"', 'alt="Оператор, който наблюдава съвременен производствен процес"')
+            .replace('alt="Welding industrial boiler components"', 'alt="Заваряване на компоненти за индустриални котли"')
+            .replace('alt="Instalirani industrijski kotao Radijator u kotlarnici"', 'alt="Инсталиран индустриален котел Radijator в котелно помещение"')
+            .replace('alt="Kaskadno postrojenje sa industrijskim kotlovima Radijator"', 'alt="Каскадна инсталация с индустриални котли Radijator"')
+        )
     config["html_path"].write_text(page, encoding="utf-8")
     config["alias_path"].write_text(page, encoding="utf-8")
 
