@@ -1,5 +1,14 @@
 (() => {
   const root = document.documentElement;
+  const labels = root.lang === "en" ? {
+    table: "Technical data table, scroll horizontally",
+    open: "Open enlarged illustration.",
+    illustration: "Technical illustration",
+  } : {
+    table: "Tabela tehničkih podataka, horizontalno skrolovanje",
+    open: "Otvori uvećani prikaz.",
+    illustration: "Tehnički prikaz",
+  };
   const body = document.body;
   const nav = document.querySelector(".catalog-web-nav");
   const progress = document.querySelector(".catalog-progress span");
@@ -68,7 +77,7 @@
   document.querySelectorAll(".table-scroll").forEach((wrapper) => {
     wrapper.tabIndex = 0;
     wrapper.setAttribute("role", "region");
-    wrapper.setAttribute("aria-label", "Tabela tehničkih podataka, horizontalno skrolovanje");
+    wrapper.setAttribute("aria-label", labels.table);
   });
 
   if (motionAllowed && window.matchMedia("(pointer: fine)").matches) {
@@ -104,13 +113,13 @@
   document.querySelectorAll(".catalog-figure img").forEach((image, index) => {
     image.tabIndex = 0;
     image.setAttribute("role", "button");
-    image.setAttribute("aria-label", `${image.alt}. Otvori uvećani prikaz.`);
+    image.setAttribute("aria-label", `${image.alt}. ${labels.open}`);
 
     const open = () => {
       if (!lightbox || !lightboxImage || !lightboxCaption) return;
       lightboxImage.src = image.currentSrc || image.src;
       lightboxImage.alt = image.alt;
-      lightboxCaption.textContent = `Tehnički prikaz ${String(index + 1).padStart(2, "0")}`;
+      lightboxCaption.textContent = `${labels.illustration} ${String(index + 1).padStart(2, "0")}`;
       lightbox.showModal();
     };
 

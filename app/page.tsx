@@ -1,56 +1,56 @@
 const highlights = [
-  "35+ godina iskustva u razvoju i proizvodnji kotlova",
-  "350+ zaposlenih i tim od 40 diplomiranih masinskih inzenjera",
-  "Opseg proizvoda od 15 do 500 kW za objekte razlicitih namena",
+  "35+ years of experience in boiler development and manufacturing",
+  "350+ employees and a team of 40 graduate mechanical engineers",
+  "Product range from 15 to 500 kW for buildings with different uses",
 ];
 
 const programCards = [
   {
-    title: "TKAN serija",
+    title: "TKAN series",
     range: "60 - 300 kW",
     description:
-      "Toplovodni kotlovi na pelet sa automatskim nalaganjem, projektovani za visok stepen iskoriscenja, pouzdan rad i mogucnost lozenja drveta uz rucno punjenje.",
+      "Hot water pellet boilers with automatic fuel feed, designed for high efficiency and reliable operation, with the option of burning wood through manual loading.",
   },
   {
     title: "TKAN Integra",
     range: "80 - 500 kW",
     description:
-      "Nova generacija industrijskih kotlova sa zidanim lozistem, automatskim ciscenjem, naprednom automatikom i multiciklonom za cistiji i stabilniji rad.",
+      "A new generation of industrial boilers with a refractory-lined combustion chamber, automatic cleaning, advanced controls and a multicyclone for cleaner and more stable operation.",
   },
   {
-    title: "Kaskadna resenja",
-    range: "Modularna snaga",
+    title: "Cascade solutions",
+    range: "Modular output",
     description:
-      "Povezivanje dva ili vise kotlova u jedinstven sistem sa zajednickim silosom, ravnomernim opterecenjem i visokim stepenom energetske efikasnosti.",
+      "Two or more boilers connected in a single system with a shared silo, balanced loading and high energy efficiency.",
   },
 ];
 
 const tkanFeatures = [
-  "Stepen korisnosti na pelet preko 90%",
-  "Kotlovski limovi od 5 mm i vise, besavne cevi ST 35.4",
-  "Temperatura dimnih gasova oko 160 C u normalnom rezimu",
-  "Automatsko doziranje peleta puznim transporterima",
+  "Efficiency above 90% when burning pellets",
+  "Boiler steel plates at least 5 mm thick and seamless ST 35.4 tubes",
+  "Flue gas temperature approximately 160 °C under normal operating conditions",
+  "Automatic pellet dosing using screw conveyors",
 ];
 
 const integraFeatures = [
-  "Zidano loziste za potpuno i stabilno sagorevanje",
-  "Automatsko ciscenje izmenjivaca komprimovanim vazduhom",
-  "Multiciklon sa centrifugalnim ventilatorom kod jacih modela",
-  "Manje emisije prasine i manja potreba za rucnim odrzavanjem",
+  "Refractory-lined combustion chamber for complete and stable combustion",
+  "Automatic heat exchanger cleaning using compressed air",
+  "Multicyclone with a centrifugal fan on higher-output models",
+  "Lower dust emissions and less need for manual maintenance",
 ];
 
 const cascadeBenefits = [
-  "Pokrivanje velikih snaga za hotele, hale i stambene komplekse",
-  "Optimizovan rad u prelaznim periodima uz paljenje po potrebi",
-  "Kontinuitet rada sistema i tokom servisa jednog od kotlova",
-  "Centralno snabdevanje peletom i sinhronizovana automatika",
+  "High output for hotels, industrial halls and residential complexes",
+  "Optimised operation in autumn and spring, with boilers starting as needed",
+  "Continuous system operation while one boiler undergoes servicing",
+  "Central pellet supply and synchronised controls",
 ];
 
 const equipmentItems = [
-  "Veliki spoljni silosi i dnevni silosi kapaciteta 800 litara i vise",
-  "Puzni transporteri, pogoni i automatsko dopunjavanje preko sondi",
-  "Automatsko izbacivanje pepela iz lozista u kontejnere",
-  "Pneumatsko ciscenje izmenjivaca, ciklon i multiciklon resenja",
+  "Large external silos and day silos with capacities of 800 litres or more",
+  "Screw conveyors, drives and automatic refilling controlled by level sensors",
+  "Automatic ash removal from the combustion chamber into containers",
+  "Pneumatic heat exchanger cleaning, cyclone and multicyclone solutions",
 ];
 
 export default function Home() {
@@ -60,19 +60,19 @@ export default function Home() {
         <div className="hero-backdrop" aria-hidden="true" />
         <div className="hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow">Industrijski katalog</p>
-            <h1>Biomasa, automatika i snaga za sisteme koji traze sigurnost.</h1>
+            <p className="eyebrow">Industrial catalogue</p>
+            <h1>Biomass, automation and output for systems that demand reliability.</h1>
             <p className="lead">
-              Radijator Inzenjering razvija industrijske kotlove i kompletna
-              sistemska resenja za objekte koji zahtevaju efikasno, stabilno i
-              dugotrajno grejanje.
+              Radijator Inzenjering develops industrial boilers and complete
+              system solutions for buildings that require efficient, stable
+              heating over a long service life.
             </p>
             <div className="hero-actions">
               <a href="#program" className="button button-primary">
-                Pogledaj program
+                View the range
               </a>
               <a href="#pdf-izvoz" className="button button-secondary">
-                Priprema za PDF
+                PDF preparation
               </a>
             </div>
           </div>
@@ -80,16 +80,16 @@ export default function Home() {
           <div className="hero-panel">
             <div className="stat-block">
               <span className="stat-value">15 - 500 kW</span>
-              <span className="stat-label">Opseg resenja za razlicite objekte</span>
+              <span className="stat-label">Solutions for different building types</span>
             </div>
             <div className="stat-block">
               <span className="stat-value">ISO 9001:2008</span>
-              <span className="stat-label">Potvrda sistema kvaliteta i procesa</span>
+              <span className="stat-label">Quality management and process certification</span>
             </div>
             <div className="stat-block">
-              <span className="stat-value">Evropsko trziste</span>
+              <span className="stat-value">European market</span>
               <span className="stat-label">
-                Proizvodnja uskladjena sa vazecim evropskim standardima
+                Production complies with applicable European standards
               </span>
             </div>
           </div>
@@ -98,21 +98,21 @@ export default function Home() {
 
       <section className="content-band presentation-section" id="o-nama">
         <div className="section-heading">
-          <p className="eyebrow">O kompaniji</p>
-          <h2>Domaci proizvodjac sa ozbiljnom proizvodnjom i inzenjerskom bazom.</h2>
+          <p className="eyebrow">About the company</p>
+          <h2>A Serbian manufacturer with substantial production and engineering capabilities.</h2>
         </div>
         <div className="story-layout">
           <div className="story-copy">
             <p>
-              Kompanija je nastala iz tradicije koja pocinje 1991. godine, dok
-              prvi toplovodni kotao na cvrsto gorivo datira jos iz 1985. Danas
-              Radijator Inzenjering objedinjuje projektovanje, proizvodnju i
-              razvoj kotlova koji greju hiljade objekata sirom Evrope.
+              The company grew from a tradition dating back to 1991, while its
+              first hot water boiler for solid fuel dates back to 1985. Today,
+              Radijator Inzenjering brings together the design, manufacturing
+              and development of boilers that heat thousands of buildings across Europe.
             </p>
             <p>
-              Proizvodnja se oslanja na savremene procese poput laserskog
-              secenja, CNC plazme, CNC probijanja i robotskog zavarivanja, sa
-              fokusom na preciznost, dug vek trajanja i dosledan kvalitet.
+              Production uses modern processes such as laser cutting, CNC plasma
+              cutting, CNC punching and robotic welding, with a focus on
+              precision, long service life and consistent quality.
             </p>
           </div>
           <div className="feature-stack">
@@ -128,8 +128,8 @@ export default function Home() {
 
       <section className="program-section presentation-section" id="program">
         <div className="section-heading">
-          <p className="eyebrow">Proizvodni program</p>
-          <h2>Tri jasno definisana pravca za industrijske sisteme grejanja.</h2>
+          <p className="eyebrow">Product range</p>
+          <h2>Three clearly defined approaches to industrial heating systems.</h2>
         </div>
         <div className="program-grid">
           {programCards.map((card) => (
@@ -144,12 +144,12 @@ export default function Home() {
 
       <section className="detail-section presentation-section" id="tkan">
         <div className="detail-copy">
-          <p className="eyebrow">Serija TKAN</p>
-          <h2>Standard industrijske pouzdanosti za pelet, uz fleksibilnost za drvo.</h2>
+          <p className="eyebrow">TKAN series</p>
+          <h2>Industrial reliability with pellets and the flexibility to burn wood.</h2>
           <p>
-            TKAN je razvijen kao kotao izrazito prilagodjen biomasi, sa cevnim
-            izmenjivacem toplote, produzenim putem dimnih gasova i turbulatorima
-            koji dodatno podizu iskoriscenje sistema.
+            TKAN is a boiler specifically adapted to biomass, with a tubular
+            heat exchanger, an extended flue gas path and turbulators
+            that further improve system efficiency.
           </p>
         </div>
         <div className="bullet-panel">
@@ -164,12 +164,12 @@ export default function Home() {
 
       <section className="detail-section presentation-section inverse" id="integra">
         <div className="detail-copy">
-          <p className="eyebrow">Serija TKAN Integra</p>
-          <h2>Naprednija automatizacija, cistije sagorevanje i duzi radni vek.</h2>
+          <p className="eyebrow">TKAN Integra series</p>
+          <h2>More advanced automation, cleaner combustion and longer service life.</h2>
           <p>
-            Integra model donosi zidano loziste, bogatiju standardnu opremu i
-            sistem automatskog ciscenja koji znacajno smanjuje servisna
-            opterecenja i odrzava visok stepen energetske efikasnosti.
+            The Integra model includes a refractory-lined combustion chamber,
+            more extensive standard equipment and an automatic cleaning system
+            that significantly reduces maintenance work and maintains high energy efficiency.
           </p>
         </div>
         <div className="bullet-panel">
@@ -184,15 +184,15 @@ export default function Home() {
 
       <section className="content-band presentation-section" id="kaskada">
         <div className="section-heading">
-          <p className="eyebrow">Kaskadni sistemi</p>
-          <h2>Modularna arhitektura za velike objekte i neprekidan rad.</h2>
+          <p className="eyebrow">Cascade systems</p>
+          <h2>Modular architecture for large buildings and continuous operation.</h2>
         </div>
         <div className="two-column-panel">
           <div className="panel-card emphasis">
             <p>
-              Povezivanjem vise TKAN kotlova dobija se fleksibilan sistem koji
-              precizno odgovara stvarnom opterecenju objekta, uz hidraulicnu
-              skretnicu, bafer i centralizovano upravljanje.
+              Connecting several TKAN boilers creates a flexible system that
+              precisely matches the building&apos;s actual heating load, with a hydraulic
+              separator, buffer tank and centralised controls.
             </p>
           </div>
           <div className="panel-card">
@@ -208,8 +208,8 @@ export default function Home() {
 
       <section className="content-band presentation-section" id="oprema">
         <div className="section-heading">
-          <p className="eyebrow">Dodatna oprema</p>
-          <h2>Kompletan ekosistem za skladistenje, transport i kontrolu peleta.</h2>
+          <p className="eyebrow">Additional equipment</p>
+          <h2>A complete system for pellet storage, transport and control.</h2>
         </div>
         <div className="equipment-grid">
           {equipmentItems.map((item) => (
@@ -223,16 +223,16 @@ export default function Home() {
       <section className="final-section presentation-section" id="pdf-izvoz">
         <div className="final-panel">
           <p className="eyebrow">Web + PDF</p>
-          <h2>Jedna prezentacija, dva nacina koriscenja.</h2>
+          <h2>One presentation, two ways to use it.</h2>
           <p>
-            Stranica je pripremljena kao elegantna web prezentacija, ali i sa
-            print stilovima za cist izvoz u PDF kroz browser opciju{" "}
+            The page serves as an elegant web presentation and includes print
+            styles for a clean PDF export using the browser&apos;s{" "}
             <strong>Print / Save as PDF</strong>.
           </p>
           <p>
-            Sledeci korak je dopuna sa tehnickim tabelama, konkretnim modelima i
-            kontakt sekcijom ukoliko zelis da prezentacija ide direktno prema
-            kupcima, investitorima ili distributerima.
+            The next step is to add technical tables, specific models and a
+            contact section if you want to send the presentation directly to
+            customers, investors or distributors.
           </p>
         </div>
       </section>

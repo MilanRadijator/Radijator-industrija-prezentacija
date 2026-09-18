@@ -2128,3 +2128,8 @@ def render_page(language: str) -> None:
 if __name__ == "__main__":
     for selected_language in LANGUAGE_CONFIG:
         render_page(selected_language)
+    from importlib.util import spec_from_file_location, module_from_spec
+    english_spec = spec_from_file_location("english_catalog", ROOT / "scripts/build-english-catalog.py")
+    english_module = module_from_spec(english_spec)
+    english_spec.loader.exec_module(english_module)
+    english_module.build_english_catalog()

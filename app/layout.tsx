@@ -13,9 +13,9 @@ const bodyFont = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: "Radijator Inzenjering | Industrijski kotlovi na biomasu",
+  title: "Radijator Inzenjering | Industrial biomass boilers",
   description:
-    "Web prezentacija industrijskih kotlova Radijator Inzenjering sa modernim prikazom serija TKAN, TKAN Integra, kaskadnih sistema i dodatne opreme.",
+    "Radijator Inzenjering industrial boilers: TKAN and TKAN Integra series, cascade systems and additional equipment.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="sr">
+    <html lang="en">
       <body
         className={`${displayFont.variable} ${bodyFont.variable} antialiased`}
       >

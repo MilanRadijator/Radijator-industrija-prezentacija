@@ -1,0 +1,31 @@
+/* Translate generated labels as well as the catalogue's HTML content. */
+html[lang="en"] .catalog-page .catalog-hero h1 {
+  letter-spacing: 0;
+  line-height: 0.98;
+}
+
+@media screen {
+  html[lang="en"] .catalog-page .catalog-figure figcaption::before {
+    content: "Technical illustration";
+  }
+}
+
+@media print {
+  @page catalog {
+    @top-center {
+      content: "INDUSTRIAL BIOMASS BOILERS";
+    }
+  }
+
+  html[lang="en"] .catalog-page #section-03 .table-scroll::before {
+    content: "TKAN / TECHNICAL SPECIFICATIONS";
+  }
+
+  html[lang="en"] .catalog-page #section-07 .table-scroll::before {
+    content: "TKAN INTEGRA / TECHNICAL SPECIFICATIONS";
+  }
+
+  html[lang="en"] .catalog-page #section-08 .table-scroll::before {
+    content: "TKAN INTEGRA / BOILER DIMENSIONS";
+  }
+}

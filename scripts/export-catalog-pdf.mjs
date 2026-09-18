@@ -7,12 +7,17 @@ import { fileURLToPath } from "node:url";
 
 const root = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const docs = join(root, "docs");
-const pdfJobs = [
+const allPdfJobs = [
   {
     source: "index.html",
     output: join(docs, "radijator-industrijski-kotlovi.pdf"),
     aliases: [join(docs, "radijator-industrijski-kotlovi-kompletan-katalog.pdf")],
     tempPrefix: "radijator-industrijski-kotlovi",
+  },
+  {
+    source: "index-en.html",
+    output: join(docs, "radijator-industrijski-kotlovi-en.pdf"),
+    tempPrefix: "radijator-industrijski-kotlovi-en",
   },
   {
     source: "index-ro.html",
@@ -25,6 +30,13 @@ const pdfJobs = [
     tempPrefix: "radijator-industrijski-kotlovi-bg",
   },
 ];
+const language = process.argv.find((argument) => argument.startsWith("--language="))?.split("=")[1];
+if (language && !["sr", "en", "ro", "bg"].includes(language)) {
+  throw new Error(`Unsupported language: ${language}`);
+}
+const pdfJobs = language
+  ? allPdfJobs.filter((job) => job.source === (language === "sr" ? "index.html" : `index-${language}.html`))
+  : allPdfJobs;
 
 const edgeCandidates = [
   process.env.CHROME_PATH,
