@@ -29,9 +29,14 @@ const allPdfJobs = [
     output: join(docs, "radijator-industrijski-kotlovi-bg.pdf"),
     tempPrefix: "radijator-industrijski-kotlovi-bg",
   },
+  {
+    source: "index-cs.html",
+    output: join(docs, "radijator-industrijski-kotlovi-cs.pdf"),
+    tempPrefix: "radijator-industrijski-kotlovi-cs",
+  },
 ];
 const language = process.argv.find((argument) => argument.startsWith("--language="))?.split("=")[1];
-if (language && !["sr", "en", "ro", "bg"].includes(language)) {
+if (language && !["sr", "en", "ro", "bg", "cs"].includes(language)) {
   throw new Error(`Unsupported language: ${language}`);
 }
 const pdfJobs = language

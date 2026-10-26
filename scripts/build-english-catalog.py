@@ -30,7 +30,7 @@ def build_english_catalog():
     inventory.feed(source)
     # Every unchanged string must be an English description, proper name,
     # technical symbol/model, contact detail, or numerical value.
-    allowed = re.compile(r"^(?:[\d\W]+|TKAN [\d/]+(?: Integra)?|DN\d+ NP\d+|[ABCEGHV]|[ABCD] \(mm\)|A1|B[12]|D[1-6]|ØD|As|Hs|EU|SR|RO|BG|EN|kW|kPa|kg|mm|Language|Radijator Inzenjering|Radijator Inženjering d\.o\.o\.|Živojina Lazića Solunca 6|radijator@radijator\.rs|www\.radijator\.rs|Radijator Inženjering factory complex in Kraljevo|Automated sheet metal processing in production|Laser cutting of boiler sheet metal|Operator supervising a modern production process|Welding industrial boiler components)$")
+    allowed = re.compile(r"^(?:[\d\W]+|TKAN [\d/]+(?: Integra)?|DN\d+ NP\d+|[ABCEGHV]|[ABCD] \(mm\)|A1|B[12]|D[1-6]|ØD|As|Hs|EU|SR|RO|BG|EN|CS|kW|kPa|kg|mm|Language|Radijator Inzenjering|Radijator Inženjering d\.o\.o\.|Živojina Lazića Solunca 6|radijator@radijator\.rs|www\.radijator\.rs|Radijator Inženjering factory complex in Kraljevo|Automated sheet metal processing in production|Laser cutting of boiler sheet metal|Operator supervising a modern production process|Welding industrial boiler components)$")
     missing = sorted({text for text in inventory.texts if text not in TRANSLATIONS and not allowed.fullmatch(text)})
     if missing:
         raise ValueError(f"Untranslated catalogue content: {missing}")
@@ -83,7 +83,7 @@ def build_english_catalog():
 
 def language_switch(current):
     links = []
-    for language, label in (("sr", "SR"), ("en", "EN"), ("ro", "RO"), ("bg", "BG")):
+    for language, label in (("sr", "SR"), ("en", "EN"), ("ro", "RO"), ("bg", "BG"), ("cs", "CS")):
         suffix = "" if language == "sr" else f"-{language}"
         active = ' class="is-active" aria-current="page"' if language == current else ' class=""'
         links.append(f'<a{active} href="index{suffix}.html">{label}</a>')

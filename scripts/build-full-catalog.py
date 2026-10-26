@@ -2129,7 +2129,8 @@ if __name__ == "__main__":
     for selected_language in LANGUAGE_CONFIG:
         render_page(selected_language)
     from importlib.util import spec_from_file_location, module_from_spec
-    english_spec = spec_from_file_location("english_catalog", ROOT / "scripts/build-english-catalog.py")
-    english_module = module_from_spec(english_spec)
-    english_spec.loader.exec_module(english_module)
-    english_module.build_english_catalog()
+    for edition in ("english", "czech"):
+        edition_spec = spec_from_file_location(f"{edition}_catalog", ROOT / f"scripts/build-{edition}-catalog.py")
+        edition_module = module_from_spec(edition_spec)
+        edition_spec.loader.exec_module(edition_module)
+        getattr(edition_module, f"build_{edition}_catalog")()
